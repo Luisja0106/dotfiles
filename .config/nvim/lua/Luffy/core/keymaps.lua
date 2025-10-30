@@ -17,7 +17,7 @@ keymap("n", "<leader>f", vim.lsp.buf.format, {desc = " "})
 -- delter character without copy in theclipboard
 keymap("n", "x", '"_x', opts)
 -- replace a wordl globally
-keymap("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+keymap("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { desc = "Replace word cursor is on globally" })
 --hl a text when is yank
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -36,8 +36,8 @@ keymap("n", "<leader>tp", "<cmd>tabp<CR>", {desc = "move to previous tab" })
 keymap("n", "<leader>tf", "<cmd>tabnew %<CR>", {desc = "open curren tab in a new tab" })
 
 --split
-keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
-keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
-keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make split equal size" })
-keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close curren split" })
+keymap("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
+keymap("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
+keymap("n", "<leader>se", "<C-w>=", { desc = "Make split equal size" })
+keymap("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close curren split" })
 
