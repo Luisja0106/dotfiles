@@ -39,11 +39,12 @@ return {
 		})
 
 		-- Keymaps
-		vim.keymap.set("n", "<leader>pr", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
-		vim.keymap.set("n", "<leader>pWs", function()
+    local keymap = vim.keymap.set
+		keymap("n", "<leader>pr", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
+		keymap("n", "<leader>pWs", function()
 			local word = vim.fn.expand("<cWORD>")
 			builtin.grep_string({ search = word })
 		end, { desc = "Find Connected Words under cursor" })
 
-		vim.keymap.set("n", "<leader>ths", "<cmd>Telescope themes<CR>", { noremap = true, silent = true, desc = "Theme Switcher" })
+		keymap("n", "<leader>ths", "<cmd>Telescope themes<CR>", { noremap = true, silent = true, desc = "Theme Switcher" })
     end,}

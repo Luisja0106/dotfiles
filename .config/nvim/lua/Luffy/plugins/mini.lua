@@ -12,8 +12,9 @@ return {
           go_out_plus = "H",
         },
       })
-      vim.keymap.set("n", "<leader>es", "<cmd>lua MiniFiles.open()<CR>", { desc = "Toggle mini explorer" })
-      vim.keymap.set("n", "<leader>ef", function()
+      local keymap = vim.keymap.set
+      keymap("n", "<leader>es", "<cmd>lua MiniFiles.open()<CR>", { desc = "Toggle mini explorer" })
+      keymap("n", "<leader>ef", function()
         MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
         MiniFiles.reveal_cwd()
       end, { desc = "Toggle into currently opened file" })
