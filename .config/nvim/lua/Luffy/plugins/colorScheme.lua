@@ -9,14 +9,14 @@ return {
                 variant = "main",      -- auto, main, moon, or dawn
                 dark_variant = "main", -- main, moon, or dawn
                 dim_inactive_windows = false,
-                -- disable_background = true,
+                 disable_background = false,
                 -- 	disable_nc_background = false,
                 -- 	disable_float_background = false,
                 -- extend_background_behind_borders = false,
                 styles = {
                     bold = true,
                     italic = false,
-                    transparency = true,
+                    --transparency = true,
                 },
                 highlight_groups = {
                     ColorColumn = { bg = "#1C1C21" },
@@ -210,7 +210,7 @@ return {
 
             require("tokyonight").setup({
                 style = "night",
-                transparent = transparent,
+                --transparent = transparent,
 
                 styles = {
                     comments = { italic = false },
@@ -253,12 +253,11 @@ return {
             -- })
         end,
     },
-   {
-        "nordtheme/vim",
---       name = "Nord-official",
+    {
+    "shaunsingh/nord.nvim",
+        priority = 1000,
         config = function()
             vim.cmd("colorscheme nord")
         end,
-
     },
 }
