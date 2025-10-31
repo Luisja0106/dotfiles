@@ -5,7 +5,7 @@ vim.g.mapleader = " "
 local keymap = vim.keymap.set
 -- exit modes whit jk 
 keymap("i", "jk", "<ESC>", { desc = "Exit insert mode with jk"})
-keymap("v", "jk", "<ESC>", { desc = "Exit visual mode with JK"})
+keymap("v", "jK", "<ESC>", { desc = "Exit visual mode with JK"})
 keymap("c", "JK", "<ESC>", { desc = "Exit command mode with JK"})
 -- move lines in visual mode
 keymap("v", "J",":m '>+1<CR>gv=gv", {desc = "Move lines down in visual selection" })
