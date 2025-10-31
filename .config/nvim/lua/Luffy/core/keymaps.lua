@@ -28,13 +28,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
---tab stuff
-keymap("n", "<leader>to", "<cmd>tabnew<CR>", {desc = "open new tab" })
-keymap("n", "<leader>tx", "<cmd>tabclose<CR>", {desc = "close tab" })
-keymap("n", "<leader>tn", "<cmd>tabn<CR>", {desc = "move to the next tab" })
-keymap("n", "<leader>tp", "<cmd>tabp<CR>", {desc = "move to previous tab" })
-keymap("n", "<leader>tf", "<cmd>tabnew %<CR>", {desc = "open curren tab in a new tab" })
-
+--tabs
+keymap("n", "<leader>to", "<cmd>enew<CR>", {desc = "Create new buffer"})
+keymap("n", "<leader>tx", "<cmd>bd<CR>", {desc = "Close a buffer"})
+keymap("n", "<s-l>", "<cmd>BufferLineCycleNext<CR>", {desc = "Move to next buffer"})
+keymap("n", "<s-h>", "<cmd>BufferLineCyclePrev<CR>", {desc = "Move to prev buffer"})
 --split
 keymap("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 keymap("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
