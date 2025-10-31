@@ -13,6 +13,11 @@ use = "yazi-rs/plugins:git"
 rev = "8f1d971"
 hash = "63b6c222bf2103b3023389dde5e2ecfe"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:vcs-files"
+rev = "8f1d971"
+hash = "4ee57085277d616acfa0ef1fef37dc00"
+
 [[flavor.deps]]
 use = "AdithyanA2005/nord"
 rev = "3a791e9"

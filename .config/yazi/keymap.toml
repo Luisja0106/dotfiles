@@ -1,8 +1,11 @@
+# Open cwd in a file manager
 [[mgr.prepend_keymap]]
 on = "o"
 run = "shell 'nautilus .'"
 desc = "open file manager"
+
+#maximize the preview panel
 [[mgr.prepend_keymap]]
 on = "T"
 run = "plugin toggle-pane max-preview"
-desc = "Show or hide the preview panel"
+desc = "Maximize the preview panel"
