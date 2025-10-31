@@ -21,6 +21,7 @@ return {
         "folke/tokyonight.nvim",
         name = "folkeTokyonight",
     },
+    --NOTE: Nord
     {
     "shaunsingh/nord.nvim",
     },
