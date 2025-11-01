@@ -1,0 +1,213 @@
+#name of terminal
+console_title_template = '{{if .Root}} ⚡{{end}}{{.Folder | replace "~" "󱁍"}} @{{.HostName}}'
+version = 3
+final_space = true
+
+# --------------------------------------------------------------------
+
+ #upgrade options
+[upgrade]
+  source = 'cdn'
+  interval = '168h'
+  auto = false
+  notice = false
+
+#Nord palette
+[palette]
+  nord00 = '#2E3440'
+  nord01 = '#3B4252'
+  nord02 = '#434C5E'
+  nord03 = '#4C566A'
+  nord04 = '#D8DEE9'
+  nord05 = '#E5E9F0'
+  nord06 = '#ECEFF4'
+  nord07 = '#8FBCBB'
+  nord08 = '#88C0D0'
+  nord09 = '#81A1C1'
+  nord10 = '#5E81AC'
+  nord11 = '#BF616A'
+  nord12 = '#D08770'
+  nord13 = '#EBCD8B'
+  nord14 = '#A3BE8C'
+  nord15 = '#B48EAD'
+
+[transient_prompt]
+  foreground_templates = [ "{{ if eq .Code 0 }}p:nord14{{ else }}p:nord11{{ end }}" ]
+  template = ' ❯❯ {{ .AbsolutePWD }} : '
+  background = 'transparent'
+  newline = true
+
+[secondary_prompt]
+  background = 'transparent'
+  foreground = 'p:nord15'
+  template = ' '
+#left block
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  #second line marker
+  [[blocks.segments]]
+    template = "\n╭─"
+    foreground = 'p:nord04'
+    type = 'text'
+    style = 'plain'
+
+      #session
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = '{{ .UserName }}'
+    foreground = 'p:nord08'
+    background = 'p:nord00'
+    type = 'session'
+    style = 'diamond'
+        #OS
+  [[blocks.segments]]
+    trailing_diamond = ''
+    template = ' {{.Icon}} '
+    foreground = 'p:nord08'
+    background = 'p:nord00'
+    type = 'os'
+    style = 'diamond'
+        #paths
+  [[blocks.segments]]
+    leading_diamond = '<transparent,p:nord07></>'
+    trailing_diamond = ''
+    template = ' {{ .Path }} '
+    foreground = 'p:nord03'
+    background = 'p:nord07'
+    type = 'path'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      folder_icon = '...'
+      folder_separator_icon = '<transparent>  </>'
+      home_icon = '󱂶 '
+      style = 'agnoster_short'
+
+    [blocks.segments.properties.mapped_locations]
+      '~/dotfiles' = ''
+      '~/.config' = ''
+
+  [[blocks.segments]]
+    leading_diamond = '<transparent,background></>'
+    trailing_diamond = ''
+    template = '<transparent>  </> {{ reason .Code }} '
+    background = 'p:nord11'
+    foreground = 'p:nord05'
+    type = 'status'
+    style = 'diamond'
+
+#right block
+[[blocks]]
+  type = 'rprompt'
+  overflow = 'hidden'
+  
+  [[blocks.segments]]
+    type = 'executiontime'
+    style = 'plain'
+    foreground = 'p:nord09'
+    template  = '{{ .FormattedMs }}'
+    
+    [blocks.segments.properties]
+      threshold = 5000
+      style = 'round'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'right'
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = ' ({{ url .UpstreamIcon .UpstreamURL }} {{ url .HEAD .UpstreamURL }}){{ if gt .Ahead 0 }}<p:nord14> +{{ .Ahead }}</>{{ end }}{{ if gt .Behind 0 }}<nord11> -{{ .Behind }} </>{{ end }}{{ if .Working.Changed }}<p:nord05>  {{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }}<p:nord05>  {{ .Staging.String }}</>{{ end }}'
+    foreground = 'p:nord00'
+    background = 'p:nord13'
+    type = 'git'
+    style = 'diamond'
+    [blocks.segments.properties]
+      branch_icon = ''
+      cache_duration = 'none'
+      display_changing_color = true
+      fetch_status = true
+      fetch_upstream_icon = true
+      full_branch_path = true
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = ' {{ .Full }}'
+    foreground = 'p:nord00'
+    background = 'p:nord14'
+    type = 'node'
+    style = 'diamond'
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = ' {{ .Full }}'
+    foreground = 'p:nord00'
+    background = 'p:nord11'
+    type = 'npm'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      display_mode = 'files'
+      extensions = ['package-lock.json']
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = '󰋁 {{ .Full }}'
+    foreground = 'p:nord00'
+    background = 'p:nord12'
+    type = 'pnpm'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      display_mode = 'files'
+      extensions = ['pnpm-lock.yaml']
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = ' {{ .Full }}'
+    foreground = 'p:nord00'
+    background = 'p:nord10'
+    type = 'python'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      display_mode = 'files'
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = ' {{ .Full }}'
+    foreground = 'p:nord00'
+    background = 'p:nord11'
+    type = 'java'
+    style = 'diamond'
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = ' {{ .Full }}'
+    foreground = 'p:nord00'
+    background = 'p:nord10'
+    type = 'php'
+    style = 'diamond'
+#write block
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+  newline = true
+
+  [[blocks.segments]]
+    template = '╰─ ❯❯'
+    foreground = 'p:nord04'
+    type = 'text'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      alway_enabled = true

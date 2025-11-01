@@ -1,0 +1,23 @@
+#      _________________________.___.____     ___________ _________
+#     /   _____/\__    ___/\__  |   |    |    \_   _____//   _____/
+#     \_____  \   |    |    /   |   |    |     |    __)_ \_____  \ 
+#     /        \  |    |    \____   |    |___  |        \/        \
+#    /_______  /  |____|    / ______|_______ \/_______  /_______  /
+#            \/             \/              \/        \/        \/ 
+#
+#------------------------------------------------------
+#---------------------- Fzf ---------------------------
+#------------------------------------------------------
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+  --color=fg:-1,fg+:#d0d0d0,bg:#3b4252,bg+:#3b4252
+    --color=hl:#8fbcbb,hl+:#5e81ac,info:#ebcb8b,marker:#a3be8c
+      --color=prompt:#b48ead,spinner:#88c0d0,pointer:#ebcb8b,header:#87afaf
+        --color=border:#d8dee9,label:#aeaeae,query:#d9d9d9
+          --border="rounded" --border-label="🐺" --border-label-pos="1" --preview-window="border-rounded"
+            --prompt=">> " --marker=">" --pointer="~" --separator="-"
+              --scrollbar="|" --layout="reverse"'
+#------------------------------------------------------
+# ------------------ Bat (better cat) -----------------
+#------------------------------------------------------
+  export BAT_THEME=Nord
+

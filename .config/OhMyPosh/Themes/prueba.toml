@@ -1,0 +1,93 @@
+console_title_template = '{{if .Root}} ⚡ {{end}}{{.Folder | replace "~" "🏠"}} @ {{.HostName}}'
+version = 3
+final_space = true
+
+[upgrade]
+  source = 'cdn'
+  interval = '168h'
+  auto = false
+  notice = false
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'left'
+
+  [[blocks.segments]]
+    leading_diamond = ''
+    trailing_diamond = ''
+    template = ' {{ .Icon }} '
+    foreground = '#FFFFFF'
+    background = '#0C212F'
+    type = 'os'
+    style = 'diamond'
+
+  [[blocks.segments]]
+    leading_diamond = '<transparent,#DE2121></>'
+    trailing_diamond = ''
+    template = '  '
+    foreground = '#FFFFFF'
+    background = '#DE2121'
+    type = 'root'
+    style = 'diamond'
+
+  [[blocks.segments]]
+    leading_diamond = '<transparent,#26BDBB></>'
+    trailing_diamond = ''
+    template = ' {{ .Path }} '
+    foreground = '#0C212F'
+    background = '#26BDBB'
+    type = 'path'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      folder_icon = '...'
+      folder_separator_icon = '<transparent>  </>'
+      home_icon = ''
+      style = 'agnoster_short'
+
+  [[blocks.segments]]
+    template = ' {{ .UpstreamIcon }}{{ .HEAD }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} '
+    foreground = '#FFFFFF'
+    powerline_symbol = ''
+    background = '#280C2E'
+    type = 'git'
+    style = 'powerline'
+    background_templates = ['{{ if or (.Working.Changed) (.Staging.Changed) }}#7621DE{{ end }}', '{{ if and (gt .Ahead 0) (gt .Behind 0) }}#7621DE{{ end }}', '{{ if gt .Ahead 0 }}#7621DE{{ end }}', '{{ if gt .Behind 0 }}#7621DE{{ end }}']
+
+    [blocks.segments.properties]
+      fetch_status = true
+      fetch_upstream_icon = true
+
+  [[blocks.segments]]
+    leading_diamond = '<transparent,#0C212F></>'
+    trailing_diamond = ''
+    template = ' {{ .CurrentDate | date .Format }} '
+    foreground = '#FFFFFF'
+    background = '#0C212F'
+    type = 'time'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      time_format = '15:04'
+
+  [[blocks.segments]]
+    leading_diamond = '<transparent,#26BDBB></>'
+    trailing_diamond = ''
+    template = ' {{ .FormattedMs }}s '
+    foreground = '#0C212F'
+    background = '#26BDBB'
+    type = 'executiontime'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      style = 'dallas'
+      threshold = 0.0
+
+  [[blocks.segments]]
+    leading_diamond = '<transparent,background></>'
+    trailing_diamond = ''
+    template = '<transparent> </> {{ reason .Code }} '
+    foreground = '#ffffff'
+    background = '#910000'
+    type = 'status'
+    style = 'diamond'
