@@ -18,7 +18,7 @@ keymap("n", "<leader>f", vim.lsp.buf.format, {desc = " "})
 keymap("n", "x", '"_x', opts)
 -- replace a wordl globally
 keymap("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-    { desc = "Replace word cursor is on globally" })
+    { desc = "Replace word under the cursor globally" })
 --hl a text when is yank
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight when yanking text",

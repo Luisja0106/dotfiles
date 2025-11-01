@@ -106,7 +106,7 @@ return {
     -- === KEYMAPS ===
     keys = {
       -- Git
-      { "<leader>gl",  function() require("snacks").lazygit.log() end,           desc = "Lazygit logs" },
+      { "<leader>gL",  function() require("snacks").lazygit.log() end,           desc = "Lazygit logs" },
 
       -- Explorer / Buffers
       { "<leader>dB",  function() require("snacks").bufdelete() end,             desc = "Delete or Close Buffer (Confirm)" },
@@ -119,7 +119,7 @@ return {
 
       -- Utility Pickers
       { "<leader>gbr", function() require("snacks").picker.git_branches({ layout = "select" }) end, desc = "Pick and Switch Git Branches" },
-      { "<leader>th",  function() require("snacks").picker.colorschemes({ layout = "ivy" }) end,    desc = "Pick color Schemes" },
+      { "<leader>cs",  function() require("snacks").picker.colorschemes({ layout = "ivy" }) end,    desc = "Pick color Schemes" },
       { "<leader>vh",  function() require("snacks").picker.help() end,          desc = "Help pages" },
     },
   },

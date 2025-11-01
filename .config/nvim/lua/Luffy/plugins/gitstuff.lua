@@ -41,7 +41,6 @@ return {
   },
   {
     "kdheepak/lazygit.nvim",
-    --NOTE: Trying out lazygit in Snacks nvim
     enabled = true,
     cmd = {
       "LazyGit",
@@ -56,7 +55,7 @@ return {
     },
     -- setting up with keys={} allows plugin to load when command runs at the start
     keys = {
-      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "Open lazy git" },
+      { "<leader>gl", "<cmd>LazyGit<cr>", desc = "Open lazy git" },
     },
   },
 }
