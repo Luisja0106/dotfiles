@@ -13,6 +13,7 @@ return {
       --Single keybindings
      { "<leader>S", icon = " "},
      { "<leader>u", icon = " "},
+     { "<leader>T", icon = " "},
       --tabs
       { "<leader>t", group = "tabs" },
       { "<leader>to",icon = " "},
