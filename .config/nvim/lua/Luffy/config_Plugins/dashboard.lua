@@ -1,7 +1,7 @@
 return {
-  enabled = true,
-  preset = {
-    header = [[
+	enabled = true,
+	preset = {
+		header = [[
 ██╗        ██╗    ██╗   ██████╗ 
 ██║        ██║    ██║   ██╔══██╗
 ██║        ██║ █╗ ██║   ██║  ██║
@@ -10,9 +10,8 @@ return {
 ╚══════╝╚═╝ ╚══╝╚══╝ ╚═╝╚═════╝ 
    //Let's Make great things   
     ]],
-  },
-  sections = {
-    { section = "header" },
-    
-  },
+	},
+	sections = {
+		{ section = "header" },
+	},
 }

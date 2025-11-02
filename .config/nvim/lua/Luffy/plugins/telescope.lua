@@ -1,7 +1,7 @@
 return {
-  "nvim-telescope/telescope.nvim",
-	branch = "master", -- using master to fix issues with deprecated to definition warnings 
-    -- '0.1.x' for stable ver.
+	"nvim-telescope/telescope.nvim",
+	branch = "master", -- using master to fix issues with deprecated to definition warnings
+	-- '0.1.x' for stable ver.
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -39,12 +39,18 @@ return {
 		})
 
 		-- Keymaps
-    local keymap = vim.keymap.set
+		local keymap = vim.keymap.set
 		keymap("n", "<leader>pr", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
 		keymap("n", "<leader>pwS", function()
 			local word = vim.fn.expand("<cWORD>")
 			builtin.grep_string({ search = word })
 		end, { desc = "Find Connected Words under cursor" })
 
-		keymap("n", "<leader>csp", "<cmd>Telescope themes<CR>", { noremap = true, silent = true, desc = "Theme Switcher Permanent" })
-    end,}
+		keymap(
+			"n",
+			"<leader>csp",
+			"<cmd>Telescope themes<CR>",
+			{ noremap = true, silent = true, desc = "Theme Switcher Permanent" }
+		)
+	end,
+}

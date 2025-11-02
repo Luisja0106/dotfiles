@@ -1,6 +1,6 @@
 return {
-  {
-    "lewis6991/gitsigns.nvim",
+	{
+		"lewis6991/gitsigns.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			on_attach = function(bufnr)
@@ -29,33 +29,37 @@ return {
 				map("n", "<leader>gR", gs.reset_buffer, "Reset buffer") -- unstage whole buffer
 				map("n", "<leader>gu", gs.undo_stage_hunk, "Undo stage hunk")
 				map("n", "<leader>gp", gs.preview_hunk, "Preview hunk")
-				map("n", "<leader>gbl", function() gs.blame_line({ full = true }) end, "Blame line")
+				map("n", "<leader>gbl", function()
+					gs.blame_line({ full = true })
+				end, "Blame line")
 				map("n", "<leader>gB", gs.toggle_current_line_blame, "Toggle line blame")
 				map("n", "<leader>gd", gs.diffthis, "Diff this")
-				map("n", "<leader>gD", function() gs.diffthis("~") end, "Diff this ~")
+				map("n", "<leader>gD", function()
+					gs.diffthis("~")
+				end, "Diff this ~")
 
 				-- Text object
 				map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Gitsigns select hunk")
 			end,
-    }
-  },
-  {
-    "kdheepak/lazygit.nvim",
-    enabled = true,
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    -- window border thing
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    -- setting up with keys={} allows plugin to load when command runs at the start
-    keys = {
-      { "<leader>gl", "<cmd>LazyGit<cr>", desc = "Open lazy git" },
-    },
-  },
+		},
+	},
+	{
+		"kdheepak/lazygit.nvim",
+		enabled = true,
+		cmd = {
+			"LazyGit",
+			"LazyGitConfig",
+			"LazyGitCurrentFile",
+			"LazyGitFilter",
+			"LazyGitFilterCurrentFile",
+		},
+		-- window border thing
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		-- setting up with keys={} allows plugin to load when command runs at the start
+		keys = {
+			{ "<leader>gl", "<cmd>LazyGit<cr>", desc = "Open lazy git" },
+		},
+	},
 }
