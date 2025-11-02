@@ -65,7 +65,11 @@ return {
       --visualize
       { "<leader>v", group = "Visualize", icon = "󰈈 "},
       { "<leader>vh", icon = "󰋖 "},
-
+      --Go to
+      { "g", group = "Go-to"},
+      { "gR", icon = " "},
+      { "gD", icon = " "},
+      { "gd", icon = " "},
     },
   },
   keys = {
