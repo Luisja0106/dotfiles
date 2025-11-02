@@ -71,6 +71,18 @@ return {
 			{ "gR", icon = " " },
 			{ "gD", icon = " " },
 			{ "gd", icon = " " },
+			-- linting
+			{ "<leader>l", group = "linting", icon = "󰉦 " },
+			{ "<leader>ll", icon = "󰉦 " },
+			--LSP
+			{ "<leader>r", group = "LSP", icon = " " },
+			{ "<leader>rn", icon = "󰑕 " },
+			{ "<leader>rs", icon = " " },
+			--formater
+			{ "<leader>m", group = "Formater", icon = "󰉶 " },
+			{ "<leader>mp", icon = "󰉶 " },
+			--trouble
+			{ "<leader>x", group = "Trouble", icon = " " },
 		},
 	},
 	keys = {

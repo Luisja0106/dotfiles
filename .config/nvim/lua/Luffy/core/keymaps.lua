@@ -12,8 +12,6 @@ keymap("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move lines down in visual selecti
 keymap("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move lines down in visual selection" })
 -- no hl
 keymap("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search hl" })
-
-keymap("n", "<leader>f", vim.lsp.buf.format, { desc = " " })
 -- delter character without copy in theclipboard
 keymap("n", "x", '"_x', opts)
 -- replace a wordl globally
@@ -42,3 +40,13 @@ keymap("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 keymap("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 keymap("n", "<leader>se", "<C-w>=", { desc = "Make split equal size" })
 keymap("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close curren split" })
+
+--Toggle visibility of LSP diagnostic
+local lspVisible = true
+keymap("n", "<leader>lx", function()
+	lspVisible = not lspVisible
+	vim.diagnostic.config({
+		virtual_text = lspVisible,
+		underline = lspVisible,
+	})
+end, { desc = "Toggle Lsp diagnostic" })
