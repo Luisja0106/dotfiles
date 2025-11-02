@@ -56,7 +56,6 @@ final_space = true
       #session
   [[blocks.segments]]
     leading_diamond = ''
-    trailing_diamond = ''
     template = '{{ .UserName }}'
     foreground = 'p:nord08'
     background = 'p:nord00'
@@ -72,7 +71,7 @@ final_space = true
     style = 'diamond'
         #paths
   [[blocks.segments]]
-    leading_diamond = '<transparent,p:nord07></>'
+     leading_diamond = '<transparent,p:nord07></>' #if you use a transparent terminal comment this line
     trailing_diamond = ''
     template = ' {{ .Path }} '
     foreground = 'p:nord03'
@@ -87,11 +86,11 @@ final_space = true
       style = 'agnoster_short'
 
     [blocks.segments.properties.mapped_locations]
-      '~/dotfiles' = ''
-      '~/.config' = ''
+      '~/dotfiles' = ' '
+      '~/.config' = ' '
 
   [[blocks.segments]]
-    leading_diamond = '<transparent,background></>'
+     leading_diamond = '<transparent,background></>' #if you use a transparent terminal comment this line
     trailing_diamond = ''
     template = '<transparent>  </> {{ reason .Code }} '
     background = 'p:nord11'

@@ -12,7 +12,7 @@ return {
 				user_default_options = {
 					tailwind = true,
 				},
-				filetypes = { "html", "css", "javascript", "typescript", "jsx", "tsx", "vue", "svelte", "lua" },
+				filetypes = { "html", "css", "javascript", "typescript", "jsx", "tsx", "vue", "svelte", "lua", "toml" },
 			})
 			twc.setup({
 				color_square_width = 2,

@@ -19,7 +19,7 @@ config.font = wezterm.font("MesloLGLDZ Nerd Font")
 config.font_size = 15
 config.tab_bar_at_bottom = true
 config.disable_default_key_bindings = false
-config.window_background_opacity = 0.7
+-- config.window_background_opacity = 0.7
 --tabs config
 
 --keys config

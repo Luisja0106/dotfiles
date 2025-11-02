@@ -6,7 +6,7 @@
 #    \_____/\____/\_| |_/  \____/\___/\_| \_/\_|    \___/ \____/
 #                                                               
 #   don't edit this file, if you want edit the config of your zsh
-#   do int ~/.config/zshrc
+#   do in ~/.config/zshrc
 for f in ~/.config/zsh/*; do
   if [ ! -d $f ]; then
     c='echo $f'
