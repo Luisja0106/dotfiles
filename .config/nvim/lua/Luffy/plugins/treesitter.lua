@@ -29,8 +29,8 @@ return {
 				incremental_selection = {
 					enable = true,
 					keymaps = {
-						init_selection = "<C-space>",
-						node_incremental = "<C-space>",
+						init_selection = "<A-space>",
+						node_incremental = "<A-space>",
 					},
 				},
 				additional_vim_regex_highlighting = false,
