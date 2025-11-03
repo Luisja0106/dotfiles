@@ -1,2 +1,9 @@
 .config/nvim/lazy-lock.json
 .config/nvim/lua/current-theme.lua
+.config/yazi/flavors/tokyo-night.yazi
+.config/yazi/theme.toml
+.config/yazi/package.toml
+.config/OhMyPosh/Themes/currentTheme.toml
+.config/OhMyPosh/Themes/themes/theme.txt
+.config/OhMyPosh/Themes/themes.txt
+.config/yazi/package.toml

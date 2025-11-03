@@ -1,81 +1,53 @@
-#name of terminal
-console_title_template = '{{if .Root}} ⚡{{end}}{{.Folder | replace "~" "󱁍"}} @{{.HostName}}'
-version = 3
-final_space = true
 
-# --------------------------------------------------------------------
+[secondary_prompt]
+  template = ' '
+  foreground = 'p:purple'
+  background = 'transparent'
 
- #upgrade options
+[transient_prompt]
+  template = ' ❯❯ {{ .AbsolutePWD }} : '
+  background = 'transparent'
+  foreground_templates = ['{{ if eq .Code 0 }}p:green{{ else }}p:red{{ end }}']
+  newline = true
+
 [upgrade]
   source = 'cdn'
   interval = '168h'
   auto = false
   notice = false
 
-#Nord palette
-[palette]
-  nord00 = '#2E3440'
-  nord01 = '#3B4252'
-  nord02 = '#434C5E'
-  nord03 = '#4C566A'
-  nord04 = '#D8DEE9'
-  nord05 = '#E5E9F0'
-  nord06 = '#ECEFF4'
-  nord07 = '#8FBCBB'
-  nord08 = '#88C0D0'
-  nord09 = '#81A1C1'
-  nord10 = '#5E81AC'
-  nord11 = '#BF616A'
-  nord12 = '#D08770'
-  nord13 = '#EBCD8B'
-  nord14 = '#A3BE8C'
-  nord15 = '#B48EAD'
-
-[transient_prompt]
-  foreground_templates = [ "{{ if eq .Code 0 }}p:nord14{{ else }}p:nord11{{ end }}" ]
-  template = ' ❯❯ {{ .AbsolutePWD }} : '
-  background = 'transparent'
-  newline = true
-
-[secondary_prompt]
-  background = 'transparent'
-  foreground = 'p:nord15'
-  template = ' '
-#left block
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
 
-  #second line marker
   [[blocks.segments]]
     template = "\n╭─"
-    foreground = 'p:nord04'
+    foreground = 'p:fg'
     type = 'text'
     style = 'plain'
 
-      #session
   [[blocks.segments]]
     leading_diamond = ''
     template = '{{ .UserName }}'
-    foreground = 'p:nord08'
-    background = 'p:nord00'
+    foreground = 'p:cyan'
+    background = 'p:bg'
     type = 'session'
     style = 'diamond'
-        #OS
+
   [[blocks.segments]]
     trailing_diamond = ''
     template = ' {{.Icon}} '
-    foreground = 'p:nord08'
-    background = 'p:nord00'
+    foreground = 'p:cyan'
+    background = 'p:bg'
     type = 'os'
     style = 'diamond'
-        #paths
+
   [[blocks.segments]]
-     leading_diamond = '<transparent,p:nord07></>' #if you use a transparent terminal comment this line
+    leading_diamond = '<transparent,p:paths></>'
     trailing_diamond = ''
     template = ' {{ .Path }} '
-    foreground = 'p:nord03'
-    background = 'p:nord07'
+    foreground = 'p:pathsFg'
+    background = 'p:paths'
     type = 'path'
     style = 'diamond'
 
@@ -85,45 +57,46 @@ final_space = true
       home_icon = '󱂶 '
       style = 'agnoster_short'
 
-    [blocks.segments.properties.mapped_locations]
-      '~/dotfiles' = ' '
-      '~/.config' = ' '
+      [blocks.segments.properties.mapped_locations]
+        '~/.config' = ' '
+        '~/dotfiles' = ' '
 
   [[blocks.segments]]
-     leading_diamond = '<transparent,background></>' #if you use a transparent terminal comment this line
+    leading_diamond = '<transparent,background></>'
     trailing_diamond = ''
     template = '<transparent>  </> {{ reason .Code }} '
-    background = 'p:nord11'
-    foreground = 'p:nord05'
+    foreground = 'p:fg'
+    background = 'p:red'
     type = 'status'
     style = 'diamond'
 
-#right block
 [[blocks]]
   type = 'rprompt'
   overflow = 'hidden'
-  
+
   [[blocks.segments]]
+    template = '{{ .FormattedMs }}'
+    foreground = 'p:gray'
     type = 'executiontime'
     style = 'plain'
-    foreground = 'p:nord09'
-    template  = '{{ .FormattedMs }}'
-    
+
     [blocks.segments.properties]
-      threshold = 5000
       style = 'round'
+      threshold = 5000
 
 [[blocks]]
   type = 'prompt'
   alignment = 'right'
+
   [[blocks.segments]]
     leading_diamond = ''
     trailing_diamond = ''
-    template = ' ({{ url .UpstreamIcon .UpstreamURL }} {{ url .HEAD .UpstreamURL }}){{ if gt .Ahead 0 }}<p:nord14> +{{ .Ahead }}</>{{ end }}{{ if gt .Behind 0 }}<nord11> -{{ .Behind }} </>{{ end }}{{ if .Working.Changed }}<p:nord05>  {{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }}<p:nord05>  {{ .Staging.String }}</>{{ end }}'
-    foreground = 'p:nord00'
-    background = 'p:nord13'
+    template = ' ({{ url .UpstreamIcon .UpstreamURL }} {{ url .HEAD .UpstreamURL }}){{ if gt .Ahead 0 }}<p:green> +{{ .Ahead }}</>{{ end }}{{ if gt .Behind 0 }}<red> -{{ .Behind }} </>{{ end }}{{ if .Working.Changed }}<p:fg>  {{ .Working.String }}</>{{ end }}{{ if .Staging.Changed }}<p:fg>  {{ .Staging.String }}</>{{ end }}'
+    foreground = 'p:bg'
+    background = 'p:yellow'
     type = 'git'
     style = 'diamond'
+
     [blocks.segments.properties]
       branch_icon = ''
       cache_duration = 'none'
@@ -136,8 +109,8 @@ final_space = true
     leading_diamond = ''
     trailing_diamond = ''
     template = ' {{ .Full }}'
-    foreground = 'p:nord00'
-    background = 'p:nord14'
+    foreground = 'p:bg'
+    background = 'p:green'
     type = 'node'
     style = 'diamond'
 
@@ -145,8 +118,8 @@ final_space = true
     leading_diamond = ''
     trailing_diamond = ''
     template = ' {{ .Full }}'
-    foreground = 'p:nord00'
-    background = 'p:nord11'
+    foreground = 'p:bg'
+    background = 'p:red'
     type = 'npm'
     style = 'diamond'
 
@@ -158,8 +131,8 @@ final_space = true
     leading_diamond = ''
     trailing_diamond = ''
     template = '󰋁 {{ .Full }}'
-    foreground = 'p:nord00'
-    background = 'p:nord12'
+    foreground = 'p:bg'
+    background = 'p:orange'
     type = 'pnpm'
     style = 'diamond'
 
@@ -171,8 +144,8 @@ final_space = true
     leading_diamond = ''
     trailing_diamond = ''
     template = ' {{ .Full }}'
-    foreground = 'p:nord00'
-    background = 'p:nord10'
+    foreground = 'p:bg'
+    background = 'p:blue'
     type = 'python'
     style = 'diamond'
 
@@ -183,8 +156,8 @@ final_space = true
     leading_diamond = ''
     trailing_diamond = ''
     template = ' {{ .Full }}'
-    foreground = 'p:nord00'
-    background = 'p:nord11'
+    foreground = 'p:bg'
+    background = 'p:red'
     type = 'java'
     style = 'diamond'
 
@@ -192,11 +165,11 @@ final_space = true
     leading_diamond = ''
     trailing_diamond = ''
     template = ' {{ .Full }}'
-    foreground = 'p:nord00'
-    background = 'p:nord10'
+    foreground = 'p:bg'
+    background = 'p:blue'
     type = 'php'
     style = 'diamond'
-#write block
+
 [[blocks]]
   type = 'prompt'
   alignment = 'left'
@@ -204,7 +177,7 @@ final_space = true
 
   [[blocks.segments]]
     template = '╰─ ❯❯'
-    foreground = 'p:nord04'
+    foreground = 'p:fg'
     type = 'text'
     style = 'diamond'
 

@@ -8,7 +8,6 @@
 #------------------------------------------------------
 #---------------------- theme -------------------------
 #------------------------------------------------------
-THEME_NAME="$(cat ~/.config/OhMyPosh/Themes/themes.txt)"
 export DIRECTORY="$HOME/.config/OhMyPosh/Themes"
-THEME="$DIRECTORY/$THEME_NAME"
+THEME="$DIRECTORY/currentTheme.toml"
 eval "$(oh-my-posh init zsh --config $THEME)"
