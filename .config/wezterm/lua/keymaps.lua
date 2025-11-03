@@ -32,7 +32,7 @@ config.keys = {
 	{ mods = "LEADER", key = "r", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
 	{ mods = "LEADER", key = "m", action = act.ActivateKeyTable({ name = "move_pane", one_shot = false }) },
 	--workspace
-	{ mods = "LEADER", key = "w", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+	{ mods = "LEADER", key = "w", action = act.ShowLauncher },
 	--rename Tab
 	{
 		key = ".",
