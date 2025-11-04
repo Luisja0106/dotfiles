@@ -60,17 +60,38 @@ return {
 		-- configure lualine with modified theme
 		lualine.setup({
 			options = {
-				theme = auto,
+				theme = "auto",
 				icons_enabled = true,
 			},
 			sections = {
 				lualine_x = {
 					{
+						function()
+							return require("noice").api.status.command.get()
+						end,
+						cond = function()
+							return package.loaded["noice"] and require("noice").api.status.command.has()
+						end,
+						color = function()
+							return { fg = Snacks.util.color("Statement") }
+						end,
+					},
+					{
+						function()
+							return require("noice").api.status.mode.get()
+						end,
+						cond = function()
+							return package.loaded["noice"] and require("noice").api.status.mode.has()
+						end,
+						color = function()
+							return { fg = Snacks.util.color("Constant") }
+						end,
+					},
+					{
 						lazy_status.updates,
 						cond = lazy_status.has_updates,
 						color = { fg = "#ff9e64" },
 					},
-					{ "encoding" },
 					{ "fileformat" },
 					{ "filetype" },
 				},
