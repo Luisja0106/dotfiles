@@ -60,7 +60,7 @@ return {
 		-- configure lualine with modified theme
 		lualine.setup({
 			options = {
-				theme = "auto",
+				theme = auto,
 				icons_enabled = true,
 			},
 			sections = {
@@ -81,7 +81,7 @@ return {
 							return require("noice").api.status.mode.get()
 						end,
 						cond = function()
-							return package.loaded["noice"] and require("noice").api.status.mode.has()
+							return package.loaded["noice"] and require("noice").api.status.command.has()
 						end,
 						color = function()
 							return { fg = Snacks.util.color("Constant") }
