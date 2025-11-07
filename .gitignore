@@ -7,3 +7,8 @@
 .config/OhMyPosh/Themes/themes/theme.txt
 .config/OhMyPosh/Themes/themes.txt
 .config/yazi/package.toml
+.config/wezterm/lua/colorScheme.lua
+.themes/nord/nvim/current-theme.lua
+.themes/nord/ohmyposh/theme.txt
+.themes/nord/wezterm/colorScheme.lua
+.config/wezterm/lua/colorScheme.lua
