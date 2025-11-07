@@ -8,4 +8,10 @@
                                                                                     
                                                                                     
 --]]
-require("init")
+local wezterm = require("wezterm")
+local config = require("init")
+local setup_statusline = require("lua.statusline")
+
+setup_statusline(config, wezterm)
+
+return config
