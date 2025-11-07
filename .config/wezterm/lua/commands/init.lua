@@ -1,4 +1,4 @@
-local transparency = require("lua.commands.toggle-transperency")
+local transparency = require("lua.commands.toggle-transparency")
 
 local M = {
 	transparency,

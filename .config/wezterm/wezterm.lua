@@ -11,7 +11,11 @@
 local wezterm = require("wezterm")
 local config = require("init")
 local setup_statusline = require("lua.statusline")
+local commands = require("lua.commands")
 
 setup_statusline(config, wezterm)
+wezterm.on("augment-command-palette", function()
+	return commands
+end)
 
 return config

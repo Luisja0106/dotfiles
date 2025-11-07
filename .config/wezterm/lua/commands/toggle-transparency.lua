@@ -13,4 +13,5 @@ local command = {
 		window:set_config_overrides(override)
 	end),
 }
+
 return command
