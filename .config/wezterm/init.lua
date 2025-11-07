@@ -11,6 +11,7 @@
 local keymaps = require("lua.keymaps")
 local options = require("lua.options")
 local apparence = require("lua.apparence")
+local colorScheme = require("lua.colorScheme")
 local function merge_tables(...)
 	local result = {}
 	for _, t in ipairs({ ... }) do
@@ -21,6 +22,6 @@ local function merge_tables(...)
 	return result
 end
 
-local config = merge_tables(keymaps, options, apparence)
+local config = merge_tables(keymaps, options, apparence, colorScheme)
 
 return config
