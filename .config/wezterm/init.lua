@@ -23,5 +23,4 @@ local function merge_tables(...)
 end
 
 local config = merge_tables(keymaps, options, apparence, colorScheme)
-
 return config
