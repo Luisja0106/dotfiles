@@ -29,7 +29,7 @@
   [[blocks.segments]]
     leading_diamond = ''
     template = '{{ .UserName }}'
-    foreground = 'p:cyan'
+    foreground = 'p:paths'
     background = 'p:bg'
     type = 'session'
     style = 'diamond'
@@ -37,7 +37,7 @@
   [[blocks.segments]]
     trailing_diamond = ''
     template = ' {{.Icon}} '
-    foreground = 'p:cyan'
+    foreground = 'p:paths'
     background = 'p:bg'
     type = 'os'
     style = 'diamond'

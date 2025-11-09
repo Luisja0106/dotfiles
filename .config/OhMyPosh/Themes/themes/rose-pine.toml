@@ -1,0 +1,20 @@
+#name of terminal
+console_title_template = '{{if .Root}} ⚡{{end}}{{.Folder | replace "~" "󱁍"}} @{{.HostName}}'
+version = 3
+final_space = true
+
+# --------------------------------------------------------------------
+[palette]
+bg = '#191724'
+fg = '#ffff'
+paths = '#ebbcba'
+pathsFg = '#21202e'
+cyan = '#56949f'
+gray = '#26233a'
+blue = '#2a283e'
+red = '#eb6f92'
+orange = '#ebbcba'
+yellow = '#f6c177'
+green = '#9ccfd8'
+purple = '#c4a7e7'
+

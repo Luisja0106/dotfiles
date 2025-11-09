@@ -11,12 +11,14 @@ THEMES="$HOME/.themes/$THEME"
 #if not theme specified
 if [ -z "$THEME" ]; then
   echo "Usage: theme-switcher <theme-name>"
+  notify-send "No theme specified"
   exit 1
 fi
 
 #if not theme found
 if [ ! -d "$THEMES" ]; then 
   echo "Theme $THEME not found!"
+  notify-send "Theme not found !!!"
   exit 1
 fi
 
