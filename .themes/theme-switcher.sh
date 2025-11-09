@@ -24,7 +24,7 @@ fi
 #ohmyposh
 rm "$OMP/theme.txt"
 cp "$THEMES/ohmyposh/theme.txt" "$OMP/"
-$HOME/.config/OhMyPosh/config/changeTheme.sh
+source $HOME/.config/OhMyPosh/config/changeTheme.sh
 #Nvim
 rm "$NVIM/current-theme.lua"
 cp "$THEMES/nvim/current-theme.lua" "$NVIM/"
@@ -35,3 +35,4 @@ cp "$THEMES/yazi/theme.toml" "$YAZI/"
 rm "$WZT/colorScheme.lua"
 cp "$THEMES/wezterm/colorScheme.lua" "$WZT/"
 echo "Theme switch to $THEME without issues"
+notify-send "Theme switch without issues"

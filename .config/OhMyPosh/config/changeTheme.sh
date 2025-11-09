@@ -10,4 +10,4 @@ rm "$TEMPFILE"
 touch "$TEMPFILE"
 cat "$COLORS" > "$TEMPFILE"
 cat "$THEME" >> "$TEMPFILE"
-source ~/.zshrc
+source $HOME/.zshrc
