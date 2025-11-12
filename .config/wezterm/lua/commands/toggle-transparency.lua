@@ -6,7 +6,7 @@ local command = {
 	action = wz.action_callback(function(window)
 		local override = window:get_config_overrides() or {}
 		if not override.window_background_opacity or override.window_background_opacity == 1 then
-			override.window_background_opacity = 0.7
+			override.window_background_opacity = 0.5
 		else
 			override.window_background_opacity = 1
 		end
