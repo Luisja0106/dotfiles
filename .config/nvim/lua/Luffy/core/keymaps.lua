@@ -50,3 +50,18 @@ keymap("n", "<leader>lx", function()
 		underline = lspVisible,
 	})
 end, { desc = "Toggle Lsp diagnostic" })
+--fxml options
+local fxml = vim.api.nvim_create_augroup("ConfigFxml", { clear = true })
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+	pattern = "*.fxml",
+	group = fxml,
+	callback = function(event)
+		local cmd = "flatpak run com.gluonhq.SceneBuilder " .. vim.fn.shellescape(event.file)
+		keymap("n", "<leader>sb", function()
+			vim.fn.jobstart(cmd, { detach = true })
+		end, {
+			buffer = event.buf,
+			desc = "Open sceneBuilder",
+		})
+	end,
+})
