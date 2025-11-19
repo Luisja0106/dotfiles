@@ -8,7 +8,7 @@ return function(cfg, wz)
 	-- definir colores base (con fallback)
 	local bg = scheme.background or "#1a1b26"
 	local fg = scheme.foreground or "#c0caf5"
-	local accent = scheme.ansi and scheme.ansi[4] or "#7aa2f7" -- azul de tokyonight
+	local accent = scheme.ansi and scheme.ansi[2] or "#7aa2f7" -- azul de tokyonight
 
 	wz.on("update-status", function(stats)
 		local stat = "none"
