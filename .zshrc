@@ -14,3 +14,4 @@ for f in ~/.config/zsh/*; do
   fi
 done
     
+

@@ -6,6 +6,7 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		"neovim/nvim-lspconfig",
+		-- "mfussenegger/nvim-jdtls",
 		-- "saghen/blink.cmp",
 	},
 	config = function()
@@ -39,6 +40,9 @@ return {
 				"html",
 				"cssls",
 				"tailwindcss",
+			},
+			exclude = {
+				"jdtls",
 			},
 		})
 
