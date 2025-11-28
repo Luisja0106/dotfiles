@@ -5,6 +5,10 @@ return {
 		snipe.setup({
 			ui = {
 				max_height = -1,
+				buffer_format = { "filename" },
+				open_win_override = {
+					title = "Buffers",
+				},
 			},
 			navigate = {
 				leader = ",",
