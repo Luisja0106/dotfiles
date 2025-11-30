@@ -1,4 +1,5 @@
 return {
+	-- plugin that allow to manage git, and see the chagnes inside the file
 	{
 		"lewis6991/gitsigns.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -43,6 +44,7 @@ return {
 			end,
 		},
 	},
+	--plugin that allow open LazyGit inside nvim
 	{
 		"kdheepak/lazygit.nvim",
 		enabled = true,

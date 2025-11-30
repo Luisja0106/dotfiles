@@ -1,3 +1,4 @@
+--themes for nvim
 return {
 	-- NOTE: Rose pine
 	{

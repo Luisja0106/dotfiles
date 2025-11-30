@@ -29,9 +29,19 @@ vim.opt.backspace = { "start", "eol", "indent" }
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
-
 vim.opt.hlsearch = true
 vim.g.editorconfig = true
+vim.opt.cursorline = true
+--latex config
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "tex",
+	callback = function()
+		vim.opt.spell = true
+		vim.opt.spelllang = { "es" }
+		vim.opt.wrap = true
+	end,
+})
+vim.opt.spelllang = { "en" }
 local function shorten_path(path)
 	local shorten_if_more_than = 6 -- change this to 5, 7, etc
 	-- Strip and remember the root ("/" or "~/")

@@ -1,3 +1,4 @@
+--plugin with beetter command autocompletion
 return {
 	"gelguy/wilder.nvim",
 	-- "nvim-telescope/telescope.nvim",

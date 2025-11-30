@@ -1,3 +1,4 @@
+--plugin that allow to change buffers like surfing keys
 return {
 	"leath-dub/snipe.nvim",
 	config = function()

@@ -1,3 +1,4 @@
+--plugin that show's in the better way the nvim messages and the command bar
 return {
 	{
 		"folke/noice.nvim",

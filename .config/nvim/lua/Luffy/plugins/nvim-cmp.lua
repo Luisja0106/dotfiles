@@ -1,3 +1,4 @@
+--plugins for smart cmp and snippets
 return {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",

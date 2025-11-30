@@ -1,3 +1,4 @@
+--plugin that mark the TODO: comments
 return {
 	-- Quickly Jump through the todo tags
 	"folke/todo-comments.nvim",

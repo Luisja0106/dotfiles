@@ -1,3 +1,4 @@
+--plugin that allows to add the color css, in java
 return {
 	"roobert/tailwindcss-colorizer-cmp.nvim",
 	{

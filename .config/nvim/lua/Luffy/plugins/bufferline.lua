@@ -1,3 +1,4 @@
+--plugin that create a "tab" for a buffer like an ide
 return {
 	"akinsho/bufferline.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },

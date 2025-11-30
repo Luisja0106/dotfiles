@@ -1,3 +1,4 @@
+-- a lot of plugins in one
 return {
 	{
 		"folke/snacks.nvim",

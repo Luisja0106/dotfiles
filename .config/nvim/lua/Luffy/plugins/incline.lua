@@ -1,5 +1,5 @@
 return {
-	--add the name of the file to the Top Right
+	--plugin that allows add the name of the file to the Top Right
 	{
 		"b0o/incline.nvim",
 		enabled = true,

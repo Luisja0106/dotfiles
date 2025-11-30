@@ -1,3 +1,4 @@
+--plugin that allow open yazi in nvim
 return {
 	"mikavilpas/yazi.nvim",
 	version = "*", -- use the latest stable version

@@ -1,3 +1,4 @@
+--plugins that improve the quality of life of the nvim
 return {
 	{ "echasnovski/mini.nvim", version = false },
 	--Comments

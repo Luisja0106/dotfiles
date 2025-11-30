@@ -1,3 +1,4 @@
+--plugin that allows to move quick around the file
 return {
 	"folke/flash.nvim",
 	event = "VeryLazy",

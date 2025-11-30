@@ -1,3 +1,4 @@
+--plugin that mark smart the functions
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",

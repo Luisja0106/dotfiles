@@ -40,6 +40,9 @@ keymap("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 keymap("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
 keymap("n", "<leader>se", "<C-w>=", { desc = "Make split equal size" })
 keymap("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close curren split" })
+--beter movement
+keymap("n", "k", "gk", { desc = "Better movement" })
+keymap("n", "j", "gj", { desc = "Better movement" })
 
 --Toggle visibility of LSP diagnostic
 local lspVisible = true

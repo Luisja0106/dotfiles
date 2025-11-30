@@ -1,3 +1,4 @@
+--nvim fuzzy finder
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "master", -- using master to fix issues with deprecated to definition warnings

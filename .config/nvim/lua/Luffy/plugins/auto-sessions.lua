@@ -1,3 +1,4 @@
+--plugin that allows re-open all the buffers in a past session
 return {
 	"rmagatti/auto-session",
 	config = function()

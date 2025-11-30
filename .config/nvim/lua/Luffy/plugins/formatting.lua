@@ -1,3 +1,4 @@
+--plugin that create smart formating to the files
 return {
 	"stevearc/conform.nvim",
 	event = { "BufReadPre", "BufNewFile" },
