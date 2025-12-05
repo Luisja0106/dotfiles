@@ -9,3 +9,9 @@ desc = "open file manager"
 on = "T"
 run = "plugin toggle-pane max-preview"
 desc = "Maximize the preview panel"
+
+#exit insertmode whit jk
+[[input.prepend_keymap]]
+on = "<C-j>"
+run = "escape"
+desc = "Exit inser mode whit jk"

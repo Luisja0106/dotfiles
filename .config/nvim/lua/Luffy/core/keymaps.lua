@@ -29,6 +29,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.hl.on_yank()
 	end,
 })
+--yank to the clipboard
+keymap("n", "Y", '"+y', { desc = "Yank to the clipboard" })
+keymap("v", "Y", '"+y', { desc = "Yank to the clipboard" })
 
 --tabs
 keymap("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Create new tab" })

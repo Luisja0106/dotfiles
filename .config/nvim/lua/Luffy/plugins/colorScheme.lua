@@ -29,7 +29,7 @@ return {
 	},
 	--NOTE: Nord
 	{
-		"shaunsingh/nord.nvim",
+		"gbprod/nord.nvim",
 		priority = 1000,
 	},
 	--NOTE: Evangelion
