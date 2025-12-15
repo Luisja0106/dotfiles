@@ -1,6 +1,6 @@
 #name of terminal
 console_title_template = '{{if .Root}} ⚡{{end}}{{.Folder | replace "~" "󱁍"}} @{{.HostName}}'
-version = 3
+version = 4
 final_space = true
 
 # --------------------------------------------------------------------

@@ -1,3 +1,24 @@
+#name of terminal
+console_title_template = '{{if .Root}} ⚡{{end}}{{.Folder | replace "~" "󱁍"}} @{{.HostName}}'
+version = 3
+final_space = true
+
+# --------------------------------------------------------------------
+[palette]
+  bg = '#232938' 
+  fg = '#E5E9F0'
+  paths = '#85DAF5'
+  pathsFg = '#2A2E41'
+  cyan = '#85DAF5'
+  gray = '#444b6a'
+  blue = '#7EA4F1'
+  red = '#EF7680'
+  orange = '#ff9e64'
+  yellow = '#EFBF78'
+  green = '#BADE8D'
+  purple = '#B594F0'
+
+
 [secondary_prompt]
   template = ' '
   foreground = 'p:purple'
@@ -49,13 +70,14 @@
     background = 'p:paths'
     type = 'path'
     style = 'diamond'
-  [blocks.segments.options]
+
+    [blocks.segments.properties]
       folder_icon = '...'
       folder_separator_icon = '<transparent>  </>'
       home_icon = '󱂶 '
       style = 'agnoster_short'
 
-      [blocks.segments.options.mapped_locations]
+      [blocks.segments.properties.mapped_locations]
         '~/.config' = ' '
         '~/dotfiles' = ' '
 
@@ -77,10 +99,11 @@
     foreground = 'p:gray'
     type = 'executiontime'
     style = 'plain'
-    
-    [blocks.segments.options]
-    style = 'round'
-    threshold = 5000
+
+    [blocks.segments.properties]
+      style = 'round'
+      threshold = 5000
+
 [[blocks]]
   type = 'prompt'
   alignment = 'right'
@@ -93,13 +116,14 @@
     background = 'p:yellow'
     type = 'git'
     style = 'diamond'
-    [blocks.segments.options]
-    branch_icon = ''
-    cache_duration = 'none'
-    display_changing_color = true
-    fetch_status = true
-    fetch_upstream_icon = true
-    full_branch_path = true
+
+    [blocks.segments.properties]
+      branch_icon = ''
+      cache_duration = 'none'
+      display_changing_color = true
+      fetch_status = true
+      fetch_upstream_icon = true
+      full_branch_path = true
 
   [[blocks.segments]]
     leading_diamond = ''
@@ -110,7 +134,6 @@
     type = 'node'
     style = 'diamond'
 
-
   [[blocks.segments]]
     leading_diamond = ''
     trailing_diamond = ''
@@ -119,8 +142,10 @@
     background = 'p:red'
     type = 'npm'
     style = 'diamond'
-    [blocks.segments.options]
-    display_mode = 'files'
+
+    [blocks.segments.properties]
+      display_mode = 'files'
+      extensions = ['package-lock.json']
 
   [[blocks.segments]]
     leading_diamond = ''
@@ -129,9 +154,11 @@
     foreground = 'p:bg'
     background = 'p:orange'
     type = 'pnpm'
-    style = 'diamond' 
-    [blocks.segments.options]
-    display_mode = 'files'
+    style = 'diamond'
+
+    [blocks.segments.properties]
+      display_mode = 'files'
+      extensions = ['pnpm-lock.yaml']
 
   [[blocks.segments]]
     leading_diamond = ''
@@ -141,8 +168,9 @@
     background = 'p:blue'
     type = 'python'
     style = 'diamond'
-    [blocks.segments.options]
-    display_mode = 'files'
+
+    [blocks.segments.properties]
+      display_mode = 'files'
 
   [[blocks.segments]]
     leading_diamond = ''
@@ -172,3 +200,6 @@
     foreground = 'p:fg'
     type = 'text'
     style = 'diamond'
+
+    [blocks.segments.properties]
+      alway_enabled = true
