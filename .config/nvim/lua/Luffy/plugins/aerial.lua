@@ -1,5 +1,9 @@
 return {
 	"stevearc/aerial.nvim",
 	opts = {},
-	keys = { { "<Leader>a", "<cmd>AerialToggle!<cr>", desc = "Toggle Aerial" } },
+	dependicies = {
+		"nvim-treessiter/nvim-treessiter",
+		"nvim-tree/nvim-web-devicons",
+	},
+	keys = { { "<Leader>a", "<cmd>AerialToggle left<cr>", desc = "Toggle Aerial" } },
 }

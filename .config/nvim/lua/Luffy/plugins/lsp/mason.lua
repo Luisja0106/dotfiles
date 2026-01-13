@@ -40,10 +40,9 @@ return {
 				"html",
 				"cssls",
 				"tailwindcss",
-			},
-			exclude = {
 				"jdtls",
 			},
+			exclude = {},
 		})
 
 		mason_tool_installer.setup({
@@ -54,6 +53,8 @@ return {
 				"pylint",
 				"clangd",
 				"denols",
+				"java-debug-adapter",
+				"java-test",
 			},
 
 			-- NOTE: mason BREAKING Change! Removed setup_handlers
