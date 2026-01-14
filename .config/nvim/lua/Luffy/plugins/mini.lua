@@ -60,13 +60,13 @@ return {
 			-- saiw surround with no whitespace
 			-- saw surround with whitespace
 			mappings = {
-				add = "ña", -- Add surrounding in Normal and Visual modes
-				delete = "dñ", -- Delete surrounding
-				find = "ñf", -- Find surrounding (to the right)
-				find_left = "ñF", -- Find surrounding (to the left)
-				highlight = "ñh", -- Highlight surrounding
-				replace = "ñr", -- Replace surrounding
-				update_n_lines = "ñn", -- Update `n_lines`
+				add = "gza", -- Add surrounding in Normal and Visual modes
+				delete = "dgz", -- Delete surrounding
+				find = "gzf", -- Find surrounding (to the right)
+				find_left = "gzF", -- Find surrounding (to the left)
+				highlight = "gzh", -- Highlight surrounding
+				replace = "gzr", -- Replace surrounding
+				update_n_lines = "gzn", -- Update `n_lines`
 
 				suffix_last = "l", -- Suffix to search with "prev" method
 				suffix_next = "n", -- Suffix to search with "next" method
