@@ -33,6 +33,8 @@ vim.opt.hlsearch = true
 vim.g.editorconfig = true
 vim.opt.cursorline = true
 --latex config
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "tex",
 	callback = function()
@@ -84,18 +86,24 @@ local function get_buffer_count()
 end
 -- Function to update the winbar
 local function update_winbar()
+	if vim.bo.buftype == "nofile" or vim.bo.filetype == "" then
+		vim.opt_local.winbar = nil
+		return
+	end
 	local home_replaced = get_winbar_path()
 	local buffer_count = get_buffer_count()
 	local display_path = shorten_path(home_replaced)
-	vim.opt.winbar = "%#WinBar2#("
-		.. buffer_count
-		.. ") "
-		-- this shows the filename on the left
-		-- This shows the file path on the right
-		.. "%*%=%#WinBar1#"
-		.. display_path
-	-- I don't need the hostname as I have it in lualine
-	-- .. vim.fn.systemlist("hostname")[1]
+	pcall(function()
+		vim.opt.winbar = "%#WinBar2#("
+			.. buffer_count
+			.. ") "
+			-- this shows the filename on the left
+			-- This shows the file path on the right
+			.. "%*%=%#WinBar1#"
+			.. display_path
+		-- I don't need the hostname as I have it in lualine
+		-- .. vim.fn.systemlist("hostname")[1]
+	end)
 end
 -- Winbar was not being updated after I left lazygit
 vim.api.nvim_create_autocmd({ "BufEnter", "ModeChanged" }, {

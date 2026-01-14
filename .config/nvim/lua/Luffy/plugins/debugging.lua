@@ -88,6 +88,71 @@ return {
 			max_value_lines = 100,
 		},
 	},
+	keys = {
+		-- Breakpoints
+		{
+			"<leader>bb",
+			function()
+				require("dap").toggle_breakpoint()
+			end,
+			desc = "Breakpoint: Toggle",
+		},
+		{
+			"<leader>bc",
+			function()
+				require("dap").set_breakpoint(vim.fn.input("Condition: "))
+			end,
+			desc = "Breakpoint: Conditional",
+		},
+		{
+			"<leader>br",
+			function()
+				require("dap").clear_breakpoints()
+			end,
+			desc = "Breakpoint: Clear all",
+		},
+
+		--Debugging
+		{
+			"<leader>dc",
+			function()
+				require("dap").continue()
+			end,
+			desc = "Debug: Start/Continue",
+		},
+		{
+			"<leader>dj",
+			function()
+				require("dap").step_over()
+			end,
+			desc = "Debug: Step Over",
+		},
+		{
+			"<leader>dk",
+			function()
+				require("dap").step_into()
+			end,
+			desc = "Debug: Step Into",
+		},
+		{
+			"<leader>dt",
+			function()
+				require("dap").terminate()
+			end,
+			desc = "Debug: Terminate",
+		},
+		{
+			"<leader>dr",
+			function()
+				require("dap").repl.toggle()
+			end,
+			desc = "Debug: REPL",
+		},
+
+		-- Telescope integrations
+		{ "<leader>ba", "<cmd>Telescope dap list_breakpoints<cr>", desc = "List breakpoint in telescope" },
+		{ "<leader>df", "<cmd>Telescope dap frames<cr>", desc = "Debug: Frames" },
+	},
 	config = function(_, opts)
 		local dap = require("dap")
 		require("dapui").setup(opts)
@@ -168,6 +233,4 @@ return {
 			},
 		}
 	end,
-	vim.keymap.set("n", "<leader>bb", "<cmd>lua require 'dap'.toggle_breakpoint()<CR>", { desc = "toggle breakpoint" }),
-	vim.keymap.set("n", "<leader>bc", "<cmd>lua require 'dap'.continue()<CR>", { desc = "Start/Continue debug" }),
 }
