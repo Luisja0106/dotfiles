@@ -1,0 +1,2 @@
+- [[Default Maps#Leader Key|Leader]] + `wr` normal mode: **W**orkspace **R**estore.
+- [[Default Maps#Leader Key|Leader]] + `ws` normal mode: **W**orkspace **S**ave.

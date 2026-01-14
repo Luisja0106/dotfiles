@@ -1,0 +1,5 @@
+- `s` (normal/operative/visual) mode: Fla**S**h jump
+- `S` (normal/operative/visual) mode: Fla**S**h treesitter
+- `r` operative mode: Flash **R**emote
+- `R` (visual/operative) mode: Flash **R**emote Treesitter.
+- `Ctr` + `s` change mode: Flash Toggle  **S**earch

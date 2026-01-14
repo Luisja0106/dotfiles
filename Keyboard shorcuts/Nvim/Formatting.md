@@ -1,0 +1,1 @@
+- [[Default Maps#Leader Key|Leader]] + `mp` (normal/visual) mode: Format Current File or Visual Section (**M**ake **P**retty).
