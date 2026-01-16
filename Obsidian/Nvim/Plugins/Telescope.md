@@ -1,0 +1,3 @@
+- [[Default Maps#Leader Key|Leader]] + `pr` normal mode: **P**ick **R**ecent Files
+- [[Default Maps#Leader Key|Leader]] + `pwS` normal mode: Find connected **W**ords under the cursor
+- [[Default Maps#Leader Key|Leader]] + `csp` normal mode: Change **C**olor **S**cheme **P**ermanent

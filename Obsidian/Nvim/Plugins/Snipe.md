@@ -1,0 +1,5 @@
+- [[Default Maps#Leader Key|Leader]] + `T` normal mode: Open buffers
+ - internal leader key = `,`
+ - d = close the selected buffer
+ - v = create a vertical split 
+ - h = create a horizontal split

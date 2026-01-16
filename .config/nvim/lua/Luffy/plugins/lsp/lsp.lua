@@ -178,5 +178,8 @@ return {
 			},
 		})
 		vim.lsp.enable("gopls")
+
+		-- c#
+		vim.lsp.enable("omnisharp")
 	end,
 }
