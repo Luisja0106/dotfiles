@@ -36,8 +36,8 @@ keymap("v", "Y", '"+y', { desc = "Yank to the clipboard" })
 --tabs
 keymap("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Create new tab" })
 keymap("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close a tab" })
-keymap("n", "<s-l>", "<cmd>tabNext<CR>", { desc = "Move to next tab" })
-keymap("n", "<s-h>", "<cmd>tabnext<CR>", { desc = "Move to prev tab" })
+keymap("n", "<s-h>", "<cmd>tabNext<CR>", { desc = "Move to next tab" })
+keymap("n", "<s-l>", "<cmd>tabnext<CR>", { desc = "Move to prev tab" })
 --split
 keymap("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
 keymap("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })

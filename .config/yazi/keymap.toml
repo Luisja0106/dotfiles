@@ -1,29 +1,17 @@
-# # Open cwd in a file manager
-# [[mgr.prepend_keymap]]
-# on = "o"
-# run = "shell 'nautilus .'"
-# desc = "open file manager"
-#
-# #maximize the preview panel
-# [[mgr.prepend_keymap]]
-# on = "T"
-# run = "plugin toggle-pane max-preview"
-# desc = "Maximize the preview panel"
-#
+# Open cwd in a file manager
+[[mgr.prepend_keymap]]
+on = "o"
+run = "shell 'nautilus .'"
+desc = "open file manager"
+
+#maximize the preview panel
+[[mgr.prepend_keymap]]
+on = "T"
+run = "plugin toggle-pane max-preview"
+desc = "Maximize the preview panel"
+
 #exit insertmode whit jk
 [[input.prepend_keymap]]
 on = "<C-j>"
 run = "escape"
 desc = "Exit inser mode whit jk"
-# Navegación Colemak-DH (m n e i)
-[mgr]
-prepend_keymap = [
-  { on = "m", run = "leave", desc = "Go to parent directory" },
-  { on = "i", run = "enter", desc = "Enter directory" },
-  { on = "e", run = "arrow prev", desc = "Move cursor down" },
-  { on = "n", run = "arrow next", desc = "Move cursor up" },
-  { on = "o", run = "shell 'nautilus .'", desc = "open file manager"},
-  { on = "T", run = "plugin toggle-pane max-preview", desc = "Maximize the preview panel"},
-  { on = "k", run = "find_arrow", desc = "find next"},
-  { on = "K", run = "find_arrow --previous", desc = "find previous"}
-]
