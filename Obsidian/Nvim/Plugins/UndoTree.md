@@ -1,0 +1,1 @@
+[[Default Maps#Leader Key|Leader]] + `u` normal mode: open the undo history tree.

@@ -1,0 +1,1 @@
+[[Default Maps#Leader Key|Leader]] + `sm` normal mode: Toggle maximize a split.

@@ -1,0 +1,2 @@
+- `zR` normal mode: open all folders in the active file
+- `zM` normal mode: close all folders in the active file.
