@@ -181,5 +181,8 @@ return {
 
 		-- c#
 		vim.lsp.enable("omnisharp")
+
+		-- markdown
+		vim.lsp.enable("marksman")
 	end,
 }
