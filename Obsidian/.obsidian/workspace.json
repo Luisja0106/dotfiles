@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Nvim/Plugins/Maximezer.md",
+                "file": "Nvim/Plugins/Debug.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Maximezer"
+              "title": "Debug"
             }
           }
         ]
@@ -183,31 +183,31 @@
       "bases:Create new base": false
     }
   },
-  "active": "32f4c153adabe19f",
+  "active": "ca118012376e2f2d",
   "lastOpenFiles": [
-    "Nvim/Plugins/Maximezer.md",
+    "Nvim/Plugins/Flash.md",
+    "Nvim/Plugins/Telescope.md",
     "Nvim/Plugins/Which Key.md",
-    "Nvim/Plugins/UFO.md",
     "Nvim/Plugins/UndoTree.md",
+    "Nvim/Plugins/UFO.md",
     "Nvim/Plugins/Trouble.md",
     "Nvim/Plugins/Treesitter.md",
     "Nvim/Plugins/TODO.md",
-    "Nvim/Plugins/Telescope.md",
     "Nvim/Plugins/Snipe.md",
     "Nvim/Plugins/Snacks.md",
-    "Default Maps.md",
     "Nvim/Plugins/Refactoring.md",
     "Nvim/Plugins/Oil.md",
     "Nvim/Plugins/Mini.md",
+    "Nvim/Plugins/Maximezer.md",
     "Nvim/Plugins/Git.md",
+    "Nvim/Plugins/Formatting.md",
+    "Nvim/Plugins/Debug.md",
+    "Nvim/Plugins/Auto-Session.md",
+    "Nvim/Plugins/Aerial.md",
+    "Default Maps.md",
     "Nvim/Languages",
     "Nvim/Untitled.md",
     "Nvim/Plugins",
-    "Nvim/Plugins/Debug.md",
-    "Nvim/Plugins/Flash.md",
-    "Nvim/Plugins/Formatting.md",
-    "Nvim/Plugins/Auto-Session.md",
-    "Nvim/Plugins/Aerial.md",
     "Welcome.md",
     "create a link.md",
     "Nvim"

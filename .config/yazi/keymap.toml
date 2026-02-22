@@ -1,7 +1,7 @@
 # Open cwd in a file manager
 [[mgr.prepend_keymap]]
 on = "o"
-run = "shell 'nautilus .'"
+run = "shell 'nemo .'"
 desc = "open file manager"
 
 #maximize the preview panel

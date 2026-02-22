@@ -142,6 +142,13 @@ return {
 			desc = "Debug: Terminate",
 		},
 		{
+			"<leader>dx",
+			function()
+				require("dapui").close()
+			end,
+			desc = "Close UI debug terminal",
+		},
+		{
 			"<leader>dr",
 			function()
 				require("dap").repl.toggle()
