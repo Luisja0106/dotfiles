@@ -180,35 +180,8 @@ return {
 		vim.lsp.enable("gopls")
 
 		-- NOTE: c#
-		local omnisharp_config = {
-			-- Si instalaste omnisharp-roslyn vía AUR, a veces el comando es 'omnisharp-roslyn'
-			-- Verifica con 'which omnisharp' en tu terminal.
-			cmd = { "omnisharp" },
 
-			-- Aseguramos que detecte los archivos de C#
-			filetypes = { "cs", "vb", "csproj" },
-
-			-- Mejora de detección de raíz:
-			-- Buscamos el .sln que genera Unity para cargar todo el contexto del motor.
-			root_dir = vim.fs.root(0, { "*.sln", "*.csproj", "Assets", ".git" }),
-
-			settings = {
-				omnisharp = {
-					-- ¡CRUCIAL PARA UNITY!
-					-- Unity suele preferir el entorno Mono/Legacy.
-					-- Si no te funciona con 'true', cámbialo a 'false'.
-					useModernNet = true,
-
-					enableImportCompletion = true,
-					organizeImportsOnPaste = true,
-					enableMsBuildLoadProjectsOnDemand = false,
-					analyzeOpenDocumentsOnly = false,
-				},
-			},
-		}
-
-		-- vim.lsp.config("omnisharp", omnisharp_config)
-		vim.lsp.enable("omnisharp")
+		vim.lsp.enable("roslyn")
 		-- markdown
 		vim.lsp.enable("marksman")
 	end,

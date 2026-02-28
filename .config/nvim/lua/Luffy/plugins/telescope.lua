@@ -16,6 +16,7 @@ return {
 
 		telescope.load_extension("fzf")
 		telescope.load_extension("themes")
+		-- telescope.load_extension("live_preview")
 
 		telescope.setup({
 			defaults = {
@@ -46,6 +47,7 @@ return {
 			local word = vim.fn.expand("<cWORD>")
 			builtin.grep_string({ search = word })
 		end, { desc = "Find Connected Words under cursor" })
+		keymap("n", "<leader>ph", "<cmd>Telescope help_tags<CR>", { desc = "telescope help pages" })
 
 		keymap(
 			"n",
