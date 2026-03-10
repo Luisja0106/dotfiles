@@ -10,10 +10,16 @@ return {
 			local twc = require("tailwindcss-colorizer-cmp")
 
 			nvc.setup({
-				user_default_options = {
-					tailwind = true,
+				options = {
+					parsers = {
+						css = true,
+						tailwind = { enable = true },
+					},
+					display = {
+						mode = "virtualtext",
+						virtualtext = { position = "after" },
+					},
 				},
-				filetypes = { "html", "css", "javascript", "typescript", "jsx", "tsx", "vue", "svelte", "lua", "toml" },
 			})
 			twc.setup({
 				color_square_width = 2,
