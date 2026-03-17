@@ -186,10 +186,9 @@ return {
 		vim.lsp.enable("marksman")
 
 		--typst
-		local lspconfig = require("lspconfig")
 
 		-- Configuración básica para Tinymist (el sucesor de typst-lsp)
-		lspconfig.tinymist.setup({
+		vim.lsp.config("tinymist", {
 			settings = {
 				exportPdf = "onSave", -- Exporta el PDF automáticamente al guardar
 				-- Si quieres que use Zathura para el previewer integrado de Tinymist:
