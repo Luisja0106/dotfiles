@@ -200,4 +200,7 @@ return {
 		})
 	end,
 	vim.lsp.enable("tinymist"),
+
+	-- hyprlang
+	vim.lsp.enable("hyprls"),
 }
