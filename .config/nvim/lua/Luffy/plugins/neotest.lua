@@ -22,12 +22,22 @@ return {
 			-- shows test results inline in the buffer as virtual text
 			-- similar to IntelliJ's green checkmarks next to test methods
 			icons = {
-				passed = " ",
-				failed = " ",
-				running = " ",
-				skipped = " ",
-				unknown = " ",
-				watching = " ",
+				passed = " ",
+				failed = " ",
+				running = " ",
+				skipped = "󰙢 ",
+				unknown = "󰀦 ",
+				watching = "󰈈 ",
+
+				expanded = " ",
+				collapsed = "󰘕 ",
+				child_indent = "│",
+				child_prefix = "├",
+				final_child_prefix = "└",
+				final_child_indent = " ",
+				non_collapsible = "─",
+
+				running_animated = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
 			},
 
 			-- opens the output panel automatically when a test fails
