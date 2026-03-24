@@ -11,21 +11,6 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 	},
-	-- NOTE: gruvbox
-	{
-		"ellisonleao/gruvbox.nvim",
-		priority = 1000,
-	},
-	-- NOTE: Kanagwa
-	{
-		"rebelot/kanagawa.nvim",
-		priority = 1000,
-	},
-	-- NOTE: neosolarized
-	{
-		"craftzdog/solarized-osaka.nvim",
-		priority = 1000,
-	},
 	-- NOTE : tokyonight
 	{
 		"folke/tokyonight.nvim",
@@ -35,11 +20,6 @@ return {
 	--NOTE: Nord
 	{
 		"gbprod/nord.nvim",
-		priority = 1000,
-	},
-	--NOTE: Evangelion
-	{
-		"xero/evangelion.nvim",
 		priority = 1000,
 	},
 }
