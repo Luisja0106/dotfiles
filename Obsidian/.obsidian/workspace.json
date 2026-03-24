@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Nvim/Plugins/Debug.md",
+                "file": "Nvim/Plugins/Trouble.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Debug"
+              "title": "Trouble"
             }
           }
         ]
@@ -185,8 +185,12 @@
   },
   "active": "ca118012376e2f2d",
   "lastOpenFiles": [
-    "Nvim/Plugins/Flash.md",
+    "Nvim/Plugins/Snacks.md",
     "Nvim/Plugins/Telescope.md",
+    "Nvim/Plugins/Debug.md",
+    "Nvim/Plugins/Auto-Session.md",
+    "Nvim/Plugins/Aerial.md",
+    "Nvim/Plugins/Flash.md",
     "Nvim/Plugins/Which Key.md",
     "Nvim/Plugins/UndoTree.md",
     "Nvim/Plugins/UFO.md",
@@ -194,16 +198,12 @@
     "Nvim/Plugins/Treesitter.md",
     "Nvim/Plugins/TODO.md",
     "Nvim/Plugins/Snipe.md",
-    "Nvim/Plugins/Snacks.md",
     "Nvim/Plugins/Refactoring.md",
     "Nvim/Plugins/Oil.md",
     "Nvim/Plugins/Mini.md",
     "Nvim/Plugins/Maximezer.md",
     "Nvim/Plugins/Git.md",
     "Nvim/Plugins/Formatting.md",
-    "Nvim/Plugins/Debug.md",
-    "Nvim/Plugins/Auto-Session.md",
-    "Nvim/Plugins/Aerial.md",
     "Default Maps.md",
     "Nvim/Languages",
     "Nvim/Untitled.md",
