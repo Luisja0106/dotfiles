@@ -17,6 +17,9 @@ return {
 
 	opts = {
 
+		-- Remove cmd autocompletions
+		cmdline = { enabled = false },
+
 		-- ─── 1. SNIPPETS ─────────────────────────────────────────────────────────
 		-- blink has built-in support for vim.snippet (Neovim 0.10+).
 		-- The "default" preset uses vim.snippet under the hood.
@@ -149,14 +152,12 @@ return {
 		-- "snippets" → Snippet engine completions (replaces cmp_luasnip)
 		-- "buffer"   → Words from current buffer (replaces cmp-buffer)
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
-
-			-- Optional: enable spell source only in markdown/text files.
-			-- This replaces your old cmp-spell setup.
+			default = { "lazydev", "lsp", "path", "snippets", "buffer" },
 			providers = {
-				buffer = {
-					-- Only show buffer words if LSP gives nothing.
-					fallback = { "lsp" },
+				lazydev = {
+					name = "LazyDev",
+					module = "lazydev.integrations.blink",
+					score_offset = 100,
 				},
 			},
 		},
