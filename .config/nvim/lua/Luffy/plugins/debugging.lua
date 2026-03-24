@@ -142,6 +142,13 @@ return {
 			desc = "Debug: Terminate",
 		},
 		{
+			"<leader>dl",
+			function()
+				require("dap").step_out()
+			end,
+			desc = "Debug: Step Out",
+		},
+		{
 			"<leader>dx",
 			function()
 				require("dapui").close()

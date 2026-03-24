@@ -131,7 +131,7 @@ return {
 				Value = " ",
 				Enum = " ",
 				Keyword = " ",
-				Snippet = " ",
+				Snippet = "󱄽 ",
 				Color = " ",
 				File = " ",
 				Reference = " ",
