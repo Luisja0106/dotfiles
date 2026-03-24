@@ -44,40 +44,27 @@ return {
 
 		local nt = require("neotest")
 
-		-- run the test method under the cursor
-		vim.keymap.set("n", "<leader>tr", function()
+		-- <leader>u = unit test
+		vim.keymap.set("n", "<leader>ur", function()
 			nt.run.run()
-		end, { desc = "Test: Run nearest" })
-
-		-- run all tests in the current file
-		vim.keymap.set("n", "<leader>tf", function()
+		end, { desc = "Unit: Run nearest" })
+		vim.keymap.set("n", "<leader>uf", function()
 			nt.run.run(vim.fn.expand("%"))
-		end, { desc = "Test: Run file" })
-
-		-- debug the test under cursor — uses your existing dap setup automatically
-		-- this is the equivalent of IntelliJ's "Debug" button next to a test method
-		vim.keymap.set("n", "<leader>td", function()
+		end, { desc = "Unit: Run file" })
+		vim.keymap.set("n", "<leader>ud", function()
 			nt.run.run({ strategy = "dap" })
-		end, { desc = "Test: Debug nearest" })
-
-		-- stop a running test
-		vim.keymap.set("n", "<leader>tS", function()
+		end, { desc = "Unit: Debug nearest" })
+		vim.keymap.set("n", "<leader>uS", function()
 			nt.run.stop()
-		end, { desc = "Test: Stop" })
-
-		-- toggle the test summary panel (tree of all tests)
-		vim.keymap.set("n", "<leader>ts", function()
+		end, { desc = "Unit: Stop" })
+		vim.keymap.set("n", "<leader>us", function()
 			nt.summary.toggle()
-		end, { desc = "Test: Toggle summary panel" })
-
-		-- show the output of the last test run (stack trace on failure)
-		vim.keymap.set("n", "<leader>to", function()
+		end, { desc = "Unit: Toggle summary" })
+		vim.keymap.set("n", "<leader>uo", function()
 			nt.output.open({ enter = true, auto_close = true })
-		end, { desc = "Test: Show output" })
-
-		-- toggle inline output panel at the bottom
-		vim.keymap.set("n", "<leader>tp", function()
+		end, { desc = "Unit: Show output" })
+		vim.keymap.set("n", "<leader>up", function()
 			nt.output_panel.toggle()
-		end, { desc = "Test: Toggle output panel" })
+		end, { desc = "Unit: Toggle output panel" })
 	end,
 }
