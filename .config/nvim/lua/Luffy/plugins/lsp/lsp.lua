@@ -2,7 +2,6 @@ return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 	config = function()
@@ -73,10 +72,6 @@ return {
 			update_in_insert = false,
 		})
 
-		-- Setup servers
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		local capabilities = cmp_nvim_lsp.default_capabilities()
-
 		-- Global LSP settings (applied to all servers)
 		vim.lsp.config("*", {
 			capabilities = capabilities,
@@ -131,21 +126,6 @@ return {
 			},
 		})
 		vim.lsp.enable("emmet_language_server")
-
-		-- emmet_ls
-		vim.lsp.config("emmet_ls", {
-			filetypes = {
-				"html",
-				"typescriptreact",
-				"javascriptreact",
-				"css",
-				"sass",
-				"scss",
-				"less",
-				"svelte",
-			},
-		})
-		vim.lsp.enable("emmet_ls")
 
 		-- ts_ls (TypeScript/JavaScript)
 		vim.lsp.config("ts_ls", {
