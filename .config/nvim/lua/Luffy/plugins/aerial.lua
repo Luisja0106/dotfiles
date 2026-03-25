@@ -1,9 +1,9 @@
 return {
 	"stevearc/aerial.nvim",
+	lazy = true,
 	opts = {},
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
-		"nvim-tree/nvim-web-devicons",
+		"nvim-mini/mini.icons",
 	},
-	keys = { { "<Leader>a", "<cmd>AerialToggle left<cr>", desc = "Toggle Aerial" } },
 }

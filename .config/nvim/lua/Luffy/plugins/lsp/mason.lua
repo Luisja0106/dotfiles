@@ -5,7 +5,6 @@ return {
 			ensure_installed = {
 				"lua_ls",
 				"jdtls",
-				"roslyn",
 			},
 		},
 		dependencies = {

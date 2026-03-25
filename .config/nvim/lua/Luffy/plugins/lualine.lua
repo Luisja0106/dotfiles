@@ -1,7 +1,7 @@
 --plugin that create and modifed the custom bar of nvim
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = { "nvim-mini/mini.icons" },
 
 	config = function()
 		local lualine = require("lualine")

@@ -1,9 +1,7 @@
 --plugins that improve the quality of life of the nvim
 return {
-	{ "echasnovski/mini.nvim", version = false },
-	--surround
 	{
-		"echasnovski/mini.surround",
+		"nvim-mini/mini.surround",
 		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			-- Add custom surroundings to be used on top of builtin ones. For more

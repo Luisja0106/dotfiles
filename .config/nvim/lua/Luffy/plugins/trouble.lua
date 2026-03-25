@@ -1,7 +1,7 @@
 --plugin that contains a error screen like a ide
 return {
 	"folke/trouble.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons", "folke/todo-comments.nvim" },
+	dependencies = { "nvim-mini/mini.icons", "folke/todo-comments.nvim" },
 	opts = {
 		focus = true,
 	},

@@ -1,11 +1,11 @@
 return {
-	--plugin that allows add the name of the file to the Top Right
+	--add the name of the file to the Top Right
 	{
 		"b0o/incline.nvim",
 		enabled = true,
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = { "nvim-mini/mini.icons" },
 		config = function()
-			local devicons = require("nvim-web-devicons")
+			local icons = require("mini.icons")
 
 			require("incline").setup({
 				hide = {
@@ -18,8 +18,8 @@ return {
 						filename = "[No Name]"
 					end
 
-					local ext = vim.fn.fnamemodify(bufname, ":e")
-					local icon, icon_color = devicons.get_icon(filename, ext, { default = true })
+					-- local ext = vim.fn.fnamemodify(bufname, ":e")
+					local icon, icon_color = icons.get("file", filename)
 
 					local modified = vim.bo[props.buf].modified
 

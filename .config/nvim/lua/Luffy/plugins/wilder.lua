@@ -3,7 +3,7 @@ return {
 	"gelguy/wilder.nvim",
 	-- "nvim-telescope/telescope.nvim",
 	dependencies = {
-		"nvim-tree/nvim-web-devicons",
+		"nvim-mini/mini.icons",
 		"romgrk/fzy-lua-native",
 	},
 	lazy = false,

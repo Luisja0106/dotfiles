@@ -74,7 +74,7 @@ return {
 
 		-- Global LSP settings (applied to all servers)
 		vim.lsp.config("*", {
-			capabilities = capabilities,
+			capabilities = require("blink.cmp").get_lsp_capabilities(),
 		})
 	end,
 }
