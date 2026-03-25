@@ -84,8 +84,6 @@ return {
 					end
 					-- Returning nil/false means: continue to the next command.
 				end,
-				-- If the function above returned nil, show the completion menu.
-				"show",
 				-- If "show" also fails (e.g., nothing to complete), run the normal <Tab>.
 				"fallback",
 			},
