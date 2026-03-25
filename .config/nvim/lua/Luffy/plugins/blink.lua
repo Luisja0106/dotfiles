@@ -18,7 +18,20 @@ return {
 	opts = {
 
 		-- Remove cmd autocompletions
-		cmdline = { enabled = false },
+		cmdline = {
+			completion = {
+				menu = {
+					auto_show = true,
+				},
+			},
+			keymap = {
+				preset = "inherit",
+				["C-i"] = { "select_and_accept", "fallback" },
+				["C-k"] = { "select_prev", "fallback" },
+				["C-j"] = { "select_next", "fallback" },
+				["<CR>"] = false,
+			},
+		},
 
 		-- ─── 1. SNIPPETS ─────────────────────────────────────────────────────────
 		-- blink has built-in support for vim.snippet (Neovim 0.10+).
