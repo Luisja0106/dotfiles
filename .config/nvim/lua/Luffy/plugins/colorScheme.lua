@@ -22,4 +22,9 @@ return {
 		"gbprod/nord.nvim",
 		priority = 1000,
 	},
+	--NOTE: nightfox
+	{
+		"EdenEast/nightfox.nvim",
+		name = "nightfox",
+	},
 }

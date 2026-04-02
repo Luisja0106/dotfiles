@@ -163,6 +163,7 @@ return {
 		-- "snippets" → Snippet engine completions (replaces cmp_luasnip)
 		-- "buffer"   → Words from current buffer (replaces cmp-buffer)
 		sources = {
+			-- default = { "lazydev", "snippets", "lsp", "path", "buffer" },
 			default = { "lazydev", "lsp", "path", "snippets", "buffer" },
 			providers = {
 				lazydev = {
