@@ -1,15 +1,21 @@
 return {
 	{
+		"malewicz1337/oil-git.nvim",
+		dependencies = { "stevearc/oil.nvim" },
+	},
+	{
 		"stevearc/oil.nvim",
 		---@module 'oil'
 		opts = {
 			default_file_explorer = true,
-			delete_to_trash = true, -- Seguridad ante todo, Luffy
+			delete_to_trash = true,
 			skip_confirm_for_simple_edits = true,
-			view_options = {
-				show_hidden = true, -- Para ver los .dotfiles de tus proyectos
+			columns = {
+				"icon",
 			},
-			-- Configuración estética para que se vea profesional
+			view_options = {
+				show_hidden = true,
+			},
 			float = {
 				padding = 2,
 				max_width = 0,
