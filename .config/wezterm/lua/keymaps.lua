@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local config = {}
 --keys config
-config.leader = { key = "Space", mods = "SHIFT", timeout_milliseconds = 3000 }
+config.leader = { key = "Space", mods = "CTRL", timeout_milliseconds = 3000 }
 config.keys = {
 	--open a new tab
 	{ mods = "LEADER", key = "o", action = act.SpawnTab("CurrentPaneDomain") },
@@ -46,6 +46,33 @@ config.keys = {
 			action = wezterm.action_callback(function(window, pane, line)
 				if line then
 					window:active_tab():set_title(line)
+				end
+			end),
+		}),
+	},
+	-- switch between workspaces
+	{ mods = "LEADER", key = "s", action = act.ShowLauncherArgs({ flags = "WORKSPACES" }) },
+
+	--create a new workspace
+	{
+		mods = "LEADER",
+		key = "f", -- 'f' de Find project
+		action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }),
+	},
+
+	--rename curret workspace
+	{
+		mods = "LEADER",
+		key = "`",
+		action = act.PromptInputLine({
+			description = wezterm.format({
+				{ Attribute = { Intensity = "Bold" } },
+				{ Foreground = { AnsiColor = "Fuchsia" } },
+				{ Text = "Rename Workspace: " },
+			}),
+			action = wezterm.action_callback(function(window, pane, line)
+				if line then
+					wezterm.mux.rename_workspace(window:active_workspace(), line)
 				end
 			end),
 		}),
