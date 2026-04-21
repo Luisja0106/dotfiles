@@ -69,7 +69,7 @@ local function shorten_path(path)
 			parts[#parts - 1],
 			parts[#parts],
 		}, "/")
-		return prefix .. first .. "/../" .. last_four
+		return prefix .. first .. "/.../" .. last_four
 	end
 
 	-- Re-attach the prefix when no shortening is needed
@@ -84,42 +84,78 @@ end
 local function get_buffer_count()
 	return vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
 end
--- Function to update the winbar
-local function update_winbar()
-	if vim.bo.buftype == "nofile" or vim.bo.filetype == "" then
-		vim.opt_local.winbar = nil
+-- Función para actualizar la winbar de forma segura
+-- Función para actualizar la winbar en UNA ventana específica
+local function update_single_winbar(winid)
+	if not vim.api.nvim_win_is_valid(winid) then
 		return
 	end
-	local home_replaced = get_winbar_path()
-	local buffer_count = get_buffer_count()
-	local display_path = shorten_path(home_replaced)
-	pcall(function()
-		vim.opt.winbar = "%#WinBar2#("
-			.. buffer_count
-			.. ") "
-			-- this shows the filename on the left
-			-- This shows the file path on the right
-			.. "%*%=%#WinBar1#"
-			.. display_path
-		-- I don't need the hostname as I have it in lualine
-		-- .. vim.fn.systemlist("hostname")[1]
+
+	-- Nos movemos temporalmente al contexto de esa ventana para leer sus variables
+	vim.api.nvim_win_call(winid, function()
+		local excluded_filetypes = {
+			"dapui_scopes",
+			"dapui_breakpoints",
+			"dapui_stacks",
+			"dapui_watches",
+			"dapui_console",
+			"dap-repl",
+			"snacks_picker_input",
+			"snacks_picker_list",
+			"snacks_terminal",
+			"NvimTree",
+			"neo-tree",
+			"lazy",
+			"mason",
+		}
+
+		local buf_ft = vim.bo.filetype
+		local win_height = vim.api.nvim_win_get_height(0)
+
+		-- Filtros de seguridad
+		if
+			vim.tbl_contains(excluded_filetypes, buf_ft)
+			or vim.bo.buftype == "nofile"
+			or buf_ft == ""
+			or win_height < 3
+		then
+			vim.opt_local.winbar = nil
+			return
+		end
+
+		local home_replaced = get_winbar_path()
+		local buffer_count = get_buffer_count()
+		local display_path = shorten_path(home_replaced)
+
+		pcall(function()
+			vim.opt_local.winbar = "%#WinBar2#(" .. buffer_count .. ") " .. "%*%=%#WinBar1#" .. display_path
+		end)
 	end)
 end
--- Winbar was not being updated after I left lazygit
-vim.api.nvim_create_autocmd({ "BufEnter", "ModeChanged" }, {
+
+-- Función que recorre todas las ventanas y las actualiza
+local function update_all_winbars()
+	for _, winid in ipairs(vim.api.nvim_list_wins()) do
+		update_single_winbar(winid)
+	end
+end
+
+-- Autocomandos sincronizados
+vim.api.nvim_create_autocmd({
+	"BufEnter", -- Al entrar a un buffer
+	"WinEnter", -- Al cambiar de split
+	"BufAdd", -- AL CREAR UN NUEVO BUFFER (Esto arregla lo que mencionas)
+	"BufDelete", -- Al cerrar un buffer (para que el conteo baje de inmediato)
+	"WinResized", -- Si cambias el tamaño de los splits
+}, {
+	group = vim.api.nvim_create_augroup("FastSafeWinbar", { clear = true }),
 	callback = function(args)
-		local old_mode = args.event == "ModeChanged" and vim.v.event.old_mode or ""
-		local new_mode = args.event == "ModeChanged" and vim.v.event.new_mode or ""
-		-- Only update if ModeChanged is relevant (e.g., leaving LazyGit)
-		if args.event == "ModeChanged" then
-			-- Get buffer filetype
-			local buf_ft = vim.bo.filetype
-			-- Only update when leaving `snacks_terminal` (LazyGit)
-			if buf_ft == "snacks_terminal" or old_mode:match("^t") or new_mode:match("^n") then
-				update_winbar()
-			end
+		-- Si es un picker de snacks, usamos schedule para evitar el error E36
+		if vim.bo[args.buf].filetype:match("snacks_picker") then
+			vim.schedule(update_all_winbars)
 		else
-			update_winbar()
+			-- Para todo lo demás, actualización instantánea
+			update_all_winbars()
 		end
 	end,
 })

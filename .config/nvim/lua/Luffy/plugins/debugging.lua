@@ -48,7 +48,7 @@ return {
 				elements = {
 					{
 						id = "scopes",
-						size = 0.60,
+						size = 0.40,
 					},
 					{
 						id = "stacks",
@@ -56,11 +56,11 @@ return {
 					},
 					{
 						id = "breakpoints",
-						size = 0.10,
+						size = 0.20,
 					},
 					{
 						id = "watches",
-						size = 0.10,
+						size = 0.20,
 					},
 				},
 				size = 40,
