@@ -16,7 +16,7 @@ return {
 	opts = {
 		controls = {
 			element = "repl",
-			enabled = false,
+			enabled = true,
 			icons = {
 				disconnect = "",
 				pause = "",
@@ -48,18 +48,18 @@ return {
 				elements = {
 					{
 						id = "scopes",
-						size = 0.50,
+						size = 0.60,
 					},
 					{
 						id = "stacks",
-						size = 0.30,
-					},
-					{
-						id = "watches",
-						size = 0.10,
+						size = 0.20,
 					},
 					{
 						id = "breakpoints",
+						size = 0.10,
+					},
+					{
+						id = "watches",
 						size = 0.10,
 					},
 				},
@@ -121,14 +121,14 @@ return {
 			desc = "Debug: Start/Continue",
 		},
 		{
-			"<leader>dj",
+			"<leader>dsO",
 			function()
 				require("dap").step_over()
 			end,
 			desc = "Debug: Step Over",
 		},
 		{
-			"<leader>dk",
+			"<leader>dsi",
 			function()
 				require("dap").step_into()
 			end,
@@ -142,7 +142,7 @@ return {
 			desc = "Debug: Terminate",
 		},
 		{
-			"<leader>dl",
+			"<leader>dso",
 			function()
 				require("dap").step_out()
 			end,
