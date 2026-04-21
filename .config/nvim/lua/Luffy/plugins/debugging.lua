@@ -121,7 +121,7 @@ return {
 			desc = "Debug: Start/Continue",
 		},
 		{
-			"<leader>dsO",
+			"<leader>dso",
 			function()
 				require("dap").step_over()
 			end,
@@ -142,7 +142,7 @@ return {
 			desc = "Debug: Terminate",
 		},
 		{
-			"<leader>dso",
+			"<leader>dsO",
 			function()
 				require("dap").step_out()
 			end,
