@@ -61,10 +61,19 @@ return {
 		-- configure lualine with modified theme
 		lualine.setup({
 			options = {
-				theme = auto,
+				theme = "auto",
+				-- section_separators = { left = "", right = "" },
 				icons_enabled = true,
 			},
 			sections = {
+				lualine_a = {
+					{
+						function()
+							return ""
+						end,
+					},
+					{ "mode" },
+				},
 				lualine_x = {
 					{
 						function()

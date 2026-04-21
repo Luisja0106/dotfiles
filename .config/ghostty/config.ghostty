@@ -1,7 +1,7 @@
 theme = Nord
 font-family = MesloLGLDZ Nerd Font
 font-size = 16
-#background-opacity = 0.75
+background-opacity = 0.95
 background-image = ~/.config/ghostty/Images/wolfIco.png
 background-image-position = center
 background-image-opacity = 0.5
