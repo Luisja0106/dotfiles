@@ -76,5 +76,9 @@ return {
 		vim.lsp.config("*", {
 			capabilities = require("blink.cmp").get_lsp_capabilities(),
 		})
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
+		vim.lsp.config("ts_ls", {
+			capabilities = capabilities,
+		})
 	end,
 }

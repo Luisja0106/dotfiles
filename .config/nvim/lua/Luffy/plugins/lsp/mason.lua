@@ -33,10 +33,6 @@ return {
 			ensure_installed = {
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
-				"isort", -- python formatter
-				"pylint",
-				"clangd",
-				"denols",
 				"java-debug-adapter",
 				"java-test",
 			},
