@@ -110,18 +110,6 @@
     type = 'node'
     style = 'diamond'
 
-
-  [[blocks.segments]]
-    leading_diamond = ''
-    trailing_diamond = ''
-    template = ' {{ .Full }}'
-    foreground = 'p:bg'
-    background = 'p:red'
-    type = 'npm'
-    style = 'diamond'
-    [blocks.segments.options]
-    display_mode = 'files'
-
   [[blocks.segments]]
     leading_diamond = ''
     trailing_diamond = ''
