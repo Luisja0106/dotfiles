@@ -114,7 +114,7 @@ return {
 		keys = {
 			--aerial
 			{
-				"<leader>a",
+				"<leader>A",
 				function()
 					require("aerial").snacks_picker()
 				end,
