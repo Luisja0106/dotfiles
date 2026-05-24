@@ -1,12 +1,10 @@
 return {
 	"saghen/blink.cmp",
-
 	-- blink.cmp requires NO extra dependencies for Tailwind — it's built-in.
 	-- friendly-snippets gives us a big library of VSCode-style snippets.
 	dependencies = {
 		"rafamadriz/friendly-snippets",
 	},
-
 	-- Use the latest stable release (pre-built Rust binaries).
 	-- The fuzzy matcher is compiled in Rust — that's the main speed win over nvim-cmp.
 	version = "*",
@@ -165,11 +163,20 @@ return {
 		sources = {
 			-- default = { "lazydev", "snippets", "lsp", "path", "buffer" },
 			default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+			per_filetype = {
+				sql = { "dadbod", "buffer" },
+				mysql = { "dadbod", "buffer" },
+				mariadb = { "dadbod", "buffer" },
+			},
 			providers = {
 				lazydev = {
 					name = "LazyDev",
 					module = "lazydev.integrations.blink",
 					score_offset = 100,
+				},
+				dadbod = {
+					name = "Dadbod",
+					module = "vim_dadbod_completion.blink",
 				},
 			},
 		},
