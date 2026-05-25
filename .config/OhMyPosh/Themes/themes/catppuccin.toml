@@ -6,7 +6,7 @@ final_space = true
 # --------------------------------------------------------------------
 [palette]
 bg = '#1e1e2e'
-fg = '#cdd6f4'
+fg = '#eff1f5'
 paths = '#89b4fa'
 pathsFg = '#11111b'
 cyan = '#89dceb'
@@ -17,4 +17,3 @@ orange = '#fab387'
 yellow = '#f9e2af'
 green = '#a6e3a1'
 purple = '#b4befe'
-
