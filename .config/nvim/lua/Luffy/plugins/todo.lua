@@ -61,4 +61,20 @@ return {
 			todo_comments.jump_prev()
 		end, { desc = "Previous todo comment" })
 	end,
+	keys = {
+		{
+			"<leader>pt",
+			function()
+				require("snacks").picker.todo_comments()
+			end,
+			desc = "Todo",
+		},
+		{
+			"<leader>pT",
+			function()
+				require("snacks").picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } })
+			end,
+			desc = "Todo/Fix/Fixme",
+		},
+	},
 }

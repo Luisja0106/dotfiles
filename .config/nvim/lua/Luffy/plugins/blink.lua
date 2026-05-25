@@ -4,6 +4,8 @@ return {
 	-- friendly-snippets gives us a big library of VSCode-style snippets.
 	dependencies = {
 		"rafamadriz/friendly-snippets",
+		"fang2hou/blink-copilot",
+		"zbirenbaum/copilot.lua",
 	},
 	-- Use the latest stable release (pre-built Rust binaries).
 	-- The fuzzy matcher is compiled in Rust — that's the main speed win over nvim-cmp.
@@ -49,7 +51,7 @@ return {
 			preset = "none",
 
 			-- Show the completion menu manually, or toggle docs if menu is open.
-			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+			["<C-q>"] = { "show", "show_documentation", "hide_documentation" },
 
 			-- Close the completion menu without inserting anything.
 			["<C-e>"] = { "hide", "fallback" },
@@ -161,14 +163,20 @@ return {
 		-- "snippets" → Snippet engine completions (replaces cmp_luasnip)
 		-- "buffer"   → Words from current buffer (replaces cmp-buffer)
 		sources = {
-			-- default = { "lazydev", "snippets", "lsp", "path", "buffer" },
-			default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+			default = { "lazydev", "copilot", "lsp", "path", "snippets", "buffer" },
 			per_filetype = {
 				sql = { "dadbod", "buffer" },
 				mysql = { "dadbod", "buffer" },
 				mariadb = { "dadbod", "buffer" },
 			},
 			providers = {
+				copilot = {
+					name = "Copilot",
+					module = "blink-copilot",
+					score_offset = 90, -- high priority, just below lazydev
+					async = true,
+					opts = { name = "copilot" },
+				},
 				lazydev = {
 					name = "LazyDev",
 					module = "lazydev.integrations.blink",
