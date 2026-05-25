@@ -8,36 +8,7 @@ return {
 		--obligatory
 		harpoon:setup()
 		--obligatory
-
 		--keymaps
-		vim.keymap.set("n", "<leader>a", function()
-			harpoon:list():add()
-		end, { desc = "Harpoon: Add file" })
-
-		vim.keymap.set("n", "<C-m>", function()
-			harpoon.ui:toggle_quick_menu(harpoon:list())
-		end, { desc = "Harpoon: Open menu" })
-
-		vim.keymap.set("n", "<C-n>", function()
-			harpoon:list()
-			harpoon:list():select(1)
-		end, { desc = "Harpoon: Slot 1" })
-
-		vim.keymap.set("n", "<C-e>", function()
-			harpoon:list()
-			harpoon:list():select(2)
-		end, { desc = "Harpoon: Slot 2" })
-
-		vim.keymap.set("n", "<C-i>", function()
-			harpoon:list()
-			harpoon:list():select(3)
-		end, { desc = "Harpoon: Slot 3" })
-
-		vim.keymap.set("n", "<C-o>", function()
-			harpoon:list()
-			harpoon:list():select(4)
-		end, { desc = "Harpoon: Slot 4" })
-
 		--aditional keymaps
 		harpoon:extend({
 			UI_CREATE = function(cx)
@@ -55,4 +26,63 @@ return {
 			end,
 		})
 	end,
+	keys = {
+		{
+			"<leader>a",
+			function()
+				require("harpoon"):list():add()
+			end,
+			desc = "Harpoon: Add file",
+			mode = "n",
+		},
+		{
+			"<C-m>",
+			function()
+				local harpoon = require("harpoon")
+				harpoon.ui:toggle_quick_menu(harpoon:list())
+			end,
+			desc = "Harpoon: Open menu",
+			mode = "n",
+		},
+		{
+			"<C-n>",
+			function()
+				local harpoon = require("harpoon")
+				harpoon:list()
+				harpoon:list():select(1)
+			end,
+			desc = "Harpoon: Slot 1",
+			mode = "n",
+		},
+		{
+			"<C-e>",
+			function()
+				local harpoon = require("harpoon")
+				harpoon:list()
+				harpoon:list():select(2)
+			end,
+			desc = "Harpoon: Slot 2",
+			mode = "n",
+		},
+		{
+			"<C-i>",
+			function()
+				local harpoon = require("harpoon")
+				harpoon:list()
+				harpoon:list():select(3)
+			end,
+			desc = "Harpoon: Slot 3",
+			mode = "n",
+		},
+		{
+			"<C-o>",
+			function()
+				local harpoon = require("harpoon")
+				harpoon:list()
+				harpoon:list():select(4)
+			end,
+			desc = "Harpoon: Slot 4",
+			mode = "n",
+		},
+	},
 }

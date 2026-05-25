@@ -30,9 +30,15 @@ return {
 				open_vsplit = "V",
 			},
 		})
-		local keymap = vim.keymap.set
-		keymap("n", "<leader>T", function()
-			require("snipe").open_buffer_menu()
-		end, { desc = "Open buffer Menu Popup" })
 	end,
+	keys = {
+		{
+			"<leader>T",
+			function()
+				require("snipe").open_buffer_menu()
+			end,
+			desc = "Open buffer menu popup",
+			mode = "n",
+		},
+	},
 }

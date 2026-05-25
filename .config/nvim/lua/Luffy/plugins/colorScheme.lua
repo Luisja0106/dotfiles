@@ -20,11 +20,12 @@ return {
 	--NOTE: Nord
 	{
 		"gbprod/nord.nvim",
-		priority = 1000,
+		lazy = true,
 	},
 	--NOTE: nightfox
 	{
 		"EdenEast/nightfox.nvim",
 		name = "nightfox",
+		lazy = true,
 	},
 }

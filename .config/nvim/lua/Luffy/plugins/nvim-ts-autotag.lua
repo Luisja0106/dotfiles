@@ -10,4 +10,6 @@ return {
 			},
 		})
 	end,
+
+	ft = { "html", "astro" },
 }

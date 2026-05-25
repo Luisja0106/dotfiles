@@ -20,7 +20,6 @@ return {
 			move_down = { "<Down>", "<C-n>", "<C-j>" },
 		},
 	},
-	lazy = false, -- the plugin lazy-initialises itself
 	keys = {
 		{
 			"<leader>ff",

@@ -39,21 +39,34 @@ return {
 				},
 			},
 		})
-
-		-- Keymaps
-		local keymap = vim.keymap.set
-		keymap("n", "<leader>pr", "<cmd>Telescope oldfiles<CR>", { desc = "Fuzzy find recent files" })
-		keymap("n", "<leader>pwS", function()
-			local word = vim.fn.expand("<cWORD>")
-			builtin.grep_string({ search = word })
-		end, { desc = "Find Connected Words under cursor" })
-		keymap("n", "<leader>ph", "<cmd>Telescope help_tags<CR>", { desc = "telescope help pages" })
-
-		keymap(
-			"n",
+	end,
+	keys = {
+		{
+			"<leader>pr",
+			"<cmd>Telescope oldfiles<CR>",
+			desc = "Fuzzy find recent files",
+			mode = "n",
+		},
+		{
+			"<leader>pwS",
+			function()
+				local word = vim.fn.expand("<cWORD>")
+				builtin.grep_string({ search = word })
+			end,
+			desc = "Find connecteds Words under cursor",
+			mode = "n",
+		},
+		{
 			"<leader>csp",
 			"<cmd>Telescope themes<CR>",
-			{ noremap = true, silent = true, desc = "Theme Switcher Permanent" }
-		)
-	end,
+			desc = "Theme Switcher Permanent",
+			mode = "n",
+		},
+		{
+			"<leader>ph",
+			"<cmd>Telescope help_tags<CR>",
+			desc = "telescope help pages",
+			mode = "n",
+		},
+	},
 }

@@ -2,7 +2,6 @@
 return {
 	-- https://github.com/rcarriga/nvim-dap-ui
 	"rcarriga/nvim-dap-ui",
-	event = "VeryLazy",
 	dependencies = {
 		-- https://github.com/mfussenegger/nvim-dap
 		"mfussenegger/nvim-dap",
@@ -96,6 +95,7 @@ return {
 				require("dap").toggle_breakpoint()
 			end,
 			desc = "Breakpoint: Toggle",
+			mode = "n",
 		},
 		{
 			"<leader>bc",
@@ -103,6 +103,7 @@ return {
 				require("dap").set_breakpoint(vim.fn.input("Condition: "))
 			end,
 			desc = "Breakpoint: Conditional",
+			mode = "n",
 		},
 		{
 			"<leader>br",
@@ -110,6 +111,7 @@ return {
 				require("dap").clear_breakpoints()
 			end,
 			desc = "Breakpoint: Clear all",
+			mode = "n",
 		},
 
 		--Debugging
@@ -119,6 +121,7 @@ return {
 				require("dap").continue()
 			end,
 			desc = "Debug: Start/Continue",
+			mode = "n",
 		},
 		{
 			"<leader>dso",
@@ -126,6 +129,7 @@ return {
 				require("dap").step_over()
 			end,
 			desc = "Debug: Step Over",
+			mode = "n",
 		},
 		{
 			"<leader>dsi",
@@ -133,6 +137,7 @@ return {
 				require("dap").step_into()
 			end,
 			desc = "Debug: Step Into",
+			mode = "n",
 		},
 		{
 			"<leader>dt",
@@ -140,6 +145,7 @@ return {
 				require("dap").terminate()
 			end,
 			desc = "Debug: Terminate",
+			mode = "n",
 		},
 		{
 			"<leader>dsO",
@@ -147,6 +153,7 @@ return {
 				require("dap").step_out()
 			end,
 			desc = "Debug: Step Out",
+			mode = "n",
 		},
 		{
 			"<leader>dx",
@@ -154,6 +161,7 @@ return {
 				require("dapui").close()
 			end,
 			desc = "Close UI debug terminal",
+			mode = "n",
 		},
 		{
 			"<leader>dr",
@@ -161,11 +169,12 @@ return {
 				require("dap").repl.toggle()
 			end,
 			desc = "Debug: REPL",
+			mode = "n",
 		},
 
 		-- Telescope integrations
-		{ "<leader>ba", "<cmd>Telescope dap list_breakpoints<cr>", desc = "List breakpoint in telescope" },
-		{ "<leader>df", "<cmd>Telescope dap frames<cr>", desc = "Debug: Frames" },
+		{ "<leader>ba", "<cmd>Telescope dap list_breakpoints<cr>", desc = "List breakpoint in telescope", mode = "n" },
+		{ "<leader>df", "<cmd>Telescope dap frames<cr>", desc = "Debug: Frames", mode = "n" },
 	},
 	config = function(_, opts)
 		local dap = require("dap")

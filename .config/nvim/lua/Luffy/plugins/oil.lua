@@ -1,9 +1,5 @@
 return {
 	{
-		"malewicz1337/oil-git.nvim",
-		dependencies = { "stevearc/oil.nvim" },
-	},
-	{
 		"stevearc/oil.nvim",
 		---@module 'oil'
 		opts = {
@@ -24,10 +20,14 @@ return {
 			},
 		},
 		-- Optional dependencies
-		dependencies = { { "nvim-mini/mini.icons", opts = {} } },
-		lazy = false,
-	},
-	{
-		vim.keymap.set("n", "<leader>ee", "<CMD>Oil<CR>", { desc = "Open file explorer" }),
+		dependencies = { { "nvim-mini/mini.icons", opts = {} }, { "malewicz1337/oil-git.nvim" } },
+		keys = {
+			{
+				"<leader>ee",
+				"<CMD>Oil<CR>",
+				desc = "Open file explorer",
+				mode = "n",
+			},
+		},
 	},
 }

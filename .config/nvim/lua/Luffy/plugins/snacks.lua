@@ -112,14 +112,6 @@ return {
 
 		-- === KEYMAPS ===
 		keys = {
-			--aerial
-			{
-				"<leader>A",
-				function()
-					require("aerial").snacks_picker()
-				end,
-				desc = "aerial",
-			},
 			-- Git
 			{
 				"<leader>gL",

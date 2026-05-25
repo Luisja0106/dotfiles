@@ -23,6 +23,7 @@ return {
 						"github:Crashdummyy/mason-registry",
 					},
 				},
+				cmd = "Mason",
 			},
 			"neovim/nvim-lspconfig",
 		},
@@ -40,5 +41,6 @@ return {
 		dependencies = {
 			"williamboman/mason.nvim",
 		},
+		lazy = true,
 	},
 }

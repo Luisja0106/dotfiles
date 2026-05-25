@@ -51,30 +51,64 @@ return {
 				open = "botright vsplit | vertical resize 40",
 			},
 		})
-
-		local nt = require("neotest")
-
-		-- <leader>u = unit test
-		vim.keymap.set("n", "<leader>ur", function()
-			nt.run.run()
-		end, { desc = "Unit: Run nearest" })
-		vim.keymap.set("n", "<leader>uf", function()
-			nt.run.run(vim.fn.expand("%"))
-		end, { desc = "Unit: Run file" })
-		vim.keymap.set("n", "<leader>ud", function()
-			nt.run.run({ strategy = "dap" })
-		end, { desc = "Unit: Debug nearest" })
-		vim.keymap.set("n", "<leader>uS", function()
-			nt.run.stop()
-		end, { desc = "Unit: Stop" })
-		vim.keymap.set("n", "<leader>us", function()
-			nt.summary.toggle()
-		end, { desc = "Unit: Toggle summary" })
-		vim.keymap.set("n", "<leader>uo", function()
-			nt.output.open({ enter = true, auto_close = true })
-		end, { desc = "Unit: Show output" })
-		vim.keymap.set("n", "<leader>up", function()
-			nt.output_panel.toggle()
-		end, { desc = "Unit: Toggle output panel" })
 	end,
+
+	keys = {
+		{
+			"<leader>ur",
+			function()
+				require("neotest").run.run()
+			end,
+			desc = "Unit: Run nearest",
+			mode = "n",
+		},
+		{
+			"<leader>uf",
+			function()
+				require("neotest").run.run(vim.fn.expand("%"))
+			end,
+			desc = "Unit: Run file",
+			mode = "n",
+		},
+		{
+			"<leader>ud",
+			function()
+				require("neotest").run.run({ strategy = "dap" })
+			end,
+			desc = "Unit: Debug nearest",
+			mode = "n",
+		},
+		{
+			"<leader>uS",
+			function()
+				require("neotest").run.stop()
+			end,
+			desc = "Unit: Stop",
+			mode = "n",
+		},
+		{
+			"<leader>us",
+			function()
+				require("neotest").summary.toggle()
+			end,
+			desc = "Unit: Toggle summary",
+			mode = "n",
+		},
+		{
+			"<leader>uo",
+			function()
+				require("neotest").output.open({ enter = true, auto_close = true })
+			end,
+			desc = "Unit: Show Output",
+			mode = "n",
+		},
+		{
+			"<leader>up",
+			function()
+				require("neotest").output_panel.toggle()
+			end,
+			desc = "Unit: Toggle Ouput panel",
+			mode = "n",
+		},
+	},
 }
