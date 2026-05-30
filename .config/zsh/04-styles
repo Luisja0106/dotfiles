@@ -7,16 +7,13 @@
 #------------------------------------------------------
 #---------------------- Fzf ---------------------------
 #------------------------------------------------------
-# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-#   --color=fg:-1,fg+:#d0d0d0,bg:#3b4252,bg+:#3b4252
-#     --color=hl:#8fbcbb,hl+:#5e81ac,info:#ebcb8b,marker:#a3be8c
-#       --color=prompt:#b48ead,spinner:#88c0d0,pointer:#ebcb8b,header:#87afaf
-#         --color=border:#d8dee9,label:#aeaeae,query:#d9d9d9
-#           --border="rounded" --border-label="🐺" --border-label-pos="1" --preview-window="border-rounded"
-#             --prompt=">> " --marker=">" --pointer="~" --separator="-"
-#               --scrollbar="|" --layout="reverse"'
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
+--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
+--color=selected-bg:#45475A \
+--color=border:#6C7086,label:#CDD6F4"
 #------------------------------------------------------
 # ------------------ Bat (better cat) -----------------
 #------------------------------------------------------
-  export BAT_THEME=Nord
-
+  export BAT_THEME="Catppuccin Mocha"

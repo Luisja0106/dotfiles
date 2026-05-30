@@ -229,7 +229,7 @@ return {
 			documentation = {
 				-- Show docs automatically when navigating the list.
 				auto_show = true,
-				auto_show_delay_ms = 200,
+				auto_show_delay_ms = 300,
 
 				-- The documentation window settings.
 				window = {

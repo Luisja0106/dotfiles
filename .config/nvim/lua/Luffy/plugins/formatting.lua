@@ -34,6 +34,7 @@ return {
 				html = { "biome-check" },
 				svelte = { "prettier" },
 				json = { "prettier" },
+				astro = { "prettier" },
 				yaml = { "prettier" },
 				graphql = { "prettier" },
 				liquid = { "prettier" },
