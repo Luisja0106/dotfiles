@@ -7,6 +7,9 @@
        \/  \/                         \/        \/       \/         \/        \/ 
 --]]
 
+-- autostart
+require("config.auto-start")
+
 --TODO:Functions
 -- require("functions")
 
@@ -19,8 +22,6 @@ require("config.input")
 -- --TODO:gesture
 -- -- require("config.getures")
 --
--- autostart
-require("config.auto-start")
 --
 -- --TODO: colors
 -- -- require("colors")
