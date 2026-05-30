@@ -50,10 +50,11 @@ local runner = "walker -s run"
 --
 hl.on("hyprland.start", function()
 	hl.exec_cmd("waybar")
+	hl.exec_cmd("awww-daemon")
 	hl.exec_cmd("systemctl --user start hyprpolkitagent")
 	hl.exec_cmd("hyprctl setcursor Nordizy-catppuccin-mocha-dark 30")
-	hl.exec_cmd("walker --gapplication-service")
 	hl.exec_cmd("elephant")
+	hl.exec_cmd("walker --gapplication-service")
 end)
 
 -------------------------------
@@ -97,7 +98,7 @@ hl.config({
 		border_size = 3,
 
 		col = {
-			active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
+			-- active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
 			inactive_border = "rgba(595959aa)",
 		},
 
