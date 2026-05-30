@@ -11,10 +11,11 @@ local mainMod = "SUPER" -- Sets super key as main modifier
 local secondMod = "SUPER + SHIFT"
 local superCTRL = "SUPER + CTRL"
 
-hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
-hl.bind("SUPER + ALT + T", hl.dsp.exec_cmd(music))
-hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal), { description = "Open terminal" })
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser), { description = "Open browser" })
+hl.bind("SUPER + ALT + T", hl.dsp.exec_cmd(music), { description = "Open music player" })
+hl.bind(mainMod .. " + Q", hl.dsp.window.close(), { description = "Close active window" })
+hl.bind(secondMod .. " + R", hl.dsp.exec_cmd("hyprctl reload"), { description = "Reload Hyprland config" })
 hl.bind(
 	secondMod .. " + Q",
 	hl.dsp.exec_cmd("hyprctl activewindow | grep pid | tr -d 'pid:' | xargs kill"),
@@ -30,21 +31,21 @@ hl.bind(
 	hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }),
 	{ description = "Toggle Maximize Window" }
 )
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(superCTRL .. " + RETURN", hl.dsp.exec_cmd(launcher))
-hl.bind(secondMod .. " + RETURN", hl.dsp.exec_cmd(runner))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager), { description = "Open file manager" })
+hl.bind(superCTRL .. " + RETURN", hl.dsp.exec_cmd(launcher), { description = "Open application launcher" })
+hl.bind(secondMod .. " + RETURN", hl.dsp.exec_cmd(runner), { description = "Open command runner" })
+hl.bind(mainMod .. " + P", hl.dsp.window.pseudo(), { description = "Toggle pseudoTiling mode" })
 
 -- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }), { description = "Focus left window" })
+hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "right" }), { description = "Focus right window" })
+hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "up" }), { description = "Focus upper window" })
+hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }), { description = "Focus lower window" })
 
-hl.bind(secondMod .. " + h", hl.dsp.window.move({ direction = "left" }))
-hl.bind(secondMod .. " + l", hl.dsp.window.move({ direction = "right" }))
-hl.bind(secondMod .. " + k", hl.dsp.window.move({ direction = "up" }))
-hl.bind(secondMod .. " + j", hl.dsp.window.move({ direction = "down" }))
+hl.bind(secondMod .. " + h", hl.dsp.window.move({ direction = "left" }), { description = "Move window left" })
+hl.bind(secondMod .. " + l", hl.dsp.window.move({ direction = "right" }), { description = "Move window right" })
+hl.bind(secondMod .. " + k", hl.dsp.window.move({ direction = "up" }), { description = "Move window up" })
+hl.bind(secondMod .. " + j", hl.dsp.window.move({ direction = "down" }), { description = "Move window down" })
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -55,8 +56,16 @@ for i = 1, 10 do
 end
 
 -- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(
+	mainMod .. " + S",
+	hl.dsp.workspace.toggle_special("magic"),
+	{ description = "Toggle special workspace 'magic'" }
+)
+hl.bind(
+	mainMod .. " + SHIFT + S",
+	hl.dsp.window.move({ workspace = "special:magic" }),
+	{ description = "Move focused window to special workspace 'magic'" }
+)
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))

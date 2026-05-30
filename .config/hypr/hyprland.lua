@@ -33,6 +33,9 @@ require("config.decorations")
 require("config.layouts")
 require("config.workspaces")
 require("config.misc")
-require("config.keybindings.normal")
 require("config.windowrules")
 require("config.animations")
+
+--keymaps
+require("config.keybindings.normal")
+require("config.keybindings.gambit")

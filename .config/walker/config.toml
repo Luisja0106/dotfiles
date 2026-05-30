@@ -38,6 +38,21 @@ provider = "providerlist"
 prefix = "@"
 provider = "websearch"
 
+[[providers.prefixes]]
+prefix = "*"
+provider = "bookmarks"
+
+[[providers.prefixes]]
+prefix = "%"
+provider = "archlinuxpkgs"
+
+[[providers.prefixes]]
+prefix = "+"
+provider = "calc"
+
+[[providers.prefixes]]
+prefix = "="
+provider = "playerctl"
 
 [providers.actions] # This will be MERGED/OVEWRITTEN with what the user specifies
 dmenu = [{ action = "select", default = true, bind = "Return" }]
