@@ -2,7 +2,7 @@
     "layer": "top",
     "modules-left": ["hyprland/workspaces", "group/media"],
     "modules-center": ["clock"],
-    "modules-right": ["hyprland/submap", "group/volume", "battery", "bluetooth", "network", "cpu", "memory"],
+    "modules-right": ["hyprland/submap", "group/trayApps", "group/volume", "battery", "bluetooth", "network", "cpu", "memory"],
     "hyprland/window": {
         "max-length": 50
     },
@@ -21,6 +21,14 @@
             "default": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
             "charging": ["󰢟", "󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"]
         },
+    },
+    "custom/trayApps": {
+      "format": "",
+      "tooltip-format": "Second Plane Apps"
+    },
+    "tray": {
+      "icon-size": 21,
+      "spacing": 10
     },
     "bluetooth": {
       "format": "",
@@ -84,6 +92,18 @@
       "modules": [
         "pulseaudio",
         "pulseaudio/slider"
+      ]
+    },
+    "group/trayApps": {
+      "orientation": "inherit",
+      "drawer": {
+      "transition-duration": 300,
+      "children-class": "not-memory",
+      "transition-left-to-right": true
+    },
+      "modules": [
+        "custom/trayApps",
+        "tray"
       ]
     },
     "group/media": {
