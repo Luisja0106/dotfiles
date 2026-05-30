@@ -27,10 +27,6 @@ quick_activate = ["F1", "F2", "F3", "F4"]
 [providers]
 default = [
   "desktopapplications",
-  "calc",
-  "runner",
-  "menus",
-  "websearch",
 ]
 empty = ["desktopapplications"]
 
