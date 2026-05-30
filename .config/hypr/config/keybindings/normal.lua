@@ -21,6 +21,7 @@ hl.bind(
 	hl.dsp.exec_cmd("hyprctl activewindow | grep pid | tr -d 'pid:' | xargs kill"),
 	{ description = "Quit active window and all open instances" }
 )
+hl.bind(secondMod .. " + Q", hl.dsp.exec_cmd("wlogout"), { description = "open logout manager" })
 hl.bind(
 	mainMod .. " + F",
 	hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }),
