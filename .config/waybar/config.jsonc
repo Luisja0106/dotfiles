@@ -6,6 +6,14 @@
     "hyprland/window": {
         "max-length": 50
     },
+    "hyprland/workspaces": {
+      "on-click": "activate",
+      "on-scroll-down": "hyprctl dispatch \"hl.dsp.focus({workspace = 'e-1'})\"",
+      "on-scroll-up":   "hyprctl dispatch \"hl.dsp.focus({workspace = 'e+1'})\"",
+      "active-only": false,
+      "all-outputs": true,
+      "format": "{}"
+    },
     "battery": {
         "interval": 60,
         "format": "{capacity}% {icon}",
