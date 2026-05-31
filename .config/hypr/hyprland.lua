@@ -11,7 +11,7 @@
 require("config.auto-start")
 
 --TODO:Functions
--- require("functions")
+require("functions")
 
 --Monitors
 require("config.monitors")
