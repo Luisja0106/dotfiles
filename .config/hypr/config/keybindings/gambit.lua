@@ -1,7 +1,6 @@
 -- Switch to a submap called `resize`.
 local mainMod = "SUPER"
-local toggleGambit = mainMod .. " + SPACE"
-hl.bind(toggleGambit, hl.dsp.submap("gambit"))
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle_gambit.sh"))
 
 -- Start a submap called "resize".
 hl.define_submap("gambit", function()
@@ -18,4 +17,5 @@ hl.define_submap("gambit", function()
 	)
 
 	hl.bind("escape", hl.dsp.submap("reset"), { description = "Exit submap" })
+	hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle_gambit.sh"))
 end)
