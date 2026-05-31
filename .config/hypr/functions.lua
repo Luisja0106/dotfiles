@@ -71,6 +71,7 @@ function Activate_gamemode()
 	})
 	hl.dispatch(hl.dsp.exec_cmd("killall elephant"))
 	hl.dispatch(hl.dsp.exec_cmd("killall walker"))
+	hl.dispatch(hl.dsp.exec_cmd("tmux kill-server"))
 	hl.unbind("SUPER + CTRL + RETURN")
 	hl.unbind("SUPER + SHIFT + RETURN")
 	hl.bind("SUPER + CTRL + RETURN", hl.dsp.exec_cmd("rofi -show drun"), { description = "Open application launcher" })
@@ -91,5 +92,5 @@ function Disable_gamemode()
 	hl.dispatch(hl.dsp.exec_cmd("hyprctl reload"))
 
 	--notificationes
-	Send_notification("Gamemode Disabled", 1500, 5, "#94e2d5")
+	Send_notification("Gamemode Disabled", 1500, 5, "#94e2d5", 28)
 end
