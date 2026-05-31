@@ -37,6 +37,8 @@ alias tmuxa='tmux attach'
 #---------------------- HYPRLAND ----------------------
 #------------------------------------------------------
 alias Hyprland='start-hyprland'
+alias gamemode-activate='hyprctl eval "Activate_gamemode()'
+alias gamemode-disable='hyprctl eval "Disable_gamemode()'
 
 
 #------------------------------------------------------
