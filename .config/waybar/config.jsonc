@@ -2,7 +2,7 @@
     "layer": "top",
     "modules-left": ["hyprland/workspaces", "group/media"],
     "modules-center": ["clock"],
-    "modules-right": ["hyprland/submap", "group/trayApps", "group/volume", "battery", "bluetooth", "network", "cpu", "memory"],
+    "modules-right": ["hyprland/submap", "group/trayApps", "group/volume", "battery", "bluetooth", "network", "cpu", "memory", "custom/notification"],
     "hyprland/window": {
         "max-length": 50
     },
@@ -26,6 +26,26 @@
       "format": "",
       "tooltip-format": "Second Plane Apps"
     },
+      "custom/notification": {
+    "tooltip": true,
+    "format": "<span size='16pt'>{icon}</span>",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰪑",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪑"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
     "tray": {
       "icon-size": 21,
       "spacing": 10
@@ -64,7 +84,7 @@
         "on-click": "exec nmrs",
     },
     "clock": {
-      "format": "󰥔 {:%a, %d. %b %I:%M %p}",
+      "format": "󰥔 {:%a, %d. %b %H:%M }",
       "tooltip-format": "<tt><small>{calendar}</small></tt>",
       "calendar": {
         "format": {
