@@ -1,3 +1,5 @@
 #!/bin/bash
 
-#TODO: make this scrib using a cache file or global variable
+PATH=/run/user/$UID/variables
+FILE="$PATH/gamemode.activate"
+

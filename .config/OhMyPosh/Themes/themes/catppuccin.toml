@@ -7,7 +7,7 @@ final_space = true
 [palette]
 bg = '#1e1e2e'
 fg = '#eff1f5'
-paths = '#89b4fa'
+paths = '#94e2d5'
 pathsFg = '#11111b'
 cyan = '#89dceb'
 gray = '#313244'
