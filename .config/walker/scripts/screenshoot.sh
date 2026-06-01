@@ -4,7 +4,16 @@ option_screen="All Screen\nActive Window\nSelected Area"
 option_save="Copy to Clipboard\nSave"
 walker_cmd="walker --dmenu -n -N -H --maxheight 200"
 chosen_screen=$(echo -e $option_screen | $walker_cmd)
+
+if [[ -z "$chosen_screen" ]]; then
+  exit 0;
+fi
+
 chosen_save=$(echo -e $option_save | $walker_cmd)
+
+if [[ -z "$chosen_save" ]]; then
+  exit 0;
+fi
 
 flag_screen=""
 flag_save=""

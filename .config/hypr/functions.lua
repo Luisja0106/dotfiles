@@ -32,6 +32,7 @@ end
 
 --Funciones globales (llamables desde terminal)
 
+--send built in notifications
 function Send_notification(text, duration, icon, color, font_size)
 	table.insert(noti_queue, {
 		text = text,
@@ -45,6 +46,8 @@ function Send_notification(text, duration, icon, color, font_size)
 		process_queue()
 	end
 end
+
+--activate gamemode (optimized for gaming, remove animations, blur, change kb layout, etc)
 
 function Activate_gamemode()
 	hl.config({
@@ -86,6 +89,7 @@ function Activate_gamemode()
 	Send_notification("Gamemode Activate", time_between + 500, 5, "#94e2d5", 28)
 end
 
+--disable gamemode (restore default config, animations, blur, kb layout, etc)
 function Disable_gamemode()
 	hl.dispatch(hl.dsp.exec_cmd("elephant"))
 	hl.dispatch(hl.dsp.exec_cmd("walker --gapplication-service"))
