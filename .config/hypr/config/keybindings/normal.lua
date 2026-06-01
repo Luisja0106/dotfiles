@@ -2,7 +2,7 @@
 local terminal = "ghostty"
 local fileManager = "nemo"
 local browser = "helium-browser"
-local music = "tidal-hifi"
+local musicTUI = "kitty -T 'tidal' -e riptide"
 local launcher = "nc -U /run/user/1000/walker/walker.sock"
 local runner = "walker -s run"
 
@@ -13,7 +13,7 @@ local superCTRL = "SUPER + CTRL"
 
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal), { description = "Open terminal" })
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser), { description = "Open browser" })
-hl.bind("SUPER + ALT + T", hl.dsp.exec_cmd(music), { description = "Open music player" })
+hl.bind("SUPER + ALT + T", hl.dsp.exec_cmd(musicTUI), { description = "Open music TUI player" })
 hl.bind(mainMod .. " + Q", hl.dsp.window.close(), { description = "Close active window" })
 hl.bind(secondMod .. " + R", hl.dsp.exec_cmd("hyprctl reload"), { description = "Reload Hyprland config" })
 hl.bind(

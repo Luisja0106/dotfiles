@@ -59,6 +59,7 @@ setWorkspace("steam", 9, MatchType.initial_class)
 setWorkspace("heroic", 9, MatchType.initial_class)
 setWorkspace("net.lutris.Lutris", 9, MatchType.initial_class)
 setWorkspace("com.obsproject.Studio", 8, MatchType.initial_class)
+setWorkspace("tidal", 10, MatchType.initial_title)
 
 --utilities apps
 setUtilities("bluetui", nil, MatchType.initial_title)
@@ -66,6 +67,7 @@ setUtilities("org.pulseaudio.pavucontrol", nil, MatchType.initial_class)
 setUtilities("org.nmrs.ui", nil, MatchType.initial_class)
 setUtilities("btop", { "(monitor_w*0.6)", "(monitor_h*0.8)" }, MatchType.initial_title)
 setUtilities("htop", { "(monitor_w*0.6)", "(monitor_h*0.8)" }, MatchType.initial_title)
+setUtilities("kitty", { "(monitor_w*0.6)", "(monitor_h*0.8)" }, MatchType.title)
 
 --specific rules
 
