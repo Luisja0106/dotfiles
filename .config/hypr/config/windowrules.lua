@@ -67,7 +67,6 @@ setUtilities("org.pulseaudio.pavucontrol", nil, MatchType.initial_class)
 setUtilities("org.nmrs.ui", nil, MatchType.initial_class)
 setUtilities("btop", { "(monitor_w*0.6)", "(monitor_h*0.8)" }, MatchType.initial_title)
 setUtilities("htop", { "(monitor_w*0.6)", "(monitor_h*0.8)" }, MatchType.initial_title)
-setUtilities("kitty", { "(monitor_w*0.6)", "(monitor_h*0.8)" }, MatchType.title)
 
 --specific rules
 

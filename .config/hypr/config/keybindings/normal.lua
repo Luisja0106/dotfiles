@@ -17,6 +17,11 @@ hl.bind("SUPER + ALT + T", hl.dsp.exec_cmd(musicTUI), { description = "Open musi
 hl.bind(mainMod .. " + Q", hl.dsp.window.close(), { description = "Close active window" })
 hl.bind(secondMod .. " + R", hl.dsp.exec_cmd("hyprctl reload"), { description = "Reload Hyprland config" })
 hl.bind(
+	secondMod .. " + S",
+	hl.dsp.exec_cmd("~/.config/walker/scripts/screenshoot.sh"),
+	{ description = "Restart Hyprland" }
+)
+hl.bind(
 	secondMod .. " + Q",
 	hl.dsp.exec_cmd("hyprctl activewindow | grep pid | tr -d 'pid:' | xargs kill"),
 	{ description = "Quit active window and all open instances" }
@@ -57,16 +62,6 @@ for i = 1, 10 do
 end
 
 -- Example special workspace (scratchpad)
-hl.bind(
-	mainMod .. " + S",
-	hl.dsp.workspace.toggle_special("magic"),
-	{ description = "Toggle special workspace 'magic'" }
-)
-hl.bind(
-	mainMod .. " + SHIFT + S",
-	hl.dsp.window.move({ workspace = "special:magic" }),
-	{ description = "Move focused window to special workspace 'magic'" }
-)
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))

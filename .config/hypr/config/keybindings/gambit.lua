@@ -15,7 +15,16 @@ hl.define_submap("gambit", function()
 		hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle_gamemode.sh"),
 		{ description = "Toggle Gamemode" }
 	)
-
+	hl.bind(
+		mainMod .. " + S",
+		hl.dsp.workspace.toggle_special("magic"),
+		{ description = "Toggle special workspace 'magic'" }
+	)
+	hl.bind(
+		mainMod .. " + SHIFT + S",
+		hl.dsp.window.move({ workspace = "special:magic" }),
+		{ description = "Move focused window to special workspace 'magic'" }
+	)
 	hl.bind("escape", hl.dsp.submap("reset"), { description = "Exit submap" })
 	hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle_gambit.sh"))
 end)
