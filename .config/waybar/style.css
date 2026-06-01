@@ -25,11 +25,6 @@ window#waybar {
   color: @white;
 }
 
-#workspaces button.active {
-  background: @highlight;
-  color: black;
-  font-weight: 700;
-}
 
 #custom-trayApps,
 #custom-notification,
@@ -47,10 +42,17 @@ window#waybar {
   margin: 5px 10px 5px 0px;
 }
 
-#submap,
 #workspaces button.urgent {
   background: @urgent;
   color: @white;
+}
+
+#submap,
+#workspaces button.active {
+  background: @highlight;
+  color: black;
+  font-weight: 700;
+  transition: 0.3s ease;
 }
 
 #pulseaudio-slider {

@@ -8,7 +8,10 @@
 #---------------------- Fastfetch ---------------------
 # -----------------------------------------------------
 if [[ $(tty) == *"pts"* ]]; then
-    fastfetch 
+  if [[ -n $PS1 ]]; then
+     ~/.config/fastfetch/logos/scripts/animated-neofetch.sh 0.05
+    clear
+  fi 
 else
     echo
     if [ -f /bin/hyprctl ]; then
