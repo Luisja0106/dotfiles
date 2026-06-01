@@ -1,5 +1,5 @@
 auto_wrap_with_terminal = true
-command_install = 'parui %VALUE%'
+command_install = 'paru -S %VALUE%'
 command_remove = 'paru -R %VALUE%'
 
 [Config]
