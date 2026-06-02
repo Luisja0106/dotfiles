@@ -5,7 +5,7 @@ selection_wrap = false          # wrap list if at bottom or top
 global_argument_delimiter = "#" # query: firefox#https://benz.dev => part after delimiter will be ignored when querying. this should be the same as in the elephant config
 exact_search_prefix = "'"       # disable fuzzy searching
 disable_mouse = false           # disable mouse (on input and list only)
-debug = false                   # enables debug printing for some stuff, f.e. keybinds
+debug = true                   # enables debug printing for some stuff, f.e. keybinds
 
 [shell]
 anchor_top = true
@@ -53,6 +53,10 @@ provider = "calc"
 [[providers.prefixes]]
 prefix = "="
 provider = "playerctl"
+
+[[providers.prefixes]]
+prefix = "?"
+provider = "menus:WallpaperPicker"
 
 [providers.actions] # This will be MERGED/OVEWRITTEN with what the user specifies
 dmenu = [{ action = "select", default = true, bind = "Return" }]
@@ -134,7 +138,11 @@ clipboard = [
   { action = "remove_all", global = true, label = "clear", bind = "ctrl shift d", after = "ClearReload" },
   { action = "toggle_images", global = true, label = "toggle images", bind = "ctrl i", after = "ClearReload" },
   { action = "edit", bind = "ctrl o" },
-  ]
+]
+"menus:WallpaperPicker" = [
+  { action = "select", label = "Select", default = true, bind = "Return" },
+  { action = "prueba", label = "notify", bind = "ctrl p" },
+]
 
 [providers.sets.run]
 default = ["runner"]
