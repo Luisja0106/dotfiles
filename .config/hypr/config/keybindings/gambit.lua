@@ -10,6 +10,7 @@ hl.define_submap("gambit", function()
 	hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("playerctl next "), { description = "next song" })
 	hl.bind(mainMod .. " + H", hl.dsp.exec_cmd("playerctl previous "), { description = "previous song" })
 	hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("swaync-client -d -sw"), { description = "Toggle notifications" })
+	hl.bind(mainMod .. " + CTRL + K", hl.dsp.exec_cmd("hyprctl kill"), { description = "Kill window" })
 	hl.bind(
 		mainMod .. " + G",
 		hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle_gamemode.sh"),
