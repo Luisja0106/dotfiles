@@ -1,0 +1,8 @@
+
+cd ~/dotfilesLuffy/
+
+launch --title "Edit dotfiles" /usr/bin/nvim 
+
+new_tab View dotfiles
+
+cd ~/dotfilesLuffy/
