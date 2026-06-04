@@ -31,7 +31,11 @@ hl.define_submap("gambit", function()
 		hl.dsp.window.move({ workspace = "special:magic" }),
 		{ description = "Move focused window to special workspace 'magic'" }
 	)
-	hl.bind(mainMod .. " + ALT + SHIFT + V", hl.dsp.exec_cmd("~/.config/hypr/scripts/vnc_toggle.sh"))
+	hl.bind(
+		mainMod .. " + ALT + SHIFT + V",
+		hl.dsp.exec_cmd("~/.config/hypr/scripts/vnc_toggle.sh"),
+		{ description = "Toggle VNC server" }
+	)
 
 	hl.bind("escape", hl.dsp.submap("reset"), { description = "Exit submap" })
 	hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle_gambit.sh"))

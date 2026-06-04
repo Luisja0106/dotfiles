@@ -8,6 +8,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		-- Java adapter — works with JUnit 4, JUnit 5 and TestNG automatically
 		"rcasia/neotest-java",
+		"mrcjkb/rustaceanvim",
 	},
 	config = function()
 		require("neotest").setup({
@@ -17,6 +18,7 @@ return {
 					-- blink uses your existing jdtls+dap under the hood for debugging
 					junit_jar = nil,
 				}),
+				require("rustaceanvim.neotest"),
 			},
 
 			-- shows test results inline in the buffer as virtual text
