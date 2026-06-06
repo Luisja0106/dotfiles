@@ -1,7 +1,7 @@
 #!/bin/bash
 
 RUN_VERIFICATION_FILE="$XDG_RUNTIME_DIR/vnc_running"
-IP="localhost"
+IP=" --output=HDMI-A-1 localhost"
 
 if [ -f "$RUN_VERIFICATION_FILE" ]; then
     if killall wayvnc 2>/dev/null; then

@@ -36,6 +36,7 @@ hl.define_submap("gambit", function()
 		hl.dsp.exec_cmd("~/.config/hypr/scripts/vnc_toggle.sh"),
 		{ description = "Toggle VNC server" }
 	)
+	hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t -sw"), { description = "Toggle notifications" })
 
 	hl.bind("escape", hl.dsp.submap("reset"), { description = "Exit submap" })
 	hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle_gambit.sh"))
