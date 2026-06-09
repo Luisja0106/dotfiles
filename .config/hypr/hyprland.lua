@@ -18,14 +18,8 @@ require("config.monitors")
 --
 --Input
 require("config.input")
---
--- --TODO:gesture
--- -- require("config.getures")
---
---
 -- --TODO: colors
 -- -- require("colors")
---
 -- config
 require("config.enviroments")
 require("config.windows")
