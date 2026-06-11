@@ -31,7 +31,7 @@ default = [
 empty = ["desktopapplications"]
 
 [[providers.prefixes]]
-prefix = ";"
+prefix = "?"
 provider = "providerlist"
 
 [[providers.prefixes]]
@@ -55,7 +55,7 @@ prefix = "="
 provider = "playerctl"
 
 [[providers.prefixes]]
-prefix = "?"
+prefix = ";"
 provider = "menus:WallpaperPicker"
 
 [providers.actions] # This will be MERGED/OVEWRITTEN with what the user specifies
