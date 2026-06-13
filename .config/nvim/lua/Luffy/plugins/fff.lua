@@ -11,6 +11,7 @@ return {
 			enabled = true,
 			show_scores = true,
 		},
+		prompt = "🐺 ",
 		prompt_vim_mode = true,
 		layout = {
 			prompt_position = "top",
@@ -18,6 +19,9 @@ return {
 		keymaps = {
 			move_up = { "<Up>", "<C-p>", "<C-k>" },
 			move_down = { "<Down>", "<C-n>", "<C-j>" },
+		},
+		git = {
+			status_text_color = true,
 		},
 	},
 	keys = {

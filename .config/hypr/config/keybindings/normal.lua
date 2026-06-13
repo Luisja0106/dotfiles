@@ -21,11 +21,7 @@ hl.bind(
 	hl.dsp.exec_cmd("~/.config/walker/scripts/screenshoot.sh"),
 	{ description = "Restart Hyprland" }
 )
-hl.bind(
-	secondMod .. " + Q",
-	hl.dsp.exec_cmd("hyprctl activewindow | grep pid | tr -d 'pid:' | xargs kill"),
-	{ description = "Quit active window and all open instances" }
-)
+hl.bind(secondMod .. " + Q", hl.dsp.window.kill(), { description = "Quit active window and all open instances" })
 hl.bind(superCTRL .. " + Q", hl.dsp.exec_cmd("wlogout"), { description = "open logout manager" })
 hl.bind(
 	mainMod .. " + F",
