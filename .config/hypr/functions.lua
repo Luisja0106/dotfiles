@@ -98,3 +98,26 @@ function Disable_gamemode()
 	--notificationes
 	Send_notification("Gamemode Disabled", 1500, 5, "#94e2d5", 28)
 end
+
+function Toggle_layout_for_workspace()
+	local layouts = { "scrolling", "dwindle" }
+	local workspace = hl.get_active_workspace()
+	if hl.get_active_special_workspace() then
+		workspace = hl.get_active_special_workspace()
+	end
+	local next_layout = "dwindle"
+
+	for i = 1, #layouts do
+		if layouts[i] == workspace.tiled_layout then
+			local next_index = (i % #layouts) + 1
+			next_layout = layouts[next_index]
+			break
+		end
+	end
+
+	if workspace.special then
+		hl.workspace_rule({ workspace = tostring(workspace.name), layout = next_layout })
+	else
+		hl.workspace_rule({ workspace = tostring(workspace.id), layout = next_layout })
+	end
+end

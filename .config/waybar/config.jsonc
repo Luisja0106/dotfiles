@@ -101,6 +101,7 @@
         "scroll-step": 1,
         "ignored-sinks": ["Easy Effects Sink"],
         "on-click": "pavucontrol",
+        "on-click-right": "easyeffects"
     },
     "pulseaudio/slider": {
         "min": 0,

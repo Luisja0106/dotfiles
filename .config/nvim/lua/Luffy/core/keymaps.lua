@@ -14,6 +14,7 @@ keymap("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move lines down in visual selecti
 keymap("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search hl" })
 -- delter character without copy in theclipboard
 keymap("n", "x", '"_x', opts)
+keymap("v", "x", '"_x', opts)
 -- replace a wordl globally
 keymap(
 	"n",
