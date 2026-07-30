@@ -57,7 +57,8 @@
 
       [blocks.segments.options.mapped_locations]
         '~/.config' = ' '
-        '~/dotfiles' = ' '
+        '~/dotfiles' = '󰴋 '
+        '~/dotfilesLuffy' = '󰴋 '
 
   [[blocks.segments]]
     leading_diamond = '<transparent,background></>'

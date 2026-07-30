@@ -55,6 +55,7 @@ rule({
 --set app to workspace
 setWorkspace("helium", 1, MatchType.initial_class)
 setWorkspace("tidal-hifi", 10, MatchType.initial_class)
+setWorkspace("Spotify", 10, MatchType.initial_class)
 setWorkspace("steam", 9, MatchType.initial_class)
 setWorkspace("heroic", 9, MatchType.initial_class)
 setWorkspace("net.lutris.Lutris", 9, MatchType.initial_class)
