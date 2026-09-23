@@ -8,7 +8,7 @@ return {
 ██║        ██║███╗██║   ██║  ██║
 ███████╗██╗╚███╔███╔╝██╗██████╔╝
 ╚══════╝╚═╝ ╚══╝╚══╝ ╚═╝╚═════╝ 
-   //Let's Make great things   
+   //Let's Make It True   
     ]],
 	},
 	sections = {

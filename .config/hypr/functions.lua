@@ -49,6 +49,15 @@ end
 
 --activate gamemode (optimized for gaming, remove animations, blur, change kb layout, etc)
 
+function switch_to_qwerty()
+	hl.config({
+		input = {
+			kb_layout = "latam",
+			kb_variant = "",
+		},
+	})
+end
+
 function Activate_gamemode()
 	hl.config({
 		--acciones

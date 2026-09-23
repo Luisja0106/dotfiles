@@ -3,7 +3,7 @@ local terminal = "ghostty"
 local fileManager = "nemo"
 local browser = "helium-browser"
 -- local music = "kitty -T 'tidal' -e riptide"
-local music = "spotify"
+local music = "tidal-hifi"
 local launcher = "nc -U /run/user/1000/walker/walker.sock"
 local runner = "walker -s run"
 
