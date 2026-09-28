@@ -49,13 +49,14 @@ end
 
 --activate gamemode (optimized for gaming, remove animations, blur, change kb layout, etc)
 
-function switch_to_qwerty()
+function Switch_to_qwerty()
 	hl.config({
 		input = {
 			kb_layout = "latam",
 			kb_variant = "",
 		},
 	})
+	Send_notification("Switch to QWERTY (latam)", 1000, 1, "#94e2d5")
 end
 
 function Activate_gamemode()
@@ -83,7 +84,7 @@ function Activate_gamemode()
 	})
 	hl.dispatch(hl.dsp.exec_cmd("killall elephant"))
 	hl.dispatch(hl.dsp.exec_cmd("killall walker"))
-	hl.dispatch(hl.dsp.exec_cmd("tmux kill-server"))
+	hl.dispatch(hl.dsp.exec_cmd("herdr server stop"))
 	hl.unbind("SUPER + CTRL + RETURN")
 	hl.unbind("SUPER + SHIFT + RETURN")
 	hl.bind("SUPER + CTRL + RETURN", hl.dsp.exec_cmd("rofi -show drun"), { description = "Open application launcher" })
@@ -129,4 +130,5 @@ function Toggle_layout_for_workspace()
 	else
 		hl.workspace_rule({ workspace = tostring(workspace.id), layout = next_layout })
 	end
+	Send_notification("Switch layout to " .. next_layout, 1500, 5, "#94e2d5", 28)
 end

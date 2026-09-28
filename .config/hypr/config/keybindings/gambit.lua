@@ -17,6 +17,11 @@ hl.define_submap("gambit", function()
 		{ description = "Toggle Gamemode" }
 	)
 	hl.bind(
+		mainMod .. " + CTRL + Q",
+		hl.dsp.exec_cmd("~/.config/hypr/scripts/toggle_qwerty.sh"),
+		{ description = "Toggle Qwerty" }
+	)
+	hl.bind(
 		mainMod .. " + SHIFT + K",
 		hl.dsp.exec_cmd("~/.config/hypr/scripts/get_keymaps.sh"),
 		{ description = "Show Keybinds" }
