@@ -8,7 +8,9 @@ return {
 ██║        ██║███╗██║   ██║  ██║
 ███████╗██╗╚███╔███╔╝██╗██████╔╝
 ╚══════╝╚═╝ ╚══╝╚══╝ ╚═╝╚═════╝ 
-   //Let's Make It True   
+
+// Luck is what happens when
+  preparation meets opportunity.
     ]],
 	},
 	sections = {
