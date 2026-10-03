@@ -1,40 +1,50 @@
 return {
-	{
-		"nvim-treesitter/nvim-treesitter",
-		-- event = { "BufReadPre", "BufNewFile" },
-		build = ":TSUpdate",
-		-- config = function()
-		-- local treesitter = require("nvim-treesitter.configs")
+	"nvim-treesitter/nvim-treesitter",
+	branch = "main",
+	lazy = false,
+	build = ":TSUpdate",
+	config = function()
+		local ts = require("nvim-treesitter")
 
-		-- 		treesitter.setup({
-		-- 			highlight = { enabled = true },
-		-- 			--enable auto-indentation
-		-- 			indent = { enabled = true },
-		-- 			--ensure these languages parsers are installed
-		-- 			ensure_installed = {
-		-- 				"json",
-		-- 				"yaml",
-		-- 				"css",
-		-- 				"python",
-		-- 				"javascript",
-		-- 				"bash",
-		-- 				"lua",
-		-- 				"vim",
-		-- 				"gitignore",
-		-- 				"vimdoc",
-		-- 				"java",
-		-- 			},
-		-- 			--incremental selection
-		-- 			incremental_selection = {
-		-- 				enable = true,
-		-- 				keymaps = {
-		-- 					init_selection = "<A-space>",
-		-- 					node_incremental = "<A-space>",
-		-- 				},
-		-- 			},
-		-- 			additional_vim_regex_highlighting = false,
-		-- 		})
-		-- 	end,
-		-- },
-	},
+		-- 1. Plugin setup (only for optional settings)
+		ts.setup({})
+
+		-- 2. Install the parsers (runs in the background)
+		ts.install({
+			"json",
+			"css",
+			"python",
+			"javascript",
+			"lua",
+			"gitignore",
+			"java",
+			"typescript",
+			"tsx",
+			"html",
+		})
+
+		-- 3. Start highlighting and indentation for these file types
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = {
+				"json",
+				"css",
+				"python",
+				"javascript",
+				"javascriptreact",
+				"lua",
+				"gitignore",
+				"java",
+				"typescript",
+				"typescriptreact",
+				"html",
+			},
+			callback = function(args)
+				-- Highlighting (pcall ignores the error if the parser is not ready yet)
+				pcall(vim.treesitter.start, args.buf)
+
+				-- Indentation
+				vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end,
+		})
+	end,
 }

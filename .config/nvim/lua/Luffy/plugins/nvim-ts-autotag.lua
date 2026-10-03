@@ -11,5 +11,5 @@ return {
 		})
 	end,
 
-	ft = { "html", "astro" },
+	ft = { "html", "astro", "typescriptreact", "javascriptreact" },
 }

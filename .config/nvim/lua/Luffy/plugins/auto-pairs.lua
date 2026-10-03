@@ -8,6 +8,7 @@ return {
 
 		autopairs.setup({
 			check_ts = true,
+			enable_check_bracket_line = true,
 			ts_config = {
 				lua = { "String" },
 				javascript = { "template_string" },
