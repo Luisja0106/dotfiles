@@ -1,7 +1,7 @@
 return {
 	{
 		"zbirenbaum/copilot.lua",
-		event = "InsertEnter",
+		cmd = "Copilot enable",
 		config = function()
 			require("copilot").setup({
 				suggestion = {
