@@ -1,5 +1,6 @@
 --apps
 local terminal = "ghostty"
+local multiplexer = "ghostty -e ~/.config/scripts/herdr_session_list.sh"
 local fileManager = "nemo"
 local browser = "helium-browser"
 -- local music = "kitty -T 'tidal' -e riptide"
@@ -11,10 +12,12 @@ local runner = "walker -s run"
 local mainMod = "SUPER" -- Sets super key as main modifier
 local secondMod = "SUPER + SHIFT"
 local superCTRL = "SUPER + CTRL"
+local superALT = mainMod .. " + ALT"
 
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal), { description = "Open terminal" })
+hl.bind(superALT .. " + RETURN", hl.dsp.exec_cmd(multiplexer), { description = "Open terminal (whit a multiplexer)" })
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser), { description = "Open browser" })
-hl.bind("SUPER + ALT + T", hl.dsp.exec_cmd(music), { description = "Open music TUI player" })
+hl.bind(superALT .. " + T", hl.dsp.exec_cmd(music), { description = "Open music TUI player" })
 hl.bind(mainMod .. " + Q", hl.dsp.window.close(), { description = "Close active window" })
 hl.bind(secondMod .. " + R", hl.dsp.exec_cmd("hyprctl reload"), { description = "Reload Hyprland config" })
 hl.bind(

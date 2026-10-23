@@ -22,23 +22,6 @@ function y() {
 eval "$(zoxide init zsh)"
 
 #------------------------------------------------------
-#--------- zsh autosuggestion & highlighting ----------
-#------------------------------------------------------
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-HISTFILE=$HOME/.zhistory
-SAVEHIST=1000
-HISTSIZE=999
-setopt share_history
-setopt hist_expire_dups_first
-setopt hist_ignore_dups
-setopt hist_verify
-
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
-
-#------------------------------------------------------
 #------------------------ fzf -------------------------
 #------------------------------------------------------
 eval "$(fzf --zsh)"
@@ -85,3 +68,24 @@ _fzf_comprun() {
 #--------------------- the fuck -----------------------
 #------------------------------------------------------
 eval $(thefuck --alias)
+
+#------------------------------------------------------
+#--------------------- atuin --------------------------
+#------------------------------------------------------
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
+
+#------------------------------------------------------
+#--------- zsh autosuggestion & highlighting ----------
+#------------------------------------------------------
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+HISTFILE=$HOME/.zhistory
+SAVEHIST=1000
+HISTSIZE=999
+setopt share_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_verify

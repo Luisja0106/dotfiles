@@ -6,3 +6,5 @@ background-image = ~/.config/ghostty/Images/wolfIco.png
 background-image-position = center
 background-image-opacity = 0.6
 background-image-fit = none
+window-padding-x = 0
+window-padding-y = 0

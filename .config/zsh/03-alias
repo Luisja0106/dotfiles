@@ -46,3 +46,9 @@ alias gamemode-disable='hyprctl eval "Disable_gamemode()'
 #------------------------------------------------------
 alias walker-service='walker --gapplication-service'
 
+
+#------------------------------------------------------
+#---------------------- Multiplexer -------------------
+#------------------------------------------------------
+alias herdra='~/.config/scripts/herdr_session_list.sh'
+
