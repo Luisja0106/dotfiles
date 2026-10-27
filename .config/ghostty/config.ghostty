@@ -1,18 +1,13 @@
-theme = Catppuccin Mocha
-font-family = MesloLGLDZ Nerd Font
+theme = Nord
+font-family = Jetbrains Mono Nerd Font
 font-size = 16
-#background-opacity = 0.95
-#background-blur-radius = 20
-#window-padding-x = 0
-#window-padding-y = 0
-
 # window
 
-background-opacity = 0.85
+background-opacity = 0.90
 background-blur-radius = 20
 background-image = ~/.config/ghostty/Images/wolfIco.png
 background-image-position = center
-background-image-opacity = 0.6
+background-image-opacity = 0.3
 background-image-fit = none
 
 window-decoration = true
