@@ -52,3 +52,8 @@ alias walker-service='walker --gapplication-service'
 #------------------------------------------------------
 alias herdra='~/.config/scripts/herdr_session_list.sh'
 
+#------------------------------------------------------
+#---------------------- Themes ------------------------
+#------------------------------------------------------
+alias themes='theme-switcher pick'
+

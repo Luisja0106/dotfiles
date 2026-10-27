@@ -16,6 +16,7 @@ import glob
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -502,12 +503,72 @@ def list_themes(json_format: bool = False, names_only: bool = False, verbose: bo
     print()
 
 
+def pick_theme():
+    """
+    Launches an interactive fuzzy picker with live Truecolor palette preview.
+    Uses 'tv' (Television) by default, or falls back to 'fzf'.
+    """
+    data = load_themes_data()
+    themes = data.get("themes", {})
+    if not themes:
+        sys.exit("[Error] No themes configured in themes.json.")
+
+    selected_theme = None
+
+    # 1. Try 'tv' (Television) with live preview panel
+    if shutil.which("tv"):
+        try:
+            cmd = [
+                "tv",
+                "-s", "theme-switcher list --names-only",
+                "-p", "theme-switcher preview {}",
+            ]
+            res = subprocess.run(cmd, stdout=subprocess.PIPE, text=True, check=False)
+            if res.returncode == 0 and res.stdout.strip():
+                selected_theme = res.stdout.strip().splitlines()[-1].strip()
+        except Exception:
+            selected_theme = None
+
+    # 2. Fallback to 'fzf' if tv is not available or errored
+    if not selected_theme and shutil.which("fzf"):
+        try:
+            fzf_cmd = [
+                "fzf",
+                "--reverse",
+                "--prompt=Select Theme: ",
+                "--preview=theme-switcher preview {}",
+            ]
+            data_proc = subprocess.run(
+                ["theme-switcher", "list", "--names-only"],
+                stdout=subprocess.PIPE,
+                text=True,
+                check=False
+            )
+            res = subprocess.run(
+                fzf_cmd,
+                input=data_proc.stdout,
+                stdout=subprocess.PIPE,
+                text=True,
+                check=False
+            )
+            if res.returncode == 0 and res.stdout.strip():
+                selected_theme = res.stdout.strip()
+        except Exception:
+            selected_theme = None
+
+    if selected_theme:
+        if selected_theme in themes:
+            apply_theme(selected_theme)
+        else:
+            sys.exit(f"[Error] Selected theme '{selected_theme}' not recognized.")
+
+
 def main():
     """
     CLI Entrypoint and Argument Parser.
     """
     # Shorthand support: if first argument is a theme name, treat as 'apply <name>'
-    valid_commands = {"apply", "switch", "set", "list", "ls", "current", "status", "preview", "view", "reload", "r", "-h", "--help"}
+    valid_commands = {"apply", "switch", "set", "list", "ls", "current", "status", "preview", "view", "reload", "r", "pick", "p", "-h", "--help"}
     if len(sys.argv) > 1 and sys.argv[1] not in valid_commands and not sys.argv[1].startswith("-"):
         sys.argv.insert(1, "apply")
 
@@ -517,6 +578,8 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
+  theme-switcher                        # Interactive picker (uses tv / fzf)
+  theme-switcher pick                   # Interactive picker with live preview
   theme-switcher apply nord             # Apply the Nord theme
   theme-switcher catppuccin             # Shorthand for applying a theme
   theme-switcher apply nord --dry-run   # Test without making changes
@@ -529,6 +592,9 @@ Examples:
     )
 
     subparsers = parser.add_subparsers(dest="command", help="Command to execute")
+
+    # Command: pick
+    subparsers.add_parser("pick", aliases=["p"], help="Interactive fuzzy theme picker with live preview (tv/fzf)")
 
     # Command: apply
     apply_parser = subparsers.add_parser("apply", aliases=["switch", "set"], help="Apply a theme")
@@ -556,16 +622,22 @@ Examples:
 
     args, unknown = parser.parse_known_args()
 
-    # Handle shorthand: theme-switcher <name> directly
+    # Handle shorthand: theme-switcher <name> directly or interactive pick
     if not args.command:
         if unknown:
             theme_id = unknown[0]
             apply_theme(theme_id)
             return
+        if sys.stdin.isatty():
+            pick_theme()
+            return
         list_themes()
         return
 
-    if args.command in ("apply", "switch", "set"):
+    if args.command in ("pick", "p"):
+        pick_theme()
+
+    elif args.command in ("apply", "switch", "set"):
         target_theme = args.theme or (unknown[0] if unknown else None)
         if not target_theme:
             sys.exit("[Error] Please specify a theme name. Run 'theme-switcher list' to see available themes.")
