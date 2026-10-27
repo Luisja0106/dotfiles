@@ -1,3 +1,7 @@
+local colors_ok, colors = pcall(require, "colors")
+local active_border = (colors_ok and colors and colors.border_active) or "rgba(136, 192, 208, 0.9)"
+local inactive_border = (colors_ok and colors and colors.border_inactive) or "rgba(89, 89, 89, 0.7)"
+
 hl.config({
 	general = {
 		gaps_in = 5,
@@ -6,8 +10,8 @@ hl.config({
 		border_size = 3,
 
 		col = {
-			-- active_border = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 },
-			inactive_border = "rgba(595959aa)",
+			active_border = active_border,
+			inactive_border = inactive_border,
 		},
 
 		-- Set to true to enable resizing windows by clicking and dragging on borders and gaps

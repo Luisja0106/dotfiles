@@ -12,3 +12,8 @@
 .themes/nord/wezterm/colorScheme.lua
 .config/wezterm/lua/colorScheme.lua
 .config/yazi/flavors/rose-pine.yazi
+.config/ghostty/current-theme.conf
+.config/zsh/current-theme.zsh
+.config/tmux/current-theme.conf
+.config/hypr/colors.lua
+.config/theme-active/

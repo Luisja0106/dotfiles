@@ -1,4 +1,4 @@
-theme = Nord
+config-file = ~/.config/ghostty/current-theme.conf
 font-family = Jetbrains Mono Nerd Font
 font-size = 16
 # window

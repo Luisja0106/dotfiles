@@ -1,0 +1,233 @@
+{
+  "default": "nord",
+  "themes": {
+    "catppuccin": {
+      "display_name": "Catppuccin Mocha",
+      "icon": "palette",
+      "description": "Soothing pastel dark theme",
+      "colors": {
+        "bg": "#1e1e2e",
+        "fg": "#cdd6f4",
+        "accent": "#89b4fa",
+        "highlight": "#94e2d5",
+        "surface": "#313244",
+        "surface_variant": "#45475a",
+        "muted": "#6c7086",
+        "urgent": "#f38ba8",
+        "error": "#f38ba8",
+        "warning": "#f9e2af",
+        "success": "#a6e3a1",
+        "dark_9": "#11111b",
+        "dark_8": "#181825",
+        "dark_7": "#313244",
+        "dark_5": "#45475a",
+        "white": "#ffffff",
+        "border_active": "rgba(148, 226, 213, 0.9)",
+        "border_inactive": "rgba(69, 71, 90, 0.7)"
+      },
+      "apps": {
+        "ghostty": "Catppuccin Mocha",
+        "nvim": "catppuccin-mocha",
+        "herdr": "catppuccin",
+        "bat": "Catppuccin Mocha",
+        "yazi_flavor": "catppuccin-mocha",
+        "ohmyposh_palette": "catppuccin.toml",
+        "tmux": {
+          "gray_light": "#cdd6f4",
+          "gray_medium": "#181825",
+          "gray_dark": "#11111b",
+          "green_soft": "#a6e3a1",
+          "blue_muted": "#89dceb",
+          "cyan_soft": "#94e2d5"
+        },
+        "fzf": {
+          "bg_plus": "#313244",
+          "bg": "#1e1e2e",
+          "spinner": "#f5e0dc",
+          "hl": "#f38ba8",
+          "fg": "#cdd6f4",
+          "header": "#f38ba8",
+          "info": "#cba6f7",
+          "pointer": "#f5e0dc",
+          "marker": "#b4befe",
+          "fg_plus": "#cdd6f4",
+          "prompt": "#cba6f7",
+          "hl_plus": "#f38ba8",
+          "selected_bg": "#45475a",
+          "border": "#6c7086"
+        }
+      }
+    },
+    "nord": {
+      "display_name": "Nord",
+      "icon": "snowflake",
+      "description": "Arctic, north-bluish clean theme",
+      "colors": {
+        "bg": "#2e3440",
+        "fg": "#d8dee9",
+        "accent": "#88c0d0",
+        "highlight": "#81a1c1",
+        "surface": "#3b4252",
+        "surface_variant": "#434c5e",
+        "muted": "#4c566a",
+        "urgent": "#bf616a",
+        "error": "#bf616a",
+        "warning": "#ebcb8b",
+        "success": "#a3be8c",
+        "dark_9": "#242933",
+        "dark_8": "#2e3440",
+        "dark_7": "#3b4252",
+        "dark_5": "#434c5e",
+        "white": "#eceff4",
+        "border_active": "rgba(136, 192, 208, 0.9)",
+        "border_inactive": "rgba(76, 86, 106, 0.7)"
+      },
+      "apps": {
+        "ghostty": "Nord",
+        "nvim": "nord",
+        "herdr": "nord",
+        "bat": "Nord",
+        "yazi_flavor": "nord",
+        "ohmyposh_palette": "nord.toml",
+        "tmux": {
+          "gray_light": "#d8dee9",
+          "gray_medium": "#3b4252",
+          "gray_dark": "#2e3440",
+          "green_soft": "#a3be8c",
+          "blue_muted": "#81a1c1",
+          "cyan_soft": "#88c0d0"
+        },
+        "fzf": {
+          "bg_plus": "#3b4252",
+          "bg": "#2e3440",
+          "spinner": "#88c0d0",
+          "hl": "#bf616a",
+          "fg": "#d8dee9",
+          "header": "#bf616a",
+          "info": "#81a1c1",
+          "pointer": "#88c0d0",
+          "marker": "#88c0d0",
+          "fg_plus": "#eceff4",
+          "prompt": "#81a1c1",
+          "hl_plus": "#bf616a",
+          "selected_bg": "#434c5e",
+          "border": "#4c566a"
+        }
+      }
+    },
+    "rose-pine": {
+      "display_name": "Rosé Pine",
+      "icon": "flower",
+      "description": "Soho vibes and warm dark tones",
+      "colors": {
+        "bg": "#191724",
+        "fg": "#e0def4",
+        "accent": "#ebbcba",
+        "highlight": "#9ccfd8",
+        "surface": "#1f1d2e",
+        "surface_variant": "#26233a",
+        "muted": "#6e6a86",
+        "urgent": "#eb6f92",
+        "error": "#eb6f92",
+        "warning": "#f6c177",
+        "success": "#31748f",
+        "dark_9": "#14121f",
+        "dark_8": "#191724",
+        "dark_7": "#1f1d2e",
+        "dark_5": "#26233a",
+        "white": "#e0def4",
+        "border_active": "rgba(235, 188, 186, 0.9)",
+        "border_inactive": "rgba(110, 106, 134, 0.7)"
+      },
+      "apps": {
+        "ghostty": "Rose Pine",
+        "nvim": "rose-pine-main",
+        "herdr": "rose-pine",
+        "bat": "base16",
+        "yazi_flavor": "rose-pine",
+        "ohmyposh_palette": "rose-pine.toml",
+        "tmux": {
+          "gray_light": "#e0def4",
+          "gray_medium": "#26233a",
+          "gray_dark": "#191724",
+          "green_soft": "#9ccfd8",
+          "blue_muted": "#c4a7e7",
+          "cyan_soft": "#ebbcba"
+        },
+        "fzf": {
+          "bg_plus": "#26233a",
+          "bg": "#191724",
+          "spinner": "#ebbcba",
+          "hl": "#eb6f92",
+          "fg": "#e0def4",
+          "header": "#eb6f92",
+          "info": "#c4a7e7",
+          "pointer": "#ebbcba",
+          "marker": "#ebbcba",
+          "fg_plus": "#e0def4",
+          "prompt": "#c4a7e7",
+          "hl_plus": "#eb6f92",
+          "selected_bg": "#2a283e",
+          "border": "#6e6a86"
+        }
+      }
+    },
+    "tokyo-night": {
+      "display_name": "Tokyo Night",
+      "icon": "moon",
+      "description": "Neon Tokyo dark theme",
+      "colors": {
+        "bg": "#1a1b26",
+        "fg": "#c0caf5",
+        "accent": "#7aa2f7",
+        "highlight": "#7dcfff",
+        "surface": "#24283b",
+        "surface_variant": "#292e42",
+        "muted": "#565f89",
+        "urgent": "#f7768e",
+        "error": "#f7768e",
+        "warning": "#e0af68",
+        "success": "#9ece6a",
+        "dark_9": "#16161e",
+        "dark_8": "#1a1b26",
+        "dark_7": "#24283b",
+        "dark_5": "#292e42",
+        "white": "#c0caf5",
+        "border_active": "rgba(122, 162, 247, 0.9)",
+        "border_inactive": "rgba(86, 95, 137, 0.7)"
+      },
+      "apps": {
+        "ghostty": "TokyoNight",
+        "nvim": "tokyonight-moon",
+        "herdr": "tokyo-night",
+        "bat": "TwoDark",
+        "yazi_flavor": "tokyo-night",
+        "ohmyposh_palette": "tokyo_night.toml",
+        "tmux": {
+          "gray_light": "#c0caf5",
+          "gray_medium": "#24283b",
+          "gray_dark": "#16161e",
+          "green_soft": "#9ece6a",
+          "blue_muted": "#7dcfff",
+          "cyan_soft": "#7aa2f7"
+        },
+        "fzf": {
+          "bg_plus": "#24283b",
+          "bg": "#1a1b26",
+          "spinner": "#7dcfff",
+          "hl": "#f7768e",
+          "fg": "#c0caf5",
+          "header": "#f7768e",
+          "info": "#bb9af7",
+          "pointer": "#7dcfff",
+          "marker": "#7aa2f7",
+          "fg_plus": "#c0caf5",
+          "prompt": "#bb9af7",
+          "hl_plus": "#f7768e",
+          "selected_bg": "#292e42",
+          "border": "#565f89"
+        }
+      }
+    }
+  }
+}
