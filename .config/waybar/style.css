@@ -5,7 +5,7 @@
 @define-color dark-5 rgb(88, 91, 112);
 @define-color white #ffffff;
 @define-color urgent rgb(243, 139, 168);
-
+/*@import url("file:///home/luffy/.config/theme-generated/waybar-colors.css"); */
 * {
   /* `otf-font-awesome` is required to be installed for icons */
   font-family: JetBrainsMono Nerd Font Propo;

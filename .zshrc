@@ -14,3 +14,4 @@ for f in ~/.config/zsh/*; do
   fi
 done
     
+export PATH="$HOME/.local/bin:$PATH"

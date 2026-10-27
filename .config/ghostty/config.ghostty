@@ -1,10 +1,24 @@
 theme = Catppuccin Mocha
 font-family = MesloLGLDZ Nerd Font
 font-size = 16
-background-opacity = 1
+#background-opacity = 0.95
+#background-blur-radius = 20
+#window-padding-x = 0
+#window-padding-y = 0
+
+# window
+
+background-opacity = 0.85
+background-blur-radius = 20
 background-image = ~/.config/ghostty/Images/wolfIco.png
 background-image-position = center
 background-image-opacity = 0.6
 background-image-fit = none
-window-padding-x = 0
-window-padding-y = 0
+
+window-decoration = true
+window-padding-color = extend
+window-step-resize = false
+window-padding-balance = true
+window-height = 100
+window-width = 100
+gtk-tabs-location = hidden
