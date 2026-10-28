@@ -9,6 +9,7 @@ Terminal = false
 
 local STATE_FILE = os.getenv("XDG_RUNTIME_DIR") .. "/walker_wallpaper_route"
 local REFRESH_CMD = " && walker -m menus:" .. Name
+local THEME_SWITCHER = os.getenv("HOME") .. "/.local/bin/theme-switcher"
 
 local function getPath(actual)
 	local file = io.open(STATE_FILE, "r")
@@ -66,9 +67,10 @@ local function findWallpapers(file_handle, entries)
 				Subtext = "Wallpaper",
 				Value = wallpaper_path,
 				Actions = {
-					select = "awww img --transition-type random --transition-fps 144 "
+					select = THEME_SWITCHER
+						.. " wallpaper '"
 						.. wallpaper_path
-						.. " && rm -f "
+						.. "' && rm -f "
 						.. STATE_FILE,
 				},
 				Preview = wallpaper_path,
@@ -95,7 +97,7 @@ function GetEntries()
 	local file_handle = io.popen(
 		"find '"
 			.. currentDir
-			.. "' -maxdepth 1 -type f \\( -name '*.jpg' -o -name '*.png' -o -name '*.jpeg' \\) | sort"
+			.. "' -maxdepth 1 -type f \\( -name '*.jpg' -o -name '*.png' -o -name '*.jpeg' -o -name '*.webp' \\) | sort"
 	) --find wallpapers
 	if file_handle then
 		findWallpapers(file_handle, entries)

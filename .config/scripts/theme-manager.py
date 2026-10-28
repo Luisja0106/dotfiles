@@ -379,24 +379,17 @@ def preview_theme_palette(theme_id: str, theme_data: dict, is_active: bool = Fal
 # ==============================================================================
 # 7. MAIN LOGIC & COMMAND DISPATCHER
 # ==============================================================================
-def apply_theme(
+def apply_theme_object(
     theme_id: str,
+    theme: dict,
     dry_run: bool = False,
     no_reload: bool = False,
     only_apps: list[str] | None = None,
     silent: bool = False,
 ):
     """
-    Main orchestrator: loads the theme, writes all target files, and triggers reloads.
+    Core orchestrator: writes all target files from a theme dict and triggers reloads.
     """
-    data = load_themes_data()
-    themes = data.get("themes", {})
-
-    if theme_id not in themes:
-        available = ", ".join(themes.keys())
-        sys.exit(f"[Error] Unknown theme '{theme_id}'.\nAvailable themes: {available}")
-
-    theme = themes[theme_id]
     colors = theme["colors"]
     apps = theme["apps"]
 
@@ -464,6 +457,194 @@ def apply_theme(
 
     if not silent:
         print(f"✓ Theme \033[1m{theme['display_name']}\033[0m applied successfully.\n")
+
+
+def apply_theme(
+    theme_id: str,
+    dry_run: bool = False,
+    no_reload: bool = False,
+    only_apps: list[str] | None = None,
+    silent: bool = False,
+):
+    """
+    Loads a theme by ID from themes.json and applies it.
+    """
+    data = load_themes_data()
+    themes = data.get("themes", {})
+
+    if theme_id not in themes:
+        available = ", ".join(themes.keys())
+        sys.exit(f"[Error] Unknown theme '{theme_id}'.\nAvailable themes: {available}")
+
+    apply_theme_object(
+        theme_id=theme_id,
+        theme=themes[theme_id],
+        dry_run=dry_run,
+        no_reload=no_reload,
+        only_apps=only_apps,
+        silent=silent,
+    )
+
+
+def detect_theme_from_path(wallpaper_path: Path) -> str | None:
+    """
+    Checks if a wallpaper image belongs to a predefined theme directory or has theme tags.
+    """
+    data = load_themes_data()
+    dirs_map = data.get("wallpaper_dirs", {})
+
+    # 1. Check folder names in path
+    for part in wallpaper_path.parts:
+        part_lower = part.lower()
+        if part_lower in dirs_map:
+            return dirs_map[part_lower]
+
+    # 2. Check filename keywords
+    filename_lower = wallpaper_path.name.lower()
+    for keyword, theme_id in dirs_map.items():
+        if keyword in filename_lower:
+            return theme_id
+
+    return None
+
+
+def matugen_extract_palette(wallpaper_path: Path) -> dict | None:
+    """
+    Extracts a dynamic Material Design dark palette from an image using matugen.
+    """
+    if not shutil.which("matugen"):
+        return None
+
+    cmd = [
+        "matugen", "image", str(wallpaper_path),
+        "--source-color-index", "0",
+        "--mode", "dark",
+        "--json", "hex",
+    ]
+    try:
+        res = subprocess.run(cmd, capture_output=True, text=True, check=False)
+        if res.returncode != 0:
+            return None
+        data = json.loads(res.stdout)
+        colors = data.get("colors", {})
+        if not colors:
+            return None
+
+        def get_c(key, default="#ffffff"):
+            node = colors.get(key, {})
+            if isinstance(node, dict):
+                return node.get("default", {}).get("color", default)
+            return default
+
+        bg = get_c("background", "#121212")
+        fg = get_c("on_background", "#e0e0e0")
+        accent = get_c("primary", "#89b4fa")
+        highlight = get_c("secondary", "#94e2d5")
+        surface = get_c("surface_container", "#1e1e1e")
+        surface_variant = get_c("surface_container_high", "#2d2d2d")
+        muted = get_c("outline", "#6c7086")
+        urgent = get_c("error", "#f38ba8")
+        dark_9 = get_c("surface_dim", bg)
+        dark_8 = get_c("surface_container_low", surface)
+        dark_7 = surface
+        dark_5 = surface_variant
+
+        r_acc, g_acc, b_acc = hex_to_rgb(accent)
+        r_mut, g_mut, b_mut = hex_to_rgb(muted)
+
+        return {
+            "display_name": f"Matugen ({wallpaper_path.stem})",
+            "icon": "image",
+            "description": f"Dynamic palette from {wallpaper_path.name}",
+            "colors": {
+                "bg": bg,
+                "fg": fg,
+                "accent": accent,
+                "highlight": highlight,
+                "surface": surface,
+                "surface_variant": surface_variant,
+                "muted": muted,
+                "urgent": urgent,
+                "error": urgent,
+                "warning": get_c("tertiary", "#f9e2af"),
+                "success": get_c("primary_fixed", "#a6e3a1"),
+                "dark_9": dark_9,
+                "dark_8": dark_8,
+                "dark_7": dark_7,
+                "dark_5": dark_5,
+                "white": "#ffffff",
+                "border_active": f"rgba({r_acc}, {g_acc}, {b_acc}, 0.9)",
+                "border_inactive": f"rgba({r_mut}, {g_mut}, {b_mut}, 0.7)",
+            },
+            "apps": {
+                "ghostty": "Catppuccin Mocha",
+                "nvim": "catppuccin-mocha",
+                "herdr": "catppuccin",
+                "bat": "base16",
+                "yazi_flavor": "catppuccin-mocha",
+                "ohmyposh_palette": "catppuccin.toml",
+                "tmux": {
+                    "gray_light": fg,
+                    "gray_medium": surface_variant,
+                    "gray_dark": bg,
+                    "green_soft": get_c("primary_fixed", "#a6e3a1"),
+                    "blue_muted": highlight,
+                    "cyan_soft": accent,
+                },
+                "fzf": {
+                    "bg_plus": surface,
+                    "bg": bg,
+                    "spinner": accent,
+                    "hl": urgent,
+                    "fg": fg,
+                    "header": urgent,
+                    "info": highlight,
+                    "pointer": accent,
+                    "marker": accent,
+                    "fg_plus": fg,
+                    "prompt": accent,
+                    "hl_plus": urgent,
+                    "selected_bg": surface_variant,
+                    "border": muted,
+                },
+            },
+        }
+    except Exception as err:
+        print(f"[Warning] Matugen extraction failed: {err}", file=sys.stderr)
+        return None
+
+
+def handle_wallpaper(wallpaper_path_str: str):
+    """
+    Sets the wallpaper via awww, detects predefined themes or extracts with matugen,
+    and applies the theme across all applications seamlessly.
+    """
+    wp_path = Path(wallpaper_path_str).expanduser().resolve()
+    if not wp_path.exists():
+        sys.exit(f"[Error] Wallpaper file not found: {wp_path}")
+
+    # 1. Trigger wallpaper transition using awww
+    if shutil.which("awww"):
+        try:
+            subprocess.run([
+                "awww", "img",
+                "--transition-type", "random",
+                "--transition-fps", "144",
+                str(wp_path),
+            ], check=False, stderr=subprocess.DEVNULL)
+        except Exception:
+            pass
+
+    # 2. Check if wallpaper belongs to a predefined theme directory
+    detected = detect_theme_from_path(wp_path)
+    if detected:
+        apply_theme(detected, silent=True)
+        return
+
+    # 3. Fallback: Generate dynamic palette with Matugen
+    dynamic_theme = matugen_extract_palette(wp_path)
+    if dynamic_theme:
+        apply_theme_object("dynamic", dynamic_theme, silent=True)
 
 
 def list_themes(json_format: bool = False, names_only: bool = False, verbose: bool = False):
@@ -568,7 +749,7 @@ def main():
     CLI Entrypoint and Argument Parser.
     """
     # Shorthand support: if first argument is a theme name, treat as 'apply <name>'
-    valid_commands = {"apply", "switch", "set", "list", "ls", "current", "status", "preview", "view", "reload", "r", "pick", "p", "-h", "--help"}
+    valid_commands = {"apply", "switch", "set", "list", "ls", "current", "status", "preview", "view", "reload", "r", "pick", "p", "wallpaper", "wall", "wp", "-h", "--help"}
     if len(sys.argv) > 1 and sys.argv[1] not in valid_commands and not sys.argv[1].startswith("-"):
         sys.argv.insert(1, "apply")
 
@@ -580,6 +761,7 @@ def main():
 Examples:
   theme-switcher                        # Interactive picker (uses tv / fzf)
   theme-switcher pick                   # Interactive picker with live preview
+  theme-switcher wallpaper <image>      # Set wallpaper and adapt theme
   theme-switcher apply nord             # Apply the Nord theme
   theme-switcher catppuccin             # Shorthand for applying a theme
   theme-switcher apply nord --dry-run   # Test without making changes
@@ -595,6 +777,10 @@ Examples:
 
     # Command: pick
     subparsers.add_parser("pick", aliases=["p"], help="Interactive fuzzy theme picker with live preview (tv/fzf)")
+
+    # Command: wallpaper
+    wallpaper_parser = subparsers.add_parser("wallpaper", aliases=["wall", "wp"], help="Set wallpaper and adapt theme (curated or matugen)")
+    wallpaper_parser.add_argument("path", help="Path to wallpaper image file")
 
     # Command: apply
     apply_parser = subparsers.add_parser("apply", aliases=["switch", "set"], help="Apply a theme")
@@ -673,6 +859,9 @@ Examples:
         print(f"Reloading apps for active theme: {theme['display_name']}...")
         broadcast_reloads(theme["apps"]["nvim"], dry_run=False)
         print("✓ Reload signals sent.")
+
+    elif args.command in ("wallpaper", "wall", "wp"):
+        handle_wallpaper(args.path)
 
 
 if __name__ == "__main__":

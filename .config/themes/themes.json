@@ -1,5 +1,13 @@
 {
   "default": "nord",
+  "wallpaper_dirs": {
+    "nord": "nord",
+    "catpuccin": "catppuccin",
+    "catppuccin": "catppuccin",
+    "tokyo": "tokyo-night",
+    "rose-pine": "rose-pine",
+    "rose_pine": "rose-pine"
+  },
   "themes": {
     "catppuccin": {
       "display_name": "Catppuccin Mocha",
