@@ -1,0 +1,238 @@
+@import url("file:///home/luffy/.config/theme-active/colors.css");
+
+@define-color window_bg_color @dark-9;
+@define-color accent_bg_color @accent;
+@define-color theme_fg_color @fg;
+@define-color error_bg_color @urgent;
+@define-color error_fg_color @white;
+
+* {
+  all: unset;
+  font-family: JetBrainsMono Nerd Font Propo;
+}
+
+popover {
+  background: @dark-8;
+  border: 1px solid @dark-5;
+  border-radius: 0px;
+  padding: 10px;
+}
+
+.normal-icons {
+  -gtk-icon-size: 16px;
+}
+
+.large-icons {
+  -gtk-icon-size: 32px;
+}
+
+scrollbar {
+  opacity: 0;
+}
+
+/* Main Box Dialog - Hyprland Style: Sharp, Straight Corners (rounding = 0) */
+.box-wrapper {
+  box-shadow:
+    0 19px 38px rgba(0, 0, 0, 0.5),
+    0 15px 12px rgba(0, 0, 0, 0.4);
+  background: @dark-9;
+  padding: 18px;
+  border-radius: 0px;
+  border: 3px solid @accent;
+}
+
+.preview-box,
+.elephant-hint,
+.placeholder {
+  color: @theme_fg_color;
+}
+
+.box {
+}
+
+/* Search Bar Container */
+.search-container {
+  background: @dark-8;
+  border: 1px solid @dark-5;
+  border-radius: 0px;
+  padding: 4px 8px;
+}
+
+.input placeholder {
+  opacity: 0.5;
+  color: @muted;
+}
+
+.input selection {
+  background: alpha(@accent, 0.35);
+  color: @white;
+}
+
+.input {
+  caret-color: @accent;
+  background: transparent;
+  padding: 10px;
+  color: @theme_fg_color;
+  font-size: 15px;
+}
+
+.input:focus,
+.input:active {
+}
+
+.content-container {
+}
+
+.placeholder {
+}
+
+.scroll {
+}
+
+.list {
+  color: @theme_fg_color;
+}
+
+child {
+}
+
+/* List Items - Straight, Sharp */
+.item-box {
+  border-radius: 0px;
+  padding: 8px 12px;
+  margin: 1px 0px;
+}
+
+.item-quick-activation {
+  background: alpha(@accent, 0.2);
+  color: @accent;
+  border: 1px solid alpha(@accent, 0.4);
+  border-radius: 0px;
+  padding: 2px 6px;
+  font-weight: bold;
+}
+
+/* Selected Item */
+child:selected .item-box,
+row:selected .item-box {
+  background: alpha(@accent, 0.25);
+  border-left: 3px solid @accent;
+  border-radius: 0px;
+}
+
+.item-text-box {
+}
+
+.item-text {
+  color: @theme_fg_color;
+}
+
+.item-subtext {
+  font-size: 12px;
+  opacity: 0.6;
+  color: @muted;
+}
+
+.providerlist .item-subtext {
+  font-size: unset;
+  opacity: 0.75;
+}
+
+.item-image-text {
+  font-size: 28px;
+}
+
+/* Preview Box */
+.preview {
+  border: 1px solid @dark-5;
+  border-radius: 0px;
+  background: @dark-8;
+  color: @theme_fg_color;
+}
+
+.calc .item-text {
+  font-size: 24px;
+}
+
+.calc .item-subtext {
+}
+
+.symbols .item-image {
+  font-size: 24px;
+}
+
+.todo.done .item-text-box {
+  opacity: 0.25;
+}
+
+.todo.urgent {
+  font-size: 24px;
+}
+
+.todo.active {
+  font-weight: bold;
+}
+
+.bluetooth.disconnected {
+  opacity: 0.5;
+}
+
+.preview .large-icons {
+  -gtk-icon-size: 64px;
+}
+
+/* Keybinds at Bottom */
+.keybinds {
+  padding-top: 10px;
+  border-top: 1px solid @dark-7;
+  font-size: 12px;
+  color: @muted;
+}
+
+.global-keybinds {
+}
+
+.item-keybinds {
+}
+
+.keybind {
+}
+
+.keybind-button {
+  opacity: 0.5;
+}
+
+.keybind-button:hover {
+  opacity: 0.75;
+}
+
+.keybind-bind {
+  text-transform: lowercase;
+  opacity: 0.35;
+}
+
+.keybind-label {
+  padding: 2px 4px;
+  border-radius: 0px;
+  border: 1px solid @dark-5;
+  background: @dark-8;
+  color: @theme_fg_color;
+}
+
+.error {
+  padding: 10px;
+  background: alpha(@error_bg_color, 0.25);
+  color: @error_fg_color;
+  border: 1px solid @error_bg_color;
+  border-radius: 0px;
+}
+
+:not(.calc).current {
+  font-style: italic;
+}
+
+.preview-content.archlinuxpkgs,
+.preview-content.dnfpackages,
+.preview-content.aptpackages {
+  font-family: monospace;
+}

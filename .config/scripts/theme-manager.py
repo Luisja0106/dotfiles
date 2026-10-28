@@ -36,6 +36,7 @@ THEMES_JSON = CONFIG_DIR / "themes" / "themes.json"
 ACTIVE_DIR = CONFIG_DIR / "theme-active"
 CURRENT_FILE = ACTIVE_DIR / "current.txt"
 GLOBAL_CSS_FILE = ACTIVE_DIR / "colors.css"
+PALETTE_JSON_FILE = ACTIVE_DIR / "palette.json"
 
 
 # ==============================================================================
@@ -335,6 +336,15 @@ def broadcast_reloads(nvim_colorscheme: str, dry_run: bool = False):
     except Exception:
         pass
 
+    # 8. Walker: Restart walker service via hyprctl dispatch to reload theme CSS
+    try:
+        check_walker = subprocess.run(["pgrep", "-x", "walker"], capture_output=True, check=False)
+        if check_walker.returncode == 0:
+            subprocess.run(["killall", "walker"], check=False, stderr=subprocess.DEVNULL)
+            subprocess.run(["hyprctl", "dispatch", 'hl.dsp.exec_cmd("walker --gapplication-service")'], check=False, stderr=subprocess.DEVNULL)
+    except Exception:
+        pass
+
 
 # ==============================================================================
 # 6. TERMINAL PALETTE PREVIEWER (ANSI 24-bit Truecolor)
@@ -437,6 +447,10 @@ def apply_theme_object(
     # 9. Update state file
     if not dry_run:
         set_current_theme_name(theme_id)
+        try:
+            PALETTE_JSON_FILE.write_text(json.dumps(theme, indent=2), encoding="utf-8")
+        except Exception:
+            pass
 
     # 10. Process Reloads
     if not no_reload and not dry_run:
@@ -510,21 +524,34 @@ def detect_theme_from_path(wallpaper_path: Path) -> str | None:
 
 def matugen_extract_palette(wallpaper_path: Path) -> dict | None:
     """
-    Extracts a dynamic Material Design dark palette from an image using matugen.
+    Extracts a dynamic, vibrant Material Design dark palette from an image using matugen.
+    Uses --prefer saturation and -t scheme-vibrant to ensure colors are rich and faithful
+    to the wallpaper rather than desaturated dull grays.
     """
     if not shutil.which("matugen"):
         return None
 
     cmd = [
         "matugen", "image", str(wallpaper_path),
-        "--source-color-index", "0",
+        "--prefer", "saturation",
+        "-t", "scheme-vibrant",
         "--mode", "dark",
         "--json", "hex",
     ]
     try:
         res = subprocess.run(cmd, capture_output=True, text=True, check=False)
         if res.returncode != 0:
-            return None
+            # Fallback without scheme-vibrant if unsupported
+            cmd_fallback = [
+                "matugen", "image", str(wallpaper_path),
+                "--prefer", "saturation",
+                "--mode", "dark",
+                "--json", "hex",
+            ]
+            res = subprocess.run(cmd_fallback, capture_output=True, text=True, check=False)
+            if res.returncode != 0:
+                return None
+
         data = json.loads(res.stdout)
         colors = data.get("colors", {})
         if not colors:
@@ -536,18 +563,25 @@ def matugen_extract_palette(wallpaper_path: Path) -> dict | None:
                 return node.get("default", {}).get("color", default)
             return default
 
-        bg = get_c("background", "#121212")
-        fg = get_c("on_background", "#e0e0e0")
+        # Vibrant primary accent directly extracted from wallpaper's most colorful feature
         accent = get_c("primary", "#89b4fa")
-        highlight = get_c("secondary", "#94e2d5")
-        surface = get_c("surface_container", "#1e1e1e")
-        surface_variant = get_c("surface_container_high", "#2d2d2d")
-        muted = get_c("outline", "#6c7086")
+        # Use primary for highlight so active workspaces/buttons pop with the wallpaper's main color
+        highlight = accent
+        warning = get_c("tertiary", "#f9e2af")
         urgent = get_c("error", "#f38ba8")
-        dark_9 = get_c("surface_dim", bg)
-        dark_8 = get_c("surface_container_low", surface)
-        dark_7 = surface
-        dark_5 = surface_variant
+        success = get_c("primary_fixed", "#a6e3a1")
+        muted = get_c("outline", "#6c7086")
+
+        # In scheme-vibrant, surface_dim and surface_containers inherit the hue of the wallpaper
+        # giving a rich tinted dark background instead of flat neutral gray
+        bg = get_c("surface_dim", get_c("background", "#121212"))
+        fg = get_c("on_surface", get_c("on_background", "#e0e0e0"))
+        dark_9 = bg
+        dark_8 = get_c("surface_container_low", get_c("surface_container", "#1e1e1e"))
+        dark_7 = get_c("surface_container", "#252525")
+        dark_5 = get_c("surface_container_high", "#333333")
+        surface = dark_7
+        surface_variant = dark_5
 
         r_acc, g_acc, b_acc = hex_to_rgb(accent)
         r_mut, g_mut, b_mut = hex_to_rgb(muted)
@@ -555,7 +589,7 @@ def matugen_extract_palette(wallpaper_path: Path) -> dict | None:
         return {
             "display_name": f"Matugen ({wallpaper_path.stem})",
             "icon": "image",
-            "description": f"Dynamic palette from {wallpaper_path.name}",
+            "description": f"Dynamic vibrant palette from {wallpaper_path.name}",
             "colors": {
                 "bg": bg,
                 "fg": fg,
@@ -566,8 +600,8 @@ def matugen_extract_palette(wallpaper_path: Path) -> dict | None:
                 "muted": muted,
                 "urgent": urgent,
                 "error": urgent,
-                "warning": get_c("tertiary", "#f9e2af"),
-                "success": get_c("primary_fixed", "#a6e3a1"),
+                "warning": warning,
+                "success": success,
                 "dark_9": dark_9,
                 "dark_8": dark_8,
                 "dark_7": dark_7,
@@ -846,6 +880,13 @@ Examples:
         themes = data.get("themes", {})
         active = get_current_theme_name()
         target = args.theme or active
+        if target == "dynamic" and PALETTE_JSON_FILE.exists():
+            try:
+                dyn_theme = json.loads(PALETTE_JSON_FILE.read_text(encoding="utf-8"))
+                preview_theme_palette("dynamic", dyn_theme, is_active=(target == active))
+                return
+            except Exception:
+                pass
         if target not in themes:
             sys.exit(f"[Error] Theme '{target}' not found.")
         preview_theme_palette(target, themes[target], is_active=(target == active))
@@ -853,7 +894,14 @@ Examples:
     elif args.command in ("reload", "r"):
         data = load_themes_data()
         active = get_current_theme_name()
-        theme = data.get("themes", {}).get(active)
+        if active == "dynamic" and PALETTE_JSON_FILE.exists():
+            try:
+                theme = json.loads(PALETTE_JSON_FILE.read_text(encoding="utf-8"))
+            except Exception:
+                theme = None
+        else:
+            theme = data.get("themes", {}).get(active)
+
         if not theme:
             sys.exit(f"[Error] Active theme '{active}' not found in configuration.")
         print(f"Reloading apps for active theme: {theme['display_name']}...")
