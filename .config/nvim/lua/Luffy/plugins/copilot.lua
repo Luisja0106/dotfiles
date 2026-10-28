@@ -1,7 +1,7 @@
 return {
 	{
 		"zbirenbaum/copilot.lua",
-		cmd = "Copilot enable",
+		-- cmd = "Copilot enable",
 		config = function()
 			require("copilot").setup({
 				suggestion = {
