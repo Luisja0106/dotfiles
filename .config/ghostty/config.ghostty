@@ -1,6 +1,10 @@
 config-file = ~/.config/ghostty/current-theme.conf
 font-family = Jetbrains Mono Nerd Font
 font-size = 16
+
+# Cursor
+cursor-style = bar
+cursor-style-blink = false
 # window
 
 background-opacity = 1

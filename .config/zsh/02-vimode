@@ -1,0 +1,73 @@
+#      ____   ____.__        _____            .___      
+#      \   \ /   /|__| _____/ ____\____     __| _/____  
+#       \   Y   / |  |/    \   __\/  _ \   / __ |/ __ \ 
+#        \     /  |  |   |  \  | (  <_> ) / /_/ \  ___/ 
+#         \___/   |__|___|  /__|  \____/  \____ |\___  >
+#                         \/                   \/    \/ 
+# ------------------------------------------------------
+# --------------- Vi-Mode & Hybrid Cursor --------------
+# ------------------------------------------------------
+
+# 1. Enable Vi Keybindings
+bindkey -v
+
+# 2. Eliminate Escape Key Latency (instant switch from insert to normal mode)
+export KEYTIMEOUT=1
+
+# 3. Dynamic Hybrid Cursor Shape
+# VT / DECSCUSR escape sequences:
+#   \e[2 q -> Steady block (Normal / Command mode)
+#   \e[6 q -> Steady line / beam (Insert mode)
+#   \e[4 q -> Steady underline (Replace mode)
+function zle-keymap-select() {
+  case $KEYMAP in
+    vicmd)      print -n -- "\e[2 q" ;; # Block in normal / command mode
+    viins|main) print -n -- "\e[6 q" ;; # Line (beam) in insert mode
+    *)          print -n -- "\e[6 q" ;;
+  esac
+}
+zle -N zle-keymap-select
+
+# Ensure the cursor always starts as a line/beam when prompt initializes
+function zle-line-init() {
+  zle -K viins # Always start new line in insert mode
+  print -n -- "\e[6 q"
+}
+zle -N zle-line-init
+
+# Reset cursor back to line/beam when accepting a command
+function zle-line-finish() {
+  print -n -- "\e[6 q"
+}
+zle -N zle-line-finish
+
+# Precmd hook: ensures prompt displays with a line cursor even after external commands
+_cursor_precmd() {
+  print -n -- "\e[6 q"
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _cursor_precmd
+
+# 4. Vi-Mode Quality of Life & Keybindings
+# Allow backspacing over previously typed text
+bindkey -M viins '^?' backward-delete-char
+bindkey -M viins '^H' backward-delete-char
+bindkey -M viins '^W' backward-kill-word
+bindkey -M viins '^U' backward-kill-line
+
+# Emacs-style convenience shortcuts while in insert mode
+bindkey -M viins '^A' beginning-of-line
+bindkey -M viins '^E' end-of-line
+
+# Delete key support in both modes
+bindkey -M viins '^[[3~' delete-char
+bindkey -M vicmd '^[[3~' delete-char
+
+# History search in normal mode using / and ?
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-forward
+
+# Edit current command line in Neovim by pressing 'v' in normal mode
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line
