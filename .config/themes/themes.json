@@ -40,6 +40,10 @@
         "bat": "Catppuccin Mocha",
         "yazi_flavor": "catppuccin-mocha",
         "ohmyposh_palette": "catppuccin.toml",
+        "gtk_theme": "catppuccin-mocha-teal-standard+default",
+        "cursor_theme": "Nordzy-catppuccin-mocha-dark",
+        "icon_theme": "Papirus-Dark",
+        "kvantum": "KvDark",
         "tmux": {
           "gray_light": "#cdd6f4",
           "gray_medium": "#181825",
@@ -97,6 +101,10 @@
         "bat": "Nord",
         "yazi_flavor": "nord",
         "ohmyposh_palette": "nord.toml",
+        "gtk_theme": "Nordic",
+        "cursor_theme": "Nordzy-cursors",
+        "icon_theme": "Papirus-Dark",
+        "kvantum": "Nordic-Solid",
         "tmux": {
           "gray_light": "#d8dee9",
           "gray_medium": "#3b4252",
@@ -154,6 +162,10 @@
         "bat": "base16",
         "yazi_flavor": "rose-pine",
         "ohmyposh_palette": "rose-pine.toml",
+        "gtk_theme": "catppuccin-mocha-pink-standard+default",
+        "cursor_theme": "Bibata-Modern-Classic",
+        "icon_theme": "Papirus-Dark",
+        "kvantum": "KvDark",
         "tmux": {
           "gray_light": "#e0def4",
           "gray_medium": "#26233a",
@@ -211,6 +223,10 @@
         "bat": "TwoDark",
         "yazi_flavor": "tokyo-night",
         "ohmyposh_palette": "tokyo_night.toml",
+        "gtk_theme": "catppuccin-mocha-blue-standard+default",
+        "cursor_theme": "Bibata-Modern-Classic",
+        "icon_theme": "Papirus-Dark",
+        "kvantum": "KvDark",
         "tmux": {
           "gray_light": "#c0caf5",
           "gray_medium": "#24283b",

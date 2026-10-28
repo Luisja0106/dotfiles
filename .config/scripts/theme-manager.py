@@ -274,6 +274,140 @@ def update_ohmyposh(palette_file_name: str, dry_run: bool = False):
             print(f"[Warning] Could not update OhMyPosh: {err}", file=sys.stderr)
 
 
+def update_gtk(gtk_theme: str, cursor_theme: str, icon_theme: str, dry_run: bool = False):
+    """
+    Updates GTK 3.0 & GTK 4.0 settings and gsettings interface properties.
+    """
+    if dry_run:
+        print(f"  [dry-run] Would update GTK theme -> '{gtk_theme}', cursor -> '{cursor_theme}', icon -> '{icon_theme}'")
+        return
+
+    # 1. Update gsettings
+    if shutil.which("gsettings"):
+        try:
+            subprocess.run(["gsettings", "set", "org.gnome.desktop.interface", "gtk-theme", gtk_theme], check=False, stderr=subprocess.DEVNULL)
+            subprocess.run(["gsettings", "set", "org.gnome.desktop.interface", "cursor-theme", cursor_theme], check=False, stderr=subprocess.DEVNULL)
+            subprocess.run(["gsettings", "set", "org.gnome.desktop.interface", "icon-theme", icon_theme], check=False, stderr=subprocess.DEVNULL)
+            subprocess.run(["gsettings", "set", "org.gnome.desktop.interface", "color-scheme", "prefer-dark"], check=False, stderr=subprocess.DEVNULL)
+        except Exception:
+            pass
+
+    # 2. Update ~/.config/gtk-3.0/settings.ini and ~/.config/gtk-4.0/settings.ini
+    for gtk_ver in ("gtk-3.0", "gtk-4.0"):
+        settings_file = CONFIG_DIR / gtk_ver / "settings.ini"
+        if settings_file.exists():
+            try:
+                content = settings_file.read_text(encoding="utf-8")
+                content = re.sub(r'(gtk-theme-name\s*=\s*)[^\n]+', rf'\g<1>{gtk_theme}', content)
+                content = re.sub(r'(gtk-cursor-theme-name\s*=\s*)[^\n]+', rf'\g<1>{cursor_theme}', content)
+                content = re.sub(r'(gtk-icon-theme-name\s*=\s*)[^\n]+', rf'\g<1>{icon_theme}', content)
+                settings_file.write_text(content, encoding="utf-8")
+            except Exception as err:
+                print(f"[Warning] Could not update {settings_file}: {err}", file=sys.stderr)
+
+
+def hex_to_qt(hex_str: str, alpha: str = "ff") -> str:
+    """Converts hex color (#rrggbb or #rgb) to Qt format #AARRGGBB."""
+    h = hex_str.lstrip("#")
+    if len(h) == 3:
+        h = "".join(c * 2 for c in h)
+    if len(h) >= 6:
+        return f"#{alpha}{h[:6]}"
+    return f"#{alpha}ffffff"
+
+
+def generate_qt_palette(colors: dict) -> str:
+    """Generates a complete 22-role Qt color scheme compatible with qt5ct and qt6ct."""
+    fg = hex_to_qt(colors.get("fg", "#ffffff"))
+    bg = hex_to_qt(colors.get("bg", "#1e1e2e"))
+    surface = hex_to_qt(colors.get("surface", "#313244"))
+    surface_variant = hex_to_qt(colors.get("surface_variant", "#45475a"))
+    dark_9 = hex_to_qt(colors.get("dark_9", "#11111b"))
+    dark_8 = hex_to_qt(colors.get("dark_8", "#181825"))
+    accent = hex_to_qt(colors.get("accent", "#89b4fa"))
+    highlight = hex_to_qt(colors.get("highlight", "#94e2d5"))
+    muted = hex_to_qt(colors.get("muted", "#6c7086"))
+    muted_alpha = hex_to_qt(colors.get("muted", "#6c7086"), alpha="80")
+    white = "#ffffffff"
+
+    active = [
+        fg, surface_variant, surface, surface,
+        dark_9, dark_8, fg, white, fg,
+        dark_9, bg, dark_9, highlight, dark_9,
+        accent, highlight, dark_8, white, dark_9,
+        fg, muted_alpha, accent
+    ]
+
+    inactive = [
+        muted, bg, surface_variant, surface,
+        dark_9, dark_8, muted, white, muted,
+        dark_9, bg, dark_9, surface, muted,
+        muted, muted, dark_8, white, dark_9,
+        muted, muted_alpha, surface
+    ]
+
+    disabled = [
+        muted, surface, surface_variant, surface,
+        dark_9, dark_8, muted, white, muted,
+        dark_9, bg, dark_9, dark_8, muted,
+        muted, muted, dark_8, white, dark_9,
+        muted, muted_alpha, dark_8
+    ]
+
+    return f"""[ColorScheme]
+active_colors={", ".join(active)}
+inactive_colors={", ".join(inactive)}
+disabled_colors={", ".join(disabled)}
+"""
+
+
+def update_qt(colors: dict, kvantum_theme: str | None = None, dry_run: bool = False):
+    """
+    Generates Qt color schemes for qt6ct and qt5ct, and configures Kvantum.
+    """
+    if dry_run:
+        print("  [dry-run] Would update Qt color schemes and Kvantum theme")
+        return
+
+    qt_palette_content = generate_qt_palette(colors)
+
+    # Update qt6ct & qt5ct color schemes
+    for qt_ver in ("qt6ct", "qt5ct"):
+        conf_dir = CONFIG_DIR / qt_ver
+        colors_dir = conf_dir / "colors"
+        colors_dir.mkdir(parents=True, exist_ok=True)
+        scheme_file = colors_dir / "current.conf"
+        try:
+            scheme_file.write_text(qt_palette_content, encoding="utf-8")
+        except Exception as err:
+            print(f"[Warning] Could not write {scheme_file}: {err}", file=sys.stderr)
+
+        config_file = conf_dir / f"{qt_ver}.conf"
+        if config_file.exists():
+            try:
+                content = config_file.read_text(encoding="utf-8")
+                target_path = str(scheme_file)
+                if "color_scheme_path=" in content:
+                    content = re.sub(r'(color_scheme_path\s*=\s*)[^\n]+', rf'\g<1>{target_path}', content)
+                else:
+                    content = re.sub(r'(\[Appearance\])', rf'\g<1>\ncolor_scheme_path={target_path}', content)
+                content = re.sub(r'(custom_palette\s*=\s*)[^\n]+', r'\g<1>true', content)
+                config_file.write_text(content, encoding="utf-8")
+            except Exception as err:
+                print(f"[Warning] Could not update {config_file}: {err}", file=sys.stderr)
+
+    # Update Kvantum theme if provided
+    if kvantum_theme:
+        kvantum_conf = CONFIG_DIR / "Kvantum" / "kvantum.kvconfig"
+        if kvantum_conf.exists():
+            try:
+                kv_content = kvantum_conf.read_text(encoding="utf-8")
+                new_kv = re.sub(r'(theme\s*=\s*)[^\n]+', rf'\g<1>{kvantum_theme}', kv_content)
+                kvantum_conf.write_text(new_kv, encoding="utf-8")
+            except Exception:
+                pass
+
+
 # ==============================================================================
 # 5. LIVE PROCESS RELOADER (Broadcasts reloads without app restarts)
 # ==============================================================================
@@ -444,7 +578,24 @@ def apply_theme_object(
     if should_update("ohmyposh"):
         update_ohmyposh(apps["ohmyposh_palette"], dry_run)
 
-    # 9. Update state file
+    # 9. GTK (3.0 & 4.0 / Libadwaita)
+    if should_update("gtk"):
+        update_gtk(
+            gtk_theme=apps.get("gtk_theme", "Nordic"),
+            cursor_theme=apps.get("cursor_theme", "Nordzy-catppuccin-mocha-dark"),
+            icon_theme=apps.get("icon_theme", "Papirus-Dark"),
+            dry_run=dry_run,
+        )
+
+    # 10. QT (qt5ct, qt6ct, Kvantum)
+    if should_update("qt"):
+        update_qt(
+            colors=colors,
+            kvantum_theme=apps.get("kvantum", "KvDark"),
+            dry_run=dry_run,
+        )
+
+    # 11. Update state file
     if not dry_run:
         set_current_theme_name(theme_id)
         try:
@@ -452,11 +603,11 @@ def apply_theme_object(
         except Exception:
             pass
 
-    # 10. Process Reloads
+    # 12. Process Reloads
     if not no_reload and not dry_run:
         broadcast_reloads(apps["nvim"], dry_run=False)
 
-    # 11. Desktop Notification
+    # 13. Desktop Notification
     if not dry_run and not silent:
         try:
             subprocess.run([
@@ -617,6 +768,10 @@ def matugen_extract_palette(wallpaper_path: Path) -> dict | None:
                 "bat": "base16",
                 "yazi_flavor": "catppuccin-mocha",
                 "ohmyposh_palette": "catppuccin.toml",
+                "gtk_theme": "Nordic",
+                "cursor_theme": "Nordzy-catppuccin-mocha-dark",
+                "icon_theme": "Papirus-Dark",
+                "kvantum": "KvDark",
                 "tmux": {
                     "gray_light": fg,
                     "gray_medium": surface_variant,

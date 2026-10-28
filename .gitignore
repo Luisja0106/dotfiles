@@ -17,3 +17,4 @@
 .config/tmux/current-theme.conf
 .config/hypr/colors.lua
 .config/theme-active/
+/.config/scripts/__pycache__
