@@ -19,3 +19,5 @@
 .config/theme-active/
 /.config/scripts/__pycache__
 /.atl
+/.engram
+/omp.cache

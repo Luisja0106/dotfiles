@@ -3,6 +3,7 @@ return {
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		{ "antosha417/nvim-lsp-file-operations", config = true },
+		{ "nvim-telescope/telescope.nvim" },
 	},
 	config = function()
 		-- NOTE: LSP Keybinds

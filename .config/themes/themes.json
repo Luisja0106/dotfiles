@@ -217,7 +217,7 @@
         "border_inactive": "rgba(86, 95, 137, 0.7)"
       },
       "apps": {
-        "ghostty": "TokyoNight",
+        "ghostty": "TokyoNight Moon",
         "nvim": "tokyonight-moon",
         "herdr": "tokyo-night",
         "bat": "TwoDark",
