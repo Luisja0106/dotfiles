@@ -6,7 +6,7 @@ final_space = true
 # --------------------------------------------------------------------
 [palette]
 bg = '#191724'
-fg = '#ffff'
+fg = '#ffffff'
 paths = '#ebbcba'
 pathsFg = '#21202e'
 cyan = '#56949f'

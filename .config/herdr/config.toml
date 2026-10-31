@@ -131,6 +131,14 @@ height = "80%"
 description = "Open lazygit"
 
 [[keys.command]]
+key = "prefix+d"
+type = "popup"
+command = "exec \"${SHELL:-sh}\""
+description = "open scratch terminal"
+width = "80%"
+height = "80%"
+
+[[keys.command]]
 key = "ctrl+h"
 type = "plugin_action"
 command = "vim-herdr-navigation.left"
