@@ -1,0 +1,4 @@
+^\.atuin/logs(/|$)
+/.atl
+/.engram
+/omp.cache
