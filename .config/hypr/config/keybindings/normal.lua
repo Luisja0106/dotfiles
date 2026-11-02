@@ -19,7 +19,7 @@ hl.bind(superALT .. " + RETURN", hl.dsp.exec_cmd(multiplexer), { description = "
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser), { description = "Open browser" })
 hl.bind(superALT .. " + T", hl.dsp.exec_cmd(music), { description = "Open music TUI player" })
 hl.bind(mainMod .. " + Q", hl.dsp.window.close(), { description = "Close active window" })
-hl.bind(secondMod .. " + R", hl.dsp.exec_cmd("hyprctl reload"), { description = "Reload Hyprland config" })
+hl.bind(secondMod .. " + R", hl.dsp.reload_config(), { description = "Reload Hyprland config" })
 hl.bind(
 	secondMod .. " + S",
 	hl.dsp.exec_cmd("~/.config/walker/scripts/screenshoot.sh"),
