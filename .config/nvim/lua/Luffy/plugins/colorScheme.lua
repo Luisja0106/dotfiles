@@ -28,4 +28,8 @@ return {
 		name = "nightfox",
 		lazy = true,
 	},
+	{
+		"rockerBOO/boo-colorscheme-nvim",
+		lazy = true,
+	},
 }

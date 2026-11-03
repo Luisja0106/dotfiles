@@ -1,12 +1,19 @@
 {
   "default": "nord",
+  "wallpaper_files": {
+    "HTT.jpg": "dark",
+    "htt.jpg": "dark",
+    "htt": "dark"
+  },
   "wallpaper_dirs": {
     "nord": "nord",
     "catpuccin": "catppuccin",
     "catppuccin": "catppuccin",
     "tokyo": "tokyo-night",
     "rose-pine": "rose-pine",
-    "rose_pine": "rose-pine"
+    "rose_pine": "rose-pine",
+    "htt": "dark",
+    "dark": "dark"
   },
   "themes": {
     "catppuccin": {
@@ -250,6 +257,67 @@
           "hl_plus": "#f7768e",
           "selected_bg": "#292e42",
           "border": "#565f89"
+        }
+      }
+    },
+    "dark": {
+      "display_name": "Pitch Black",
+      "icon": "moon",
+      "description": "True black minimal dark theme for night / OLED (HTT)",
+      "colors": {
+        "bg": "#000000",
+        "fg": "#e6e6e6",
+        "accent": "#ffffff",
+        "highlight": "#7fc2a8",
+        "surface": "#141418",
+        "surface_variant": "#1e1e24",
+        "muted": "#666677",
+        "urgent": "#e24a33",
+        "error": "#e24a33",
+        "warning": "#ebb02d",
+        "success": "#7fc2a8",
+        "dark_9": "#000000",
+        "dark_8": "#0d0d10",
+        "dark_7": "#141418",
+        "dark_5": "#1e1e24",
+        "white": "#ffffff",
+        "border_active": "rgba(255, 255, 255, 0.85)",
+        "border_inactive": "rgba(35, 35, 42, 0.8)"
+      },
+      "apps": {
+        "ghostty": "Modus Vivendi",
+        "nvim": "boo",
+        "herdr": "terminal",
+        "bat": "base16",
+        "yazi_flavor": "tokyo-night",
+        "ohmyposh_palette": "dark.toml",
+        "gtk_theme": "Nordic",
+        "cursor_theme": "Bibata-Modern-Classic",
+        "icon_theme": "Papirus-Dark",
+        "kvantum": "KvDark",
+        "tmux": {
+          "gray_light": "#e6e6e6",
+          "gray_medium": "#1e1e24",
+          "gray_dark": "#000000",
+          "green_soft": "#7fc2a8",
+          "blue_muted": "#2382c8",
+          "cyan_soft": "#ffffff"
+        },
+        "fzf": {
+          "bg_plus": "#141418",
+          "bg": "#000000",
+          "spinner": "#7fc2a8",
+          "hl": "#e24a33",
+          "fg": "#e6e6e6",
+          "header": "#e24a33",
+          "info": "#2382c8",
+          "pointer": "#ffffff",
+          "marker": "#7fc2a8",
+          "fg_plus": "#ffffff",
+          "prompt": "#7fc2a8",
+          "hl_plus": "#e24a33",
+          "selected_bg": "#1e1e24",
+          "border": "#33333d"
         }
       }
     }

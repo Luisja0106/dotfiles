@@ -653,22 +653,42 @@ def apply_theme(
 
 def detect_theme_from_path(wallpaper_path: Path) -> str | None:
     """
-    Checks if a wallpaper image belongs to a predefined theme directory or has theme tags.
+    Checks if a wallpaper image belongs to a predefined theme directory,
+    matches a specific wallpaper file mapping, or has theme tags.
     """
     data = load_themes_data()
+    files_map = data.get("wallpaper_files", {})
     dirs_map = data.get("wallpaper_dirs", {})
 
-    # 1. Check folder names in path
-    for part in wallpaper_path.parts:
+    resolved_path = wallpaper_path.expanduser().resolve()
+    filename_lower = resolved_path.name.lower()
+    stem_lower = resolved_path.stem.lower()
+    full_str = str(resolved_path)
+
+    # 1. Check exact file mapping (full path, exact filename, or stem)
+    for key, theme_id in files_map.items():
+        key_lower = key.lower()
+        if (
+            full_str.lower() == key_lower
+            or filename_lower == key_lower
+            or stem_lower == key_lower
+        ):
+            return theme_id
+
+    # 2. Check folder names in path
+    for part in resolved_path.parts:
         part_lower = part.lower()
         if part_lower in dirs_map:
             return dirs_map[part_lower]
 
-    # 2. Check filename keywords
-    filename_lower = wallpaper_path.name.lower()
+    # 3. Check filename keywords
     for keyword, theme_id in dirs_map.items():
-        if keyword in filename_lower:
+        if keyword.lower() in filename_lower:
             return theme_id
+
+    # 4. Built-in safeguard for HTT / pure black night wallpaper
+    if "htt" in filename_lower or stem_lower == "htt":
+        return "dark"
 
     return None
 
